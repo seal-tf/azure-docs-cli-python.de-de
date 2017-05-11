@@ -12,8 +12,8 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 98fb955e-6dbf-47e2-80ac-170d6d95cb70
-ms.openlocfilehash: c3538077e05d61f3c40880bb8b804226eb99dc85
-ms.sourcegitcommit: bcf93ad8ed8802072249cd8187cd4420da89b4c6
+ms.openlocfilehash: a28b24dd186fc567f36e52f8a0f5a7c2b0af060c
+ms.sourcegitcommit: c2d380f4ad8e7606850530db690855bcccfd6e86
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ---
@@ -42,6 +42,9 @@ Wenn ja, können Sie Azure CLI 2.0 so konfigurieren, dass Befehle für ein besti
    ```azurecli
    az account set --subscription "My Demos"
    ```
+
+   > [!NOTE]
+   > Der `--subscription`-Parameter erhält den Namen des Abonnements oder die Abonnement-ID.
 
 Sie können die Änderung überprüfen, indem Sie den Befehl `az account list --output table` erneut ausführen.
 

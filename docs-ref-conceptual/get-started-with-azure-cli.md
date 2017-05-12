@@ -12,10 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 85c418a8-6177-4833-bb8d-ff4ce2233c1a
-ms.openlocfilehash: f5a88012b21e814262436a864b13f053d836cf07
-ms.sourcegitcommit: bcf93ad8ed8802072249cd8187cd4420da89b4c6
+ms.openlocfilehash: 0f8e494ffdd73c666b8361488db0966af01d6876
+ms.sourcegitcommit: 66d997a5afcf32143a4d4817ec1608cbdf58a59f
 ms.translationtype: HT
 ms.contentlocale: de-DE
+ms.lasthandoff: 05/11/2017
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -45,7 +46,7 @@ Nachdem Sie Azure CLI 2.0 installiert haben, ist der nächste Schritt die sicher
 
 1. Führen Sie den folgenden Befehl an der Befehlszeile aus:
 
-   ```azurecli
+   ```azurecli-interactive
    az login
    ```
    
@@ -65,7 +66,7 @@ Erstellen Sie zunächst eine Ressourcengruppe.  Ressourcengruppen ermöglichen i
 
 Hier erstellen wir eine Ressourcengruppe namens „MyResourceGroup“ in der Azure-Region *westus2*.  Geben Sie hierzu folgenden Befehl ein:
 
-```azurecli
+```azurecli-interactive
 az group create -n MyResourceGroup -l westus2 
 ```
 
@@ -90,13 +91,13 @@ Nachdem wir nun über eine Ressourcengruppe verfügen, erstellen wir darin einen
 
 Sie können eine Linux-VM mithilfe des beliebten UbuntuTLS-Image mit zwei angefügten Speicherdatenträgern der Größe 10 GB und 20 GB erstellen, indem Sie den folgenden Befehl verwenden:
 
-```azurecli
+```azurecli-interactive
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS --data-disk-sizes-gb 10 20
 ```
 
 Wenn Sie den obigen Befehl ausführen, sucht Azure CLI 2.0 im Verzeichnis „~/.ssh“ nach einem gespeicherten SSH-Schlüsselpaar.  Falls Sie an diesem Speicherort nicht bereits ein SSH-Schlüsselpaar gespeichert haben, können Sie es von der Azure-CLI automatisch erstellen lassen. Übergeben Sie hierzu den Parameter „--generate-ssh-keys“:
 
-```azurecli
+```azurecli-interactive
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS --generate-ssh-keys
 ```
 
@@ -117,7 +118,7 @@ Mit dem Befehl `az vm create` wird die Ausgabe durchgeführt, nachdem die VM vol
 
 Nach Erstellung des virtuellen Computers können Sie sich bei Ihrem neuen virtuellen Linux-Computer anmelden. Verwenden Sie hierzu **SSH** und die öffentliche IP-Adresse des virtuellen Computers, den Sie erstellt haben:
 
-```azurecli
+```azurecli-interactive
 ssh xx.xxx.xxx.xxx
 ```
 
@@ -161,7 +162,7 @@ Für Azure ist es erforderlich, dass Sie die Verwendung von Benutzernamen und Ke
 > [!NOTE]
 > Beim Ausführen dieses Befehls werden Sie aufgefordert, Ihren Benutzernamen und Ihr Kennwort einzugeben.
 
-```azurecli
+```azurecli-interactive
 az vm create -n MyWinVM -g MyResourceGroup --image Win2016Datacenter
 ```
 
@@ -183,7 +184,7 @@ Der Befehl `az vm create` gibt Ergebnisse aus, wenn der virtuelle Computer volls
 Melden Sie sich nun unter Verwendung von Remotedesktop und der öffentlichen IP-Adresse des virtuellen Computers (wird in der Ausgabe von `az vm create` zurückgegeben) bei Ihrem neu erstellten virtuellen Windows Server-Computer an.  
 Bei einem Windows-basierten System können Sie hierzu über die Befehlszeile den Befehl `mstsc` ausführen:
 
-```azurecli
+```azurecli-interactive
 mstsc /v:xx.xxx.xx.xxx
 ```
 
@@ -195,13 +196,13 @@ Sie wissen nun, wie Sie eine Ressourcengruppe, einen virtuellen Linux-Computer u
 
 Alle neuen Ressourcen werden mit dem einheitlichen Benennungsmuster `az <resource type name> create` erstellt.  Mithilfe des folgenden create-Befehls können Sie beispielsweise einen Azure-Netzwerklastenausgleich erstellen, den wir dann unseren neu erstellten virtuellen Computern zuordnen können:
 
-```azurecli
+```azurecli-interactive
 az network lb create -n MyLoadBalancer -g MyResourceGroup
 ```
 
 Wir könnten für unsere Infrastruktur auch ein neues privates virtuelles Netzwerk (in Azure für gewöhnlich als VNET bezeichnet) erstellen. Hierfür wird der folgende create-Befehl verwendet:
 
-```azurecli
+```azurecli-interactive
 az network vnet create -n MyVirtualNetwork -g MyResourceGroup --address-prefix 10.0.0.0/16
 ```
 
@@ -209,13 +210,13 @@ Das Praktische an Azure und der Azure-CLI ist, dass wir damit nicht nur eine clo
 
 So können Sie beispielsweise mithilfe der Azure-CLI eine Azure App Service-Instanz erstellen.  Azure App Service ist ein verwalteter Plattformdienst, der sich bestens zum Hosten von Web-Apps eignet, ohne dass Sie sich dabei Gedanken um die Infrastruktur machen müssen.  Nach der Erstellung der Azure App Service-Instanz können Sie darin mithilfe der folgenden create-Befehle zwei neue Azure-Web-Apps erstellen:
 
-```azurecli
+```azurecli-interactive
 # Create an Azure AppService that we can host any number of web apps within
 az appservice plan create -n MyAppServicePlan -g MyResourceGroup
 
 # Create Two Web Apps within the AppService (note: name param must be a unique DNS entry)
-az appservice web create -n MyWebApp43432 -g MyResourceGroup --plan MyAppServicePlan 
-az appservice web create -n MyWebApp43433 -g MyResourceGroup --plan MyAppServicePlan 
+az webapp create -n MyWebApp43432 -g MyResourceGroup --plan MyAppServicePlan 
+az webapp create -n MyWebApp43433 -g MyResourceGroup --plan MyAppServicePlan 
 ```
 
 Wenn Sie die Funktionsweise des Musters `az <resource type name> create` verstanden haben, ist die Erstellung von Elementen sehr einfach. Hier sind einige gängige Azure-Ressourcentypen und die entsprechenden Erstellungsbefehle der Azure-CLI angegeben:
@@ -231,7 +232,7 @@ Managed Disk                az disk create
 Storage account             az storage account create
 Virtual Machine Scale Set   az vmss create
 Azure Container Service     az acs create
-Web App                     az appservice web create
+Web App                     az webapp create
 SQL Database Server         az sql server create
 Document DB                 az documentdb create
 ```
@@ -248,7 +249,7 @@ Falls Sie vor dem Fortfahren nicht auf die Erstellung einer Ressource warten mü
 
 Bei der folgenden Nutzung von `az vm create` wird eine VM-Bereitstellung gestartet und die Rückgabe dann deutlich schneller durchgeführt (vor dem vollständigen Starten der VM):
 
-```azurecli
+```azurecli-interactive
 az vm create -n MyLinuxVM2 -g MyResourceGroup --image UbuntuLTS --no-wait
 ```
 
@@ -262,7 +263,7 @@ Wie mit dem create-Befehl auch, können Sie Ressourcen per Azure CLI 2.0 auflist
 
 Mit `az vm list` wird beispielsweise die Liste mit allen vorhandenen VMs angezeigt.   
 
-```azurecli
+```azurecli-interactive
 az vm list 
 ```
 Die zurückgegebenen Werte liegen standardmäßig im JSON-Format vor (aus Platzgründen nur eine Teilausgabe).
@@ -297,7 +298,7 @@ Die zurückgegebenen Werte liegen standardmäßig im JSON-Format vor (aus Platzg
 
 Sie können das Ausgabeformat mit der Option `--output` optional ändern.  Führen Sie den Befehl `az vm list` aus, um die zuvor erstellten Linux- und Windows Server-VMs sowie die am häufigsten verwendeten Eigenschaften einer VM anzuzeigen, indem Sie die leicht lesbare Formatoption *table* nutzen:
 
-```azurecli
+```azurecli-interactive
 az vm list --output table
 ```
 
@@ -310,7 +311,7 @@ MyWinVM    MyResourceGroup  westus2
 
 Sie können die Ausgabeoption *tsv* verwenden, um ein textbasiertes Format mit Tabulatortrennung und ohne Überschriften zu erhalten.  Dieses Format ist nützlich, wenn Sie die Ausgabe an ein anderes textbasiertes Tool wie beispielsweise grep senden möchten. 
 
-```azurecli
+```azurecli-interactive
 az vm list --output tsv
 ```
 
@@ -326,8 +327,9 @@ Es kann häufiger vorkommen, dass Sie nur nach den Ressourcen suchen möchten, d
 
 Der Befehl `list` verfügt über eine integrierte Unterstützung von Funktionen, die das Filtern von Ressourcen nach dem Namen der Ressourcengruppe einfach machen.  Beispielsweise können Sie den Parameter `--ResourceGroup` oder `-g` an den Befehl `list` übergeben, um nur die Ressourcen einer bestimmten Ressourcengruppe abzurufen:
 
+
 ```azurecli
-az vm list -g MyResouceGroup --output table
+az vm list -g MyResourceGroup --output table
 ```
 
 ```Output
@@ -341,7 +343,7 @@ Zur noch besseren Unterstützung von Abfragen können Sie den Parameter `--query
 
 Führen Sie beispielsweise den folgenden Befehl aus, um eine Abfrage für alle VM-Ressourcen in Ressourcengruppen durchzuführen, die „My“ enthalten:
 
-```azurecli
+```azurecli-interactive
 az vm list --output table --query "[?contains(resourceGroup,'MY')]" 
 ```
 
@@ -354,7 +356,7 @@ MYRESOURCEGROUP  Succeeded            MyWinVM    westus2     XXXXXXXX-XXXX-XXXX-
 
 Anschließend können wir die Ausgabe weiter verfeinern, indem wir die Formungsfunktion von JMESPath-Abfragen zum zusätzlichen Ausgeben von unterschiedlichen Werten verwenden.  Mit dem folgenden Befehl wird beispielsweise der Typ des Betriebssystemdatenträgers abgerufen, über den die VM ermitteln kann, ob ein Linux- oder Windows-basiertes Betriebssystem verwendet wird:
 
-```azurecli
+```azurecli-interactive
 az vm list --output table --query "[?contains(resourceGroup,'MY')].{ VMName:name,OSType:storageProfile.osDisk.osType }" 
 ```
 
@@ -371,7 +373,7 @@ Die JMESPath-Unterstützung in der Azure-CLI ist sehr leistungsstark.  Weitere I
 
 Sie können den Befehl `delete` in der Azure-CLI nutzen, um nicht mehr benötigte Ressourcen zu löschen. Sie können den Befehl `delete` – wie auch beim Befehl `create` – mit einer beliebigen Ressource verwenden.
 
-```azurecli
+```azurecli-interactive
 az vm delete -n MyLinuxVM -g MyResourceGroup
 ```
 
@@ -386,7 +388,7 @@ EndTime                           Name                                  StartTim
 
 Außerdem können Sie den Befehl `delete` nutzen, um mehrere Ressourcen gleichzeitig zu löschen. Der folgende Befehl löscht beispielsweise alle Ressourcen der Ressourcengruppe „MyResourceGroup“, die wir in den Beispielen dieses Tutorials verwendet haben.
 
-```azurecli
+```azurecli-interactive
 az group delete -n MyResourceGroup
 ```
 
@@ -406,19 +408,19 @@ Weitere Informationen zu den Verwendungsmöglichkeiten der Azure-CLI finden Sie 
 
 Die Azure-CLI verfügt über eine integrierte Hilfedokumentation, die unserer Webdokumentation entspricht. Sie können sie über die Befehlszeile ausführen:
 
-```azurecli
+```azurecli-interactive
 az [command-group [command]] -h
 ```
 
 Verwenden Sie beispielsweise Folgendes, um anzuzeigen, welche Befehle und Untergruppen für VMs verfügbar sind:
 
-```azurecli
+```azurecli-interactive
 az vm -h
 ```
 
 Verwenden Sie Folgendes, um Hilfe zum Befehl für die Erstellung einer VM zu erhalten:
 
-```azurecli
+```azurecli-interactive
 az vm create -h
 ```
 
@@ -430,6 +432,6 @@ Als Hilfe für die Umstellung von Azure CLI 1.0 auf Azure CLI 2.0 haben wir dami
 
 ## <a name="send-us-your-feedback"></a>Senden Sie uns Feedback
 
-```azurecli
+```azurecli-interactive
 az feedback
 ```

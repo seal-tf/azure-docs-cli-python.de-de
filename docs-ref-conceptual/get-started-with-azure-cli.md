@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 85c418a8-6177-4833-bb8d-ff4ce2233c1a
-ms.openlocfilehash: 0f8e494ffdd73c666b8361488db0966af01d6876
-ms.sourcegitcommit: 66d997a5afcf32143a4d4817ec1608cbdf58a59f
+ms.openlocfilehash: 45e51918ec95494699bf781f66e4cd57bd06fbad
+ms.sourcegitcommit: b4cb5c910b2238cba342f70122feb158c4036844
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/18/2017
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -40,6 +40,9 @@ Daraufhin sollten die Versionsnummer der Azure-CLI und die anderen abhängigen B
   
 Falls ein Fehler auftritt, liegt unter Umständen ein Problem mit der Installation der CLI vor. Der Abschnitt „Troubleshooting“ (Problembehandlung) des Artikels [Install Azure CLI 2.0](install-azure-cli.md#troubleshooting) (Installieren von Azure CLI 2.0) enthält hilfreiche Informationen, und Sie können unten auf der Seite einen Kommentar erstellen, um Hilfe zu erhalten.
 
+> [!Note]
+> Wenn Sie die Azure CLI 2.0 nicht installieren möchten, können Sie die [Cloud Shell](/azure/cloud-shell/overview) zur Ausführung in Ihrem Browser verwenden.
+
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Nachdem Sie Azure CLI 2.0 installiert haben, ist der nächste Schritt die sichere Verbindungsherstellung mit Ihrem Azure-Konto. Verwenden Sie hierfür den Befehl `az login`.
@@ -62,7 +65,7 @@ Sie können über Azure CLI 2.0 jetzt Befehle für die Azure-Ressourcen und -Die
 
 Nachdem nun alles eingerichtet ist, können wir mit der Azure-CLI Ressourcen in Azure erstellen.
 
-Erstellen Sie zunächst eine Ressourcengruppe.  Ressourcengruppen ermöglichen in Azure die Verwaltung mehrerer Ressourcen, die Sie zu einer logischen Gruppe zusammenfassen möchten.  Sie können beispielsweise eine Ressourcengruppe für eine Anwendung oder für ein Projekt erstellen und darin einen virtuellen Computer, eine Datenbank und einen CDN-Dienst hinzufügen.
+Erstellen Sie zunächst eine Ressourcengruppe.  Ressourcengruppen ermöglichen in Azure die Verwaltung mehrerer Ressourcen, die Sie zu einer logischen Gruppe zusammenfassen möchten.  So können Sie etwa eine Ressourcengruppe für eine Anwendung oder für ein Projekt erstellen und darin einen virtuellen Computer, eine Datenbank und einen CDN-Dienst hinzufügen.
 
 Hier erstellen wir eine Ressourcengruppe namens „MyResourceGroup“ in der Azure-Region *westus2*.  Geben Sie hierzu folgenden Befehl ein:
 
@@ -237,7 +240,7 @@ SQL Database Server         az sql server create
 Document DB                 az documentdb create
 ```
 
-Die [Referenzdokumentation](/azure/doc-ref-autogen) enthält weitere Informationen zu ressourcenspezifischen Parametern, die Sie an die obigen Befehle übergeben können, und zu den verfügbaren Ressourcentypen. 
+Die [Referenzdokumentation](/cli/azure) enthält weitere Informationen zu ressourcenspezifischen Parametern, die Sie an die obigen Befehle übergeben können, und zu den verfügbaren Ressourcentypen. 
 
 ## <a name="useful-tip-optimizing-create-operations-using---no-wait"></a>Nützlicher Tipp: Optimieren von Erstellungsvorgängen mit „--no-wait“
 

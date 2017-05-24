@@ -12,10 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 664535701ad814f8ff85fefe8ecc45772777d0ba
-ms.sourcegitcommit: ec22ff07aedb5c47e5f636f2a9a341c3edbe7ca1
+ms.openlocfilehash: 7065ed5270ef9bfc70beea81d0bc442a7b4df38c
+ms.sourcegitcommit: c077bd5cbe07f7225714c41714d3981fa0d9928f
 ms.translationtype: HT
 ms.contentlocale: de-DE
+ms.lasthandoff: 05/16/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -51,10 +52,19 @@ Informationen zur neuesten Version finden Sie in den [Versionshinweisen](release
 
 ## <a name="windows"></a>Windows
 
-Azure CLI 2.0 unterstützt die Bash-Befehlssyntax, sodass Bash auf Ubuntu unter Windows eine hervorragende Möglichkeit zum Verwenden der CLI darstellt.
-Wenn Sie Bash nicht verwenden, können Sie die CLI über die Windows-Befehlszeile installieren und verwenden.
+Sie können die CLI über die MSI-Datei installieren und in der Windows-Befehlszeile verwenden, oder Sie können die CLI mit apt-get in Bash auf Ubuntu unter Windows installieren.
 
-### <a name="bash-on-ubuntu-on-windows"></a>Bash auf Ubuntu unter Windows
+### <a name="msi-for-the-windows-command-line"></a>MSI-Datei für die Windows-Befehlszeile 
+
+Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verwenden, laden Sie die [MSI](https://aka.ms/InstallAzureCliWindows)-Datei herunter, und führen Sie sie aus.
+
+> [!NOTE]
+> Bei der Installation mit der MSI-Datei wird `az component` nicht unterstützt.
+> Um ein Update auf die neueste CLI durchzuführen, führen Sie die [MSI](https://aka.ms/InstallAzureCliWindows)-Datei erneut aus.
+> 
+> Um die CLI zu deinstallieren, führen Sie die [MSI](https://aka.ms/InstallAzureCliWindows) noch einmal aus, und wählen Sie „Deinstallieren“.
+
+### <a name="apt-get-for-bash-on-ubuntu-on-windows"></a>apt-get für Bash auf Ubuntu unter Windows
 
 1. Wenn Sie Bash unter Windows noch nicht haben, [installieren Sie es](https://msdn.microsoft.com/commandline/wsl/install_guide).
 
@@ -80,38 +90,6 @@ Wenn Sie Bash nicht verwenden, können Sie die CLI über die Windows-Befehlszeil
 > Führen Sie `sudo apt-get update && sudo apt-get install azure-cli` zum Aktualisieren der CLI erneut aus.
 > 
 > Zum Deinstallieren führen Sie `sudo apt-get remove azure-cli` aus.
-
-### <a name="windows-command-line"></a>Windows-Befehlszeile 
-
-1. Rufen Sie die Python-Website auf, und [laden Sie Python für Windows herunter](https://www.python.org/downloads/).
-   Achten Sie darauf, bei der Installation von Python die Pip-Komponente zu installieren.
-   Nach Abschluss der Installation fügen Sie Python Ihrer PATH-Umgebungsvariable hinzu (das Installationsprogramm fordert Sie dazu auf).
-
-2. Überprüfen Sie die Python-Installation an einer Eingabeaufforderung.
-
-   ```bash
-   python --version
-   ```
-
-3. Installieren Sie Azure CLI 2.0 mithilfe von `pip`.
-
-   ```bash
-   pip install --user azure-cli
-   ```
-
-4. Fügen Sie Ihrem Pfad den Ordner hinzu, der „az.bat“ enthält.
-   Die `az.bat`-Datei der CLI wird entweder in `%USERPROFILE%\AppData\Roaming\Python\Scripts` oder `%USERPROFILE%\AppData\Roaming\Python\PythonXY\Scripts` installiert, wobei `XY` Ihre Python-Version ist (z.B. `%USERPROFILE%\AppData\Roaming\Python\Python27\Scripts`).
-   Fügen Sie Ihrem Pfad den Ordner hinzu, der `az.bat` enthält.
-   
-4. Führen Sie Azure CLI 2.0 über die Eingabeaufforderung mit dem `az`-Befehl aus.
-
-> [!NOTE]
-> Wenn Sie Azure CLI 2.0 bereits installiert haben und überprüfen möchten, ob es sich um die aktuelle Version handelt, verwenden Sie dazu `az --version`.
-> Vergleichen Sie Ihre Version mit der aktuellen Version unter [https://pypi.python.org/pypi/azure-cli](https://pypi.python.org/pypi/azure-cli).
-> 
-> Führen Sie `az component update` zum Aktualisieren auf die neueste CLI-Version aus.
-> 
-> Führen Sie zum Deinstallieren der CLI `pip uninstall azure-cli` aus.
 
 ## <a name="linux"></a>Linux
 
@@ -213,7 +191,6 @@ Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` in
    ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
--------------------------------
 
 ### <a name="errors-with-curl-redirection"></a>Fehler bei der CURL-Umleitung
 
@@ -232,70 +209,6 @@ bash: line 1: syntax error near unexpected token `<'
 curl https://azurecliprod.blob.core.windows.net/install | bash
 ```
 
-
-### <a name="errors-on-install-with-cffi-or-cryptography"></a>Fehler bei der Installation mit `cffi` oder Kryptografie
-
-Wenn bei der Installation unter OS X Fehler auftreten, aktualisieren Sie `pip`.
-
-```bash
-pip install --upgrade --force-reinstall pip
-```
-
-Wenn bei der Installation unter **Debian** oder **Ubuntu** Fehler wie in diesen Beispielen auftreten, installieren Sie `libssl-dev` und `libffi-dev`.
-
-```bash
-sudo apt-get update
-sudo apt-get install -y libssl-dev libffi-dev
-```
-
-Installieren Sie auch Python Dev für Ihre Version von Python.
-
-Python 2:
-
-```bash
-sudo apt-get install -y python-dev
-```
-
-Python 3:
-
-```bash
-sudo apt-get install -y python3-dev
-```
-
-Ubuntu 15 erfordert möglicherweise auch `build-essential`:
-
-```bash
-sudo apt-get install -y build-essential
-```
-
-### <a name="example-errors"></a>Fehlerbeispiele
-
-```
-Downloading cffi-1.5.2.tar.gz (388kB)
-    100% |################################| 389kB 3.9MB/s
-    Complete output from command python setup.py egg_info:
-
-        No working compiler found, or bogus compiler options
-        passed to the compiler from Python's distutils module.
-        See the error messages above.
-        (If they are about -mno-fused-madd and you are on OS/X 10.8,
-        see http://stackoverflow.com/questions/22313407/ .)
-
-    ----------------------------------------
-Command "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-77i2fido/cffi/
-```
-
-```
-#include <openssl/e_os2.h>
-                            ^
-compilation terminated.
-error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
-
-Failed building wheel for cryptography
-```
-
-Siehe Stack Overflow-Frage: [Failed to install Python Cryptography package with PIP and setup.py](http://stackoverflow.com/questions/22073516/failed-to-install-python-cryptography-package-with-pip-and-setup-py) (Fehler beim Installieren des Python-Kryptografiepakets mit PIP und „setup.py“)
-
 ## <a name="uninstall"></a>Deinstallieren
 
 Wenn Sie das Skript unter https://aka.ms/InstallAzureCli zum Installieren der CLI verwendet haben, können Sie sie mit diesen Schritten deinstallieren.
@@ -312,7 +225,7 @@ Wenn Sie das Skript unter https://aka.ms/InstallAzureCli zum Installieren der CL
 > [!Note]
 > Das Standardinstallationsverzeichnis ist `/Users/<username>`.
 
-Wenn Sie die CLI mithilfe von PIP, apt-get oder Docker installiert haben, verwenden Sie dasselbe Tool, um sie zu deinstallieren.
+Wenn Sie die CLI mithilfe von apt-get, Docker oder der MSI-Datei installiert haben, verwenden Sie dasselbe Tool für die Deinstallation.
 
 ## <a name="reporting-issues-and-feedback"></a>Melden von Problemen und Bereitstellen von Feedback
 

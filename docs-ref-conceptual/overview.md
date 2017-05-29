@@ -12,15 +12,16 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 80ae9f6c-adb7-483c-bfb4-fbb958e075ba
-ms.openlocfilehash: 35e754b4ecd75481bd60d95dd1545b798c2e85b3
-ms.sourcegitcommit: c077bd5cbe07f7225714c41714d3981fa0d9928f
+ms.openlocfilehash: 2f2fe7e8643256f72ff5dd48c784b96e53c4c281
+ms.sourcegitcommit: 21c42ed07c9f7679e4860013ac5647cf31213f4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/22/2017
 ---
 # <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen.  Sie kann unter MacOS, Linux und Windows verwendet werden. 
+Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen.
+Sie können sie in Ihrem Browser mit [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden oder unter macOS, Linux und Windows [installieren](install-azure-cli.md) und über die Befehlszeile ausführen.
 
 Azure CLI 2.0 ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile sowie die Erstellung von Automatisierungsskripts für Azure Resource Manager optimiert. Mit Azure CLI 2.0 können Sie VMs in Azure erstellen, indem Sie einfach den folgenden Befehl eingeben:
 
@@ -28,7 +29,7 @@ Azure CLI 2.0 ist für die Verwaltung von Azure-Ressourcen über die Befehlszeil
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS
 ```
 
-Lesen Sie im [Artikel zur Installation](install-azure-cli.md) nach, um die Azure CLI 2.0 auf Ihrem System einzurichten, oder verwenden Sie die [Cloud Shell](/azure/cloud-shell/overview) zum Ausführen der CLI in Ihrem Browser.
+Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](install-azure-cli.md) Sie sie unter macOS, Linux oder Windows.
 Lesen Sie den Artikel mit den [ersten Schritten](get-started-with-azure-cli.md), um mit der Verwendung der CLI zu beginnen.
 Informationen zur neuesten Version finden Sie in den [Versionshinweisen](release-notes-azure-cli.md).
 

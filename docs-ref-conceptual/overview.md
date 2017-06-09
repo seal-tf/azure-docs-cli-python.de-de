@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 80ae9f6c-adb7-483c-bfb4-fbb958e075ba
-ms.openlocfilehash: 2f2fe7e8643256f72ff5dd48c784b96e53c4c281
-ms.sourcegitcommit: 21c42ed07c9f7679e4860013ac5647cf31213f4e
+ms.openlocfilehash: 36a08835b9c4f6e71c5ddadbce8ba946c52a1e9b
+ms.sourcegitcommit: 4fd631a58cf19c494162510d073fbbbdf0524d16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 06/05/2017
 ---
 # <a name="azure-cli-20"></a>Azure CLI 2.0
 
@@ -25,7 +25,7 @@ Sie können sie in Ihrem Browser mit [Azure Cloud Shell](/azure/cloud-shell/over
 
 Azure CLI 2.0 ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile sowie die Erstellung von Automatisierungsskripts für Azure Resource Manager optimiert. Mit Azure CLI 2.0 können Sie VMs in Azure erstellen, indem Sie einfach den folgenden Befehl eingeben:
 
-```azurecli
+```azurecli-interactive
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: Installieren der Azure CLI 2.0
 description: "Referenzdokumentation für die Installation der Azure CLI 2.0"
-keywords: Azure CLI 2.0, Azure CLI 2.0-Referenz, Azure CLI 2.0 installieren, Azure Python CLI, Azure CLI 2.0 deinstallieren, Azure CLI, Azure CLI installieren, Azure CLI-Referenz
+keywords: Azure CLI,Azure CLI installieren,Azure Python CLI,Azure CLI-Referenz
 author: sptramer
 ms.author: sttramer
 manager: routlaw
@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 00d5b555975007d7e57f04ce5d69f4f29e6d0219
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: a61f47076854d0ff0a7056f82240794b7533fe3e
+ms.sourcegitcommit: 3db5fb207db551a0d3fe0a88fe09e8f5e2ec184d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 09/14/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -79,7 +79,7 @@ Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verw
 
 Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` installieren.
 
-1. Ändern Sie die Quellenliste.
+1. Ändern Sie die Quellenliste:
  
    - 32-Bit-System
 
@@ -105,15 +105,63 @@ Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` in
 
 3.  Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
+## <a name="install-on-rhel-fedora-and-centos-with-yum"></a>Installieren unter RHEL, Fedora und CentOS mit yum
+
+Für Distributionen, die auf Red Hat basieren und den `yum`-Paket-Manager enthalten, können Sie die Azure CLI 2.0 über `yum` installieren.
+
+1. Importieren Sie den Microsoft-Repositoryschlüssel:
+
+   ```bash
+   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   ```
+
+2. Erstellen Sie lokale `azure-cli`-Repositoryinformationen:
+
+   ```bash
+   sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+   ```
+
+3. Aktualisieren Sie den `yum`-Paketindex, und führen Sie die Installation durch:
+
+   ```bash
+   yum check-update
+   sudo yum install azure-cli
+   ```
+
+4. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
+
+## <a name="install-on-opensuse-and-sle-with-zypper"></a>Installieren in OpenSUSE und SLE mit zypper
+
+1. Importieren Sie den Microsoft-Repositoryschlüssel:
+
+   ```bash
+   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   ```
+
+2. Erstellen Sie lokale `azure-cli`-Repositoryinformationen:
+
+   ```bash
+   sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/zypp/repos.d/azure-cli.repo'
+   ```
+
+3. Aktualisieren Sie den `zypper`-Paketindex, und führen Sie die Installation durch:
+
+   ```bash
+   sudo zypper refresh
+   sudo zypper install azure-cli
+   ```
+
+4. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
+
 ## <a name="install-with-docker"></a>Installieren mit Docker
 
 Wir behalten ein mit der Azure CLI 2.0 vorkonfiguriertes Docker-Image bei.
 
 Installieren Sie die CLI mit `docker run`.
 
-  ```bash
-  docker run azuresdk/azure-cli-python:<version>
-  ```
+   ```bash
+   docker run azuresdk/azure-cli-python:<version>
+   ```
 
 Verfügbare Versionen finden Sie in unseren [Docker-Tags](https://hub.docker.com/r/azuresdk/azure-cli-python/tags/).
 
@@ -128,7 +176,7 @@ Die CLI wird in dem Image als Befehl `az` in `/usr/local/bin` installiert.
 
 ## <a name="a-namelinuxinstall-on-linux-without-apt-get"></a><a name="Linux"/>Installieren unter Linux ohne apt-get
 
-Es wird empfohlen, die CLI mit `apt-get` zu installieren (sofern möglich). Für Distributionen, die nicht den `apt`-Paket-Manager verwenden, können Sie eine manuelle Installation durchführen.
+Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern möglich). Für Distributionen, für die kein Paket bereitgestellt wird, können Sie eine manuelle Installation durchführen.
 
 1. Installieren Sie je nach Ihrer Linux-Distribution die erforderlichen Komponenten.
 
@@ -289,26 +337,26 @@ Wenn Sie ein Docker-Image installiert haben, müssen Sie alle Container mit dies
 
 1. Rufen Sie die Container ab, die das azure-cli-Image ausführen.
 
-  ```bash
-  docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
-  ```
+   ```bash
+   docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
+   ```
 
-  ```output
-  CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
-  34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
-  ```
+   ```output
+   CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
+   34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
+   ```
 
 2. Löschen Sie alle Container mit dem CLI-Image.
 
-  ```bash
-  docker rm 34a868beb2ab
-  ```
+   ```bash
+   docker rm 34a868beb2ab
+   ```
 
 3. Entfernen Sie das lokal installierte CLI-Image.
 
-  ```bash
-  docker rmi azuresdk/azure-cli-python
-  ```
+   ```bash
+   docker rmi azuresdk/azure-cli-python
+   ```
 
 > [!NOTE]
 > Wenn Sie eine bestimmte Version des Images installiert haben, müssen Sie `:<version>` ans Ende des Imagenamens anfügen.

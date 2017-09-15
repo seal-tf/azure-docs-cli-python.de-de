@@ -60,6 +60,22 @@
         - name: Aktualisieren
           uid: az_component_update
           displayName: az component update
+    - name: Durchwahl
+      uid: az_extension
+      displayName: az extension
+      items:
+        - name: Hinzufügen
+          uid: az_extension_add
+          displayName: az extension add
+        - name: Auflisten
+          uid: az_extension_list
+          displayName: az extension list
+        - name: Remove (Entfernen)
+          uid: az_extension_remove
+          displayName: az extension remove
+        - name: Sendung
+          uid: az_extension_show
+          displayName: az extension show
     - name: Schlüsseltresor
       uid: az_keyvault
       displayName: az keyvault
@@ -1318,6 +1334,13 @@
                 - name: Löschen
                   uid: az_network_vnet_gateway_root_cert_delete
                   displayName: az network vnet-gateway root-cert delete
+            - name: Vpn-Client
+              uid: az_network_vnet_gateway_vpn_client
+              displayName: az network vnet-gateway vpn-client
+              items:
+                - name: Generate
+                  uid: az_network_vnet_gateway_vpn_client_generate
+                  displayName: az network vnet-gateway vpn-client generate
         - name: Watcher
           uid: az_network_watcher
           displayName: az network watcher

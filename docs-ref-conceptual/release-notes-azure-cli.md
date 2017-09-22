@@ -12,77 +12,13 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ce0428f7-0a59-4e72-9237-d907b171af51
-ms.openlocfilehash: e893b99349bbf2a5eec8af254158eb07001f1da7
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 39e4710a29ac57730919b82ab76b9c9a4b9ca786
+ms.sourcegitcommit: 43d4f838d132ab9bcfa59dbda3b544c06373b6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 08/22/2017
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
-
-## <a name="august-28-2017"></a>28. August 2017
-
-Version 2.0.15
-
-### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-
-* Rechtlichen Hinweis zu `--version` hinzugefügt.
-
-### <a name="acs"></a>ACS
-
-* Vorschauregionen korrigiert.
-* Standardmäßiges DNS-Namenspräfix (`dns_name_prefix`) ordnungsgemäß formatiert.
-* ACS-Befehlsausgabe optimiert.
-
-### <a name="appservice"></a>AppService
-
-* [WICHTIGE ÄNDERUNG] Inkonsistenzen in der Ausgabe von `az webapp config appsettings [delete|set]` behoben
-* Neuen Alias (`-i`) für `az webapp config container set --docker-custom-image-name` hinzugefügt
-* `az webapp log show` verfügbar gemacht
-* Neue Argumente aus `az webapp delete` verfügbar gemacht, um App Service-Plan, Metriken oder DNS-Registrierung beizubehalten
-* Behoben: Korrekte Erkennung der Sloteinstellungen
-
-### <a name="iot"></a>IoT
-
-* Behoben (3934): Richtlinienerstellung führt nicht mehr zur Löschung bereits vorhandener Richtlinien
-
-### <a name="network"></a>Netzwerk
-
-* [WICHTIGE ÄNDERUNG] `vnet list-private-access-services` in `vnet list-endpoint-services` umbenannt
-* [WICHTIGE ÄNDERUNG] Option `--private-access-services` für `vnet subnet [create|update]` in `--service-endpoints` umbenannt
-* Unterstützung für mehrere IP- und Portbereiche zu `nsg rule [create|update]` hinzugefügt
-* Unterstützung für SKU zu `lb create` hinzugefügt
-* Unterstützung für SKU zu `public-ip create` hinzugefügt
-
-### <a name="profile"></a>Profil
-
-* `--msi` und `--msi-port` für die Anmeldung mit der Identität eines virtuellen Computers verfügbar gemacht
-
-### <a name="service-fabric"></a>Service Fabric
-
-* Vorschauversion
-* Registrierungsbenutzer-/-kennwortregeln für Befehl vereinfacht
-* Kennwortanforderung für Benutzer trotz Parameterübergabe behoben
-* Unterstützung für leere Registrierungsanmeldeinformationen (`registry_cred`) hinzugefügt
-
-### <a name="storage"></a>Speicher
-
-* Festlegen des Blobtarifs ermöglicht
-* Argumente `--bypass` und `--default-action` zur Unterstützung von Diensttunneling zu `storage account [create|update]` hinzugefügt
-* Befehle zum Hinzufügen von VNet-Regeln und IP-basierten Regeln zu `storage account network-rule` hinzugefügt  
-* Dienstverschlüsselung durch vom Kunden verwalteten Schlüssel ermöglicht
-* [WICHTIGE ÄNDERUNG] Option `--encryption` für Befehl `az storage account create and az storage account update` in `--encryption-services` umbenannt
-* Behoben (4220): `az storage account update encryption` – Syntaxkonflikt
-
-### <a name="vm"></a>VM
-
-* Problem behoben, aufgrund dessen bei Verwendung von `--instance-id *` zusätzliche, fehlerhafte Informationen für `vmss get-instance-view` angezeigt wurden
-* Unterstützung für `--lb-sku` zu `vmss create` hinzugefügt: 
-* Menschliche Namen aus der Administratornamen-Blacklist für `[vm|vmss] create` entfernt 
-* Problem behoben, aufgrund dessen `[vm|vmss] create` einen Fehler ausgelöst hat, wenn aus einem Image keine Tarifinformationen extrahiert werden konnten
-* Absturzproblem beim Erstellen einer VMMS-Skalierungsgruppe mit einem internen Lastenausgleich behoben
-* Problem behoben, aufgrund dessen das Argument `--no-wait` nicht mit `vm availability-set create` verwendet werden konnte
-
 
 ## <a name="august-15-2017"></a>15. August 2017
 

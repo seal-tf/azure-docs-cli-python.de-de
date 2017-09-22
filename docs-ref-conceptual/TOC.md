@@ -12,7 +12,6 @@
 ## [Ausgabeformate](format-output-azure-cli.md)
 ## [Abfragen](query-azure-cli.md)
 ## [Abonnements](manage-azure-subscriptions-azure-cli.md)
-### [Verwalten von Clouds](manage-clouds-azure-cli.md)
 ## [Versionshinweise](release-notes-azure-cli.md)
 # Beispielskripts
 ## [Virtuelle Linux-Computer](/azure/virtual-machines/linux/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)

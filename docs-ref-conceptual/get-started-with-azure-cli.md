@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 85c418a8-6177-4833-bb8d-ff4ce2233c1a
-ms.openlocfilehash: 5d6d7abb34fa2be571a9a49f0f84380538592807
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: bfc865f9b34afd8f312808fa420ad987be2a7d34
+ms.sourcegitcommit: 792a4283245160072edcf2bee1482aba19b285d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 06/26/2017
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -73,7 +73,7 @@ Nachdem die Ressourcengruppe erstellt wurde, werden mit dem Befehl `az group cre
 
 Nachdem wir nun über eine Ressourcengruppe verfügen, erstellen wir darin einen virtuellen Linux-Computer.
 
-Sie können einen virtuellen Linux-Computer mithilfe des beliebten UbuntuLTS-Images mit zwei angefügten Speicherdatenträgern der Größe 10 GB und 20 GB erstellen, indem Sie den folgenden Befehl verwenden:
+Sie können eine Linux-VM mithilfe des beliebten UbuntuTLS-Image mit zwei angefügten Speicherdatenträgern der Größe 10 GB und 20 GB erstellen, indem Sie den folgenden Befehl verwenden:
 
 ```azurecli-interactive
 az vm create -n MyLinuxVM -g MyResourceGroup --image UbuntuLTS --data-disk-sizes-gb 10 20

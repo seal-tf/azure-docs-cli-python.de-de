@@ -14,14 +14,14 @@
           href: create-an-azure-service-principal-azure-cli.md
     - name: Interaktiver Modus
       href: interactive-azure-cli.md
-    - name: Bereitstellen
+    - name: Bereitstellungsvorlagen
       items:
-        - name: Mit Vorlagen
+        - name: Verwenden von Bereitstellungsvorlagen
           href: /azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Exportieren von Vorlagen
+        - name: Exportieren von Bereitstellungsvorlagen
           href: /azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Mit privaten Vorlagen
-          href: /azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+        - name: Bereitstellen über private Vorlagen
+          href: /azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Ausgabeformate
       href: format-output-azure-cli.md
     - name: Abfrage

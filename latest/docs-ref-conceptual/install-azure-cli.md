@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 935814d56d0a6be00f626da860dc643adbf14804
-ms.sourcegitcommit: 9f38efbb7efd800ee5cab80d6641770d268c5a68
+ms.openlocfilehash: 1b47bd5603f5214dd11d772caaebe8cf380df5c0
+ms.sourcegitcommit: 5e862fd0a93cf668fa76a74ae1c7505d3c8c45f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2017
+ms.lasthandoff: 10/09/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -104,7 +104,10 @@ Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verw
 
 ## <a name="install-on-debianubuntu-with-apt-get"></a>Installieren unter Debian/Ubuntu mit apt-get
 
-Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` installieren.
+Für Distributionen, die den `apt`-Paket-Manager verwenden, können Sie Azure CLI 2.0 über `apt-get` installieren.
+
+> [!NOTE]
+> Ihre Distribution muss Python 2.7.x oder Python 3.x unterstützen, damit die CLI verwendet werden kann.
 
 1. Ändern Sie die Quellenliste:
  
@@ -134,7 +137,10 @@ Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` in
 
 ## <a name="install-on-rhel-fedora-and-centos-with-yum"></a>Installieren unter RHEL, Fedora und CentOS mit yum
 
-Für Distributionen, die auf Red Hat basieren und den `yum`-Paket-Manager enthalten, können Sie die Azure CLI 2.0 über `yum` installieren.
+Für Distributionen, die den `yum`-Paket-Manager verwenden, können Sie Azure CLI 2.0 über `yum` installieren.
+
+> [!NOTE]
+> Ihre Distribution muss Python 2.7.x oder Python 3.x unterstützen, damit die CLI verwendet werden kann.
 
 1. Importieren Sie den Microsoft-Repositoryschlüssel:
 
@@ -158,6 +164,11 @@ Für Distributionen, die auf Red Hat basieren und den `yum`-Paket-Manager enthal
 4. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
 ## <a name="install-on-opensuse-and-sle-with-zypper"></a>Installieren in OpenSUSE und SLE mit zypper
+
+Für Distributionen, die den `zypper`-Paket-Manager verwenden, können Sie Azure CLI 2.0 über `zypper` installieren.
+
+> [!NOTE]
+> Ihre Distribution muss Python 2.7.x oder Python 3.x unterstützen, damit die CLI verwendet werden kann.
 
 1. Importieren Sie den Microsoft-Repositoryschlüssel:
 
@@ -201,9 +212,9 @@ Die CLI wird in dem Image als Befehl `az` in `/usr/local/bin` installiert.
 > docker run -v ${HOME}:/root azuresdk/azure-cli-python:<version>
 > ```
 
-## <a name="a-namelinuxinstall-on-linux-without-apt-get"></a><a name="Linux"/>Installieren unter Linux ohne apt-get
+## <a name="a-namelinuxinstall-on-linux-without-a-package-manager"></a><a name="Linux"/>Installieren unter Linux ohne Paket-Manager
 
-Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern möglich). Für Distributionen, für die kein Paket bereitgestellt wird, können Sie eine manuelle Installation durchführen.
+Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern möglich). Falls Sie die Repositorys von Microsoft nicht hinzufügen möchten oder eine Distribution ohne bereitgestelltes Paket verwenden, können Sie die CLI manuell installieren.
 
 1. Installieren Sie je nach Ihrer Linux-Distribution die erforderlichen Komponenten.
 
@@ -219,7 +230,7 @@ Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern mögl
    SUSE OpenSUSE 13.2    | sudo zypper refresh && sudo zypper --non-interactive install curl gcc python python-xml libffi-devel python-devel openssl-devel
    ```
 
-Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/), und [OpenSSL](https://www.openssl.org/source/) installieren.
+Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python 2.7 oder höher](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/) und [OpenSSL](https://www.openssl.org/source/) installieren.
 
 2. Installieren Sie die CLI mit `curl`.
 
@@ -420,6 +431,12 @@ Wenn Sie das Skript unter https://aka.ms/InstallAzureCli zum Installieren der CL
    ```
 
 2. Löschen Sie die Zeile `<install location>/lib/azure-cli/az.completion` aus `<install location>/.bash_profile`.
+
+3. Wenn Ihre Shell einen Befehlscache verwendet, laden Sie ihn erneut.
+
+   ```bash
+   hash -r
+   ```
 
 > [!Note]
 > Das Standardinstallationsverzeichnis ist `/Users/<username>`.

@@ -12,13 +12,71 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ce0428f7-0a59-4e72-9237-d907b171af51
-ms.openlocfilehash: 72630c52b5e6afd69809ff19145717c0d65e0252
-ms.sourcegitcommit: 3a490ae3a2a1b2e63a062806f9b720fa4c6be01e
+ms.openlocfilehash: 2ea9daa558200204750f19b5d22685587ff097ef
+ms.sourcegitcommit: 376bc0601aba890630dadd55908c1a65ddf40f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
+
+## <a name="october-9-2017"></a>9. Oktober 2017
+
+Version 2.0.19
+
+### <a name="core"></a>Core
+
+* Verarbeitung von ADFS-Autoritäts-URLs wurde mit einem nachgestellten Schrägstrich zu Azure Stack hinzugefügt.
+
+### <a name="appservice"></a>AppService
+
+* Mit dem neuen Befehl `webapp update` wurde ein allgemeines Update hinzugefügt.
+
+### <a name="batch"></a>Batch
+
+* Aktualisierung auf Batch SDK 4.0.0
+* Die Option `--image` von „VirtualMachineConfiguration“ wurde aktualisiert, um zusätzlich zu „publish:offer:sku:version“ ARM-Imageverweise zu unterstützen.
+* Unterstützung für das neue CLI-Erweiterungsmodell für Batch-Erweiterungsbefehle hinzugefügt
+* Batch-Unterstützung aus dem Komponentenmodell entfernt
+
+### <a name="batchai"></a>BatchAI
+
+* Erste Version des Batch AI-Moduls
+
+### <a name="keyvault"></a>KeyVault
+
+* Key Vault-Authentifizierungsproblem behoben, das bei Verwendung von ADFS in Azure Stack auftrat. [(#4448)](https://github.com/Azure/azure-cli/issues/4448)
+
+### <a name="network"></a>Netzwerk
+
+* Das Argument `--server` von `application-gateway address-pool create` ist nun optional, sodass leere Adresspools zulässig sind.
+* `traffic-manager` wurde aktualisiert, um aktuelle Features zu unterstützen.
+
+### <a name="resource"></a>Ressource
+
+* Zusätzliche Unterstützung für `--resource-group/-g`-Optionen für Ressourcengruppennamen zu `group` hinzugefügt
+* Befehle für `account lock` hinzugefügt, um die Verwendung mit Sperren auf Abonnementebene zu ermöglichen.
+* Befehle für `group lock` hinzugefügt, um die Verwendung mit Sperren auf Gruppenebene zu ermöglichen.
+* Befehle für `resource lock` hinzugefügt, um die Verwendung mit Sperren auf Ressourcenebene zu ermöglichen.
+
+### <a name="sql"></a>Sql
+
+* Unterstützung für SQL Transparent Data Encryption (TDE) und TDE für Bring Your Own Key-Szenarien hinzugefügt
+* Der Befehl `db list-deleted` und der Parameter `db restore --deleted-time` wurden hinzugefügt, um die Ermittlung und Wiederherstellung gelöschter Datenbanken zu ermöglichen.
+* `db op list` und `db op cancel` wurden hinzugefügt, um das Auflisten und Abbrechen ausgeführter Vorgänge für eine Datenbank zu ermöglichen.
+
+### <a name="storage"></a>Speicher
+
+* Unterstützung für Momentaufnahme von Dateifreigaben hinzugefügt
+
+### <a name="vm"></a>VM
+
+* Korrektur eines Fehlers in `vm show`, bei dem die Verwendung von `-d` in Verbindung mit fehlenden privaten IP-Adressen einen Absturz verursachte
+* [VORSCHAUVERSION] Unterstützung für paralleles Upgrade zu `vmss create` hinzugefügt
+* Unterstützung für das Aktualisieren der Verschlüsselungseinstellungen mit `vm encryption enable` hinzugefügt
+* Parameter `--os-disk-size-gb` zu `vm create` hinzugefügt
+* Parameter `--license-type` für Windows zu `vmss create` hinzugefügt
+
 
 ## <a name="september-22-2017"></a>22. September 2017
 

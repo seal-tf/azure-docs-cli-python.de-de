@@ -12,15 +12,17 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 65becd3a-9d69-4415-8a30-777d13a0e7aa
-ms.openlocfilehash: 4ab4f0de38614eff00f55bad96ea886bb007f3c0
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 3ba1dd840102c738ccd9eb62a0b9db612cec48d1
+ms.sourcegitcommit: 5cfbea569fef193044da712708bc6957d3fb557c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="log-in-with-azure-cli-20"></a>Anmelden mit Azure CLI 2.0
 
-Es gibt mehrere Möglichkeiten, sich mit der Azure-CLI anzumelden und zu authentifizieren. Der einfachste erste Ansatz ist die interaktive Anmeldung per Browser oder über die Befehlszeile. Wir empfehlen die Verwendung von Dienstprinzipalen. Dies ermöglicht die Erstellung nicht interaktiver Konten für die Ressourcenbearbeitung. Indem Sie einem Dienstprinzipal nur die erforderlichen Mindestberechtigungen erteilen, können Sie Ihre Automatisierungsskripts noch sicherer machen.
+Es gibt mehrere Möglichkeiten, sich mit der Azure-CLI anzumelden und zu authentifizieren. Der einfachste erste Ansatz ist die interaktive Anmeldung per Browser oder über die Befehlszeile. Wir empfehlen die Verwendung von Dienstprinzipalen. Dies ermöglicht die Erstellung nicht interaktiver Konten für die Ressourcenbearbeitung. Indem Sie einem Dienstprinzipal nur die erforderlichen Mindestberechtigungen erteilen, können Sie Ihre Automatisierungsskripts noch sicherer machen. 
+
+Die privaten Anmeldeinformationen werden nicht lokal gespeichert. Stattdessen wird von Azure ein Authentifizierungstoken generiert und gespeichert. Nach der Anmeldung ist das lokale Anmeldetoken gültig, bis es 14 Tage lang nicht verwendet wird. Dann müssen Sie sich erneut authentifizieren.
 
 Befehle, die Sie mit der CLI ausführen, werden für Ihr Standardabonnement ausgeführt.  Wenn Sie über mehr als ein Abonnement verfügen, ist es ratsam, das [Standardabonnement zu bestätigen](manage-azure-subscriptions-azure-cli.md) und entsprechend zu ändern.
 

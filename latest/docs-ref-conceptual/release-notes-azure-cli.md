@@ -12,13 +12,54 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ce0428f7-0a59-4e72-9237-d907b171af51
-ms.openlocfilehash: 2ea9daa558200204750f19b5d22685587ff097ef
-ms.sourcegitcommit: 376bc0601aba890630dadd55908c1a65ddf40f5a
+ms.openlocfilehash: 429b099dabd27d9356e88791f955ec52acd2a5f9
+ms.sourcegitcommit: 9b36c15dc0e10024e23b8018604f5ef63c025de1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
+
+## <a name="october-24-2017"></a>24. Oktober 2017
+
+Version 2.0.20
+
+### <a name="core"></a>Core
+
+* Aktualisierung von `2017-03-09-profile` zur Verwendung von Version `2016-01-01` der `MGMT_STORAGE`-API
+
+### <a name="acr"></a>ACR
+
+* Die Ressourcenverwaltung wurde aktualisiert und verweist nun auf die API-Version `2017-10-01`.
+* SKU „Bring Your Own Storage“ wurde in „Klassisch“ geändert.
+* Die Registrierungs-SKUs wurden in „Basic“, „Standard“ und „Premium“ umbenannt.
+
+### <a name="acs"></a>ACS
+
+* [VORSCHAUVERSION] Befehle vom Typ `az aks` hinzugefügt
+* Problem mit `get-credentials` in Kubernetes behoben
+
+### <a name="appservice"></a>AppService
+
+* Problem behoben, aufgrund dessen heruntergeladene `webapp`-Protokolle unter Umständen ungültig waren
+
+### <a name="component"></a>Komponente
+
+* Deutlichere Meldung zur Einstellung für alle Installer und für Bestätigungsaufforderung hinzugefügt
+
+### <a name="monitor"></a>Überwachen
+
+* Befehle vom Typ `action-group` hinzugefügt
+
+### <a name="resource"></a>Ressource
+
+* Inkompatibilität mit der aktuellen Version der msrest-Abhängigkeit in `group export` behoben
+* Problem mit `policy assignment create` behoben, sodass der Befehl mit integrierten Richtliniendefinitionen und Richtliniensatzdefinitionen verwendet werden kann
+
+### <a name="vm"></a>VM
+
+* Argument `--accelerated-networking` zu `vmss create` hinzugefügt
+
 
 ## <a name="october-9-2017"></a>9. Oktober 2017
 

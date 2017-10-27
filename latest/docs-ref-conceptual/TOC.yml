@@ -12,6 +12,12 @@
       items:
         - name: Erstellen eines Dienstprinzipals
           href: create-an-azure-service-principal-azure-cli.md
+        - name: Verwenden verwalteter Dienstidentitäten
+          items:
+            - name: Konfigurieren des MSI für eine Azure-VM
+              href: /azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+            - name: Anmelden bei einem virtuellen Azure-Computer mit MSI
+              href: /azure/active-directory/msi-how-to-get-access-token-using-msi?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Interaktiver Modus
       href: interactive-azure-cli.md
     - name: Bereitstellungsvorlagen

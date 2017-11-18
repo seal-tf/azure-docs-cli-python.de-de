@@ -12,22 +12,30 @@
       items:
         - name: Erstellen eines Dienstprinzipals
           href: create-an-azure-service-principal-azure-cli.md
+        - name: Verwenden verwalteter Dienstidentitäten
+          items:
+            - name: Konfigurieren des MSI für eine Azure-VM
+              href: /azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+            - name: Anmelden bei einem virtuellen Azure-Computer mit MSI
+              href: /azure/active-directory/msi-how-to-get-access-token-using-msi?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Interaktiver Modus
       href: interactive-azure-cli.md
-    - name: Bereitstellen
+    - name: Bereitstellungsvorlagen
       items:
-        - name: Mit Vorlagen
+        - name: Verwenden von Bereitstellungsvorlagen
           href: /azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Exportieren von Vorlagen
+        - name: Exportieren von Bereitstellungsvorlagen
           href: /azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Mit privaten Vorlagen
-          href: /azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+        - name: Bereitstellen über private Vorlagen
+          href: /azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Ausgabeformate
       href: format-output-azure-cli.md
     - name: Abfrage
       href: query-azure-cli.md
     - name: Abonnements
       href: manage-azure-subscriptions-azure-cli.md
+    - name: Erweiterungen
+      href: azure-cli-extensions.md
     - name: Versionshinweise
       href: release-notes-azure-cli.md
 - name: Beispielskripts

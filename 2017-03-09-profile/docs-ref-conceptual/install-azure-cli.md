@@ -1,22 +1,22 @@
 ---
 title: Installieren der Azure CLI 2.0
 description: "Referenzdokumentation für die Installation der Azure CLI 2.0"
-keywords: Azure CLI 2.0, Azure CLI 2.0-Referenz, Azure CLI 2.0 installieren, Azure Python CLI, Azure CLI 2.0 deinstallieren, Azure CLI, Azure CLI installieren, Azure CLI-Referenz
+keywords: Azure CLI,Azure CLI installieren,Azure Python CLI,Azure CLI-Referenz
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 08/17/2017
+ms.date: 11/01/2017
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 00d5b555975007d7e57f04ce5d69f4f29e6d0219
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 2b56382355cad5313a604ed1f493a2bcbebf3e27
+ms.sourcegitcommit: e9b4c6dd9093980b69ca47f93f44ac54d0e5b68a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -29,6 +29,35 @@ Informationen zur neuesten Version finden Sie in den [Versionshinweisen](release
 > Wenn Sie die vorhergehende Version der Azure CLI benötigen, finden Sie hier Informationen zur [Installation der Azure CLI 1.0](/azure/cli-install-nodejs).
 
 ## <a name="a-namemacosinstall-on-macos"></a><a name="macOS"/>Installieren unter macOS
+
+Unter macOS können Sie die Installation mit [Homebrew](https://brew.sh/) oder manuell durchführen.
+
+### <a name="install-with-homebrew"></a>Installieren mit Homebrew
+
+1. Falls Homebrew noch nicht installiert ist, installieren Sie das Programm gemäß der [Homebrew-Installationsanweisungen](https://docs.brew.sh/Installation.html).
+
+2. Wenn Sie die CLI zuvor manuell installiert haben, befolgen Sie die Anweisungen zur [manuellen Deinstallation](#UninstallManually).
+
+3. Aktualisieren Sie Ihre lokalen Homebrew-Repositorys.
+
+   ```bash
+   brew update
+   ```
+
+4. Installieren Sie das `azure-cli`-Paket.
+
+  ```bash
+  brew install azure-cli
+  ```
+
+> [!NOTE]
+> Wenn Sie zuvor die Azure CLI 1.0 mit Homebrew installiert haben, erhalten Sie die CLI 2.0 über den regulären Homebrew-Upgradeprozess und müssen nicht das Paket installieren.
+>
+> ```bash
+> brew upgrade
+> ```
+
+### <a name="install-manually"></a>Manuelle Installation
 
 1. Installieren Sie die Azure CLI 2.0 mit `curl`.
 
@@ -46,11 +75,9 @@ Informationen zur neuesten Version finden Sie in den [Versionshinweisen](release
 
 ## <a name="install-on-windows"></a>Installieren unter Windows
 
-Sie können die Azure CLI 2.0 über die MSI-Datei installieren und in der Windows-Befehlszeile verwenden, oder Sie können die CLI mit `apt-get` in Bash auf Ubuntu unter Windows installieren.
-
 ### <a name="install-with-msi-for-the-windows-command-line"></a>Installieren mit der MSI-Datei für die Windows-Befehlszeile 
 
-Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verwenden, laden Sie die [MSI](https://aka.ms/InstallAzureCliWindows)-Datei herunter, und führen Sie sie aus.
+Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verwenden, laden Sie den [Azure CLI-Installer (MSI)](https://aka.ms/InstallAzureCliWindows) herunter, und führen Sie ihn aus.
 
 ### <a name="install-with-apt-get-for-bash-on-ubuntu-on-windows"></a>Installieren mit apt-get für Bash auf Ubuntu unter Windows
 
@@ -68,18 +95,21 @@ Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verw
 4. Führen Sie die folgenden sudo-Befehle aus:
 
    ```bash
-   sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
+   sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
    sudo apt-get install apt-transport-https
    sudo apt-get update && sudo apt-get install azure-cli
    ```
 
 5.  Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
-## <a name="install-on-debianubuntu-with-apt-get"></a>Installieren unter Debian/Ubuntu mit apt-get
+## <a name="install-with-apt-package-manager"></a>Installieren mit dem apt-Paket-Manager 
 
-Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` installieren.
+Für Distributionen, die den `apt`-Paket-Manager verwenden, z.B. Ubuntu oder Debian, können Sie Azure CLI 2.0 mit `apt-get` installieren.
 
-1. Ändern Sie die Quellenliste.
+> [!NOTE]
+> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+
+1. Ändern Sie die Quellenliste:
  
    - 32-Bit-System
 
@@ -98,12 +128,68 @@ Für Debian/Ubuntu-basierte Systeme können Sie Azure CLI 2.0 über `apt-get` in
 2. Führen Sie die folgenden sudo-Befehle aus:
 
    ```bash
-   sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
+   sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
    sudo apt-get install apt-transport-https
    sudo apt-get update && sudo apt-get install azure-cli
    ```
 
 3.  Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
+
+## <a name="install-with-yum-package-manager"></a>Installieren mit dem yum-Paket-Manager
+
+Für Distributionen mit dem `yum`-Paket-Manager, z.B. Red Hat Enterprise Linux (RHEL), Fedora oder CentOS, können Sie Azure CLI 2.0 mit `yum` installieren.
+
+> [!NOTE]
+> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+
+1. Importieren Sie den Microsoft-Repositoryschlüssel:
+
+   ```bash
+   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   ```
+
+2. Erstellen Sie lokale `azure-cli`-Repositoryinformationen:
+
+   ```bash
+   sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+   ```
+
+3. Aktualisieren Sie den `yum`-Paketindex, und führen Sie die Installation durch:
+
+   ```bash
+   yum check-update
+   sudo yum install azure-cli
+   ```
+
+4. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
+
+## <a name="install-with-zypper-package-manager"></a>Installieren mit dem zypper-Paket-Manager
+
+Für Distributionen, die den `zypper`-Paket-Manager verwenden, z.B. OpenSUSE oder SLE, können Sie Azure CLI 2.0 mit `zypper` installieren.
+
+> [!NOTE]
+> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+
+1. Importieren Sie den Microsoft-Repositoryschlüssel:
+
+   ```bash
+   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   ```
+
+2. Erstellen Sie lokale `azure-cli`-Repositoryinformationen:
+
+   ```bash
+   sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/zypp/repos.d/azure-cli.repo'
+   ```
+
+3. Aktualisieren Sie den `zypper`-Paketindex, und führen Sie die Installation durch:
+
+   ```bash
+   sudo zypper refresh
+   sudo zypper install azure-cli
+   ```
+
+4. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
 ## <a name="install-with-docker"></a>Installieren mit Docker
 
@@ -111,9 +197,9 @@ Wir behalten ein mit der Azure CLI 2.0 vorkonfiguriertes Docker-Image bei.
 
 Installieren Sie die CLI mit `docker run`.
 
-  ```bash
-  docker run azuresdk/azure-cli-python:<version>
-  ```
+   ```bash
+   docker run -it azuresdk/azure-cli-python:<version>
+   ```
 
 Verfügbare Versionen finden Sie in unseren [Docker-Tags](https://hub.docker.com/r/azuresdk/azure-cli-python/tags/).
 
@@ -123,12 +209,12 @@ Die CLI wird in dem Image als Befehl `az` in `/usr/local/bin` installiert.
 > Wenn Sie die SSH-Schlüssel aus Ihrer Benutzerumgebung übernehmen möchten, können Sie `-v ${HOME}:/root` verwenden, um $HOME als `/root` bereitzustellen.
 
 > ```bash
-> docker run -v ${HOME}:/root azuresdk/azure-cli-python:<version>
+> docker run -it -v ${HOME}:/root azuresdk/azure-cli-python:<version>
 > ```
 
-## <a name="a-namelinuxinstall-on-linux-without-apt-get"></a><a name="Linux"/>Installieren unter Linux ohne apt-get
+## <a name="a-namelinuxinstall-on-linux-without-a-package-manager"></a><a name="Linux"/>Installieren unter Linux ohne Paket-Manager
 
-Es wird empfohlen, die CLI mit `apt-get` zu installieren (sofern möglich). Für Distributionen, die nicht den `apt`-Paket-Manager verwenden, können Sie eine manuelle Installation durchführen.
+Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern möglich). Falls Sie die Repositorys von Microsoft nicht hinzufügen möchten oder eine Distribution ohne bereitgestelltes Paket verwenden, können Sie die CLI manuell installieren.
 
 1. Installieren Sie je nach Ihrer Linux-Distribution die erforderlichen Komponenten.
 
@@ -144,7 +230,7 @@ Es wird empfohlen, die CLI mit `apt-get` zu installieren (sofern möglich). Für
    SUSE OpenSUSE 13.2    | sudo zypper refresh && sudo zypper --non-interactive install curl gcc python python-xml libffi-devel python-devel openssl-devel
    ```
 
-Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/), und [OpenSSL](https://www.openssl.org/source/) installieren.
+Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python 2.7 oder höher](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/) und [OpenSSL](https://www.openssl.org/source/) installieren.
 
 2. Installieren Sie die CLI mit `curl`.
 
@@ -172,11 +258,15 @@ Wenn Sie einen Fehler von `curl` im Zusammenhang mit dem `-L`-Parameter oder ein
 curl https://azurecliprod.blob.core.windows.net/install | bash
 ```
 
-### <a name="homebrew-on-macos-installing-older-version"></a>Von Homebrew wird unter macOS eine ältere Version installiert.
+### <a name="az-command-not-found"></a>Der Befehl `az` wurde nicht gefunden.
 
-Die für macOS verfügbare Homebrew-`azure-cli`-Formel ist derzeit veraltet und installiert eine 1.x-Version der CLI. Den Aktualisierungsstatus können Sie mithilfe von `brew info azure-cli` überprüfen.
+Unter Umständen müssen Sie den Befehlshash-Cache Ihrer Shell leeren. Ausführen
 
-[Deinstallieren Sie bis dahin die ältere Version](#uninstall_brew), und befolgen Sie die [Installationsanweisungen für macOS](#macOS).
+```bash
+hash -r
+```
+
+und überprüfen, ob das Problem behoben ist. Es kann auch sein, dass der Befehl nicht unter Ihrem `$PATH` vorhanden ist. Stellen Sie sicher, dass `<install path>/bin` in Ihrem `$PATH` enthalten ist, und starten Sie die Shell bei Bedarf neu.
 
 ## <a name="uninstall-cli-1x-versions"></a>Deinstallieren von 1.x-Versionen der CLI
 
@@ -190,17 +280,9 @@ Entfernen Sie die ältere CLI mit `npm uninstall`.
   npm uninstall -g azure-cli
   ```
 
-### <a name="a-nameuninstallbrewuninstall-with-homebrew-on-macos"></a><a name="uninstall_brew"/>Deinstallieren mit Homebrew unter macOS
-
-Entfernen Sie die ältere CLI mit `brew uninstall`.
-
-```bash
-brew uninstall azure-cli
-```
-
 ### <a name="uninstall-with-distributable"></a>Deinstallieren mit verteilbarer Komponente
 
-Verwenden Sie bei der Installation über eine [MSI](http://aka.ms/webpi-azure-cli)-Datei oder ein [macOS-Paket](http://aka.ms/mac-azure-cli) das gleiche Tool zum Entfernen der Installation.
+Verwenden Sie bei der Installation über den [Azure CLI-Installer (MSI)](http://aka.ms/webpi-azure-cli) oder ein [macOS-Paket](http://aka.ms/mac-azure-cli) das gleiche Tool zum Entfernen der Installation.
 
 ### <a name="uninstall-with-docker"></a>Deinstallieren mit Docker
 
@@ -214,11 +296,27 @@ Wenn Sie ein Docker-Image zur Verwendung der älteren CLI-Version installiert ha
 
 Verwenden Sie zum Aktualisieren der Azure CLI die gleiche Methode wie für die Installation.
 
+### <a name="update-with-homebrew"></a>Aktualisieren mit Homebrew
+
+1. Falls Sie zuvor die manuelle Installation durchgeführt haben, befolgen Sie die Anweisungen zum [Installieren mit Homebrew](#macOS).
+
+2. Aktualisieren Sie die Informationen zum lokalen Homebrew-Repository.
+
+   ```bash
+   brew update
+   ```
+
+3. Aktualisieren Sie die installierten Pakete.
+
+   ```bash
+   brew upgrade
+   ```
+
 ### <a name="update-with-msi"></a>Aktualisieren mit der MSI-Datei
 
-Führen Sie die [MSI](https://aka.ms/InstallAzureCliWindows) erneut aus.
+Führen Sie den [Azure CLI-Installer (MSI)](https://aka.ms/InstallAzureCliWindows) erneut aus.
 
-### <a name="update-with-apt-get"></a>Aktualisieren mit apt-get
+### <a name="update-with-apt"></a>Aktualisieren mit apt
 
 Verwenden Sie `apt-get upgrade` zum Aktualisieren des CLI-Pakets.
 
@@ -232,6 +330,24 @@ Verwenden Sie `apt-get upgrade` zum Aktualisieren des CLI-Pakets.
 > ```bash
 > sudo apt-get update && sudo apt-get install --only-upgrade -y azure-cli
 > ```
+
+### <a name="update-with-yum"></a>Aktualisieren mit yum
+
+Aktualisieren Sie die Azure CLI mit dem Befehl `yum update`.
+
+```bash
+yum check-update
+sudo yum update azure-cli
+```
+
+### <a name="update-with-zypper"></a>Aktualisieren mit zypper
+
+Sie können das Paket mit dem Befehl `zypper update` aktualisieren.
+
+```bash
+sudo zypper refresh
+sudo zypper update azure-cli
+```
 
 ### <a name="update-with-docker"></a>Aktualisieren mit Docker
 
@@ -271,16 +387,66 @@ Führen Sie zum Aktualisieren die Anweisungen für die manuelle Installation fü
 
 Es tut uns leid, wenn Sie die CLI deinstallieren möchten. Verwenden Sie zum Deinstallieren die gleiche Methode wie für die Installation der CLI.
 
+### <a name="uninstall-with-homebrew"></a>Deinstallieren mit Homebrew
+
+Deinstallieren Sie das `azure-cli`-Paket.
+
+   ```bash
+   brew uninstall azure-cli
+   ```
+
 ### <a name="uninstall-with-msi"></a>Deinstallieren mit der MSI-Datei
 
 Führen Sie die [MSI](https://aka.ms/InstallAzureCliWindows) noch einmal aus, und wählen Sie „Deinstallieren“.
 
-### <a name="uninstall-with-apt-get"></a>Deinstallieren mit apt-get
+### <a name="uninstall-with-apt"></a>Deinstallieren mit apt
 
 Deinstallieren über `apt-get remove`:
 
   ```bash
   sudo apt-get remove -y azure-cli
+  ```
+
+### <a name="uninstall-with-yum"></a>Deinstallieren mit yum
+
+1. Entfernen Sie das Paket aus Ihrem System.
+
+   ```bash
+   sudo yum remove azure-cli
+   ```
+
+2. Entfernen Sie die Repositoryinformationen, wenn Sie nicht planen, die CLI neu zu installieren.
+
+   ```bash
+   sudo rm /etc/yum.repos.d/azure-cli.repo
+   ```
+
+3. Entfernen Sie auch den Microsoft GPG-Signaturschlüssel, falls Sie die Repositoryinformationen entfernt haben.
+
+  ```bash
+  MSFT_KEY=`rpm -qa gpg-pubkey /* --qf "%{version}-%{release} %{summary}\n" | grep Microsoft | awk '{print $1}'`
+  rpm -e --allmatches gpg-pubkey-$MSFT_KEY
+  ```
+
+### <a name="uninstall-with-zypper"></a>Deinstallieren mit zypper
+
+1. Entfernen Sie das Paket aus Ihrem System.
+
+    ```bash
+    sudo zypper remove -y azure-cli
+    ```
+
+2. Entfernen Sie die Repositoryinformationen, wenn Sie nicht planen, die CLI neu zu installieren.
+
+  ```bash
+  sudo rm /etc/zypp/repos.d/azure-cli.repo
+  ```
+
+3. Entfernen Sie auch den Microsoft GPG-Signaturschlüssel, falls Sie die Repositoryinformationen entfernt haben.
+
+  ```bash
+  MSFT_KEY=`rpm -qa gpg-pubkey /* --qf "%{version}-%{release} %{summary}\n" | grep Microsoft | awk '{print $1}'`
+  rpm -e --allmatches gpg-pubkey-$MSFT_KEY
   ```
 
 ### <a name="uninstall-with-docker"></a>Deinstallieren mit Docker
@@ -289,31 +455,31 @@ Wenn Sie ein Docker-Image installiert haben, müssen Sie alle Container mit dies
 
 1. Rufen Sie die Container ab, die das azure-cli-Image ausführen.
 
-  ```bash
-  docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
-  ```
+   ```bash
+   docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
+   ```
 
-  ```output
-  CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
-  34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
-  ```
+   ```output
+   CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
+   34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
+   ```
 
 2. Löschen Sie alle Container mit dem CLI-Image.
 
-  ```bash
-  docker rm 34a868beb2ab
-  ```
+   ```bash
+   docker rm 34a868beb2ab
+   ```
 
 3. Entfernen Sie das lokal installierte CLI-Image.
 
-  ```bash
-  docker rmi azuresdk/azure-cli-python
-  ```
+   ```bash
+   docker rmi azuresdk/azure-cli-python
+   ```
 
 > [!NOTE]
 > Wenn Sie eine bestimmte Version des Images installiert haben, müssen Sie `:<version>` ans Ende des Imagenamens anfügen.
 
-### <a name="uninstall-manually"></a>Manuelles Deinstallieren
+###<a name="a-nameuninstallmanuallyuninstall-manually"></a><a name="UninstallManually"/>Manuelles Deinstallieren
 
 Wenn Sie das Skript unter https://aka.ms/InstallAzureCli zum Installieren der CLI verwendet haben, können Sie sie mit diesen Schritten deinstallieren.
 
@@ -325,6 +491,12 @@ Wenn Sie das Skript unter https://aka.ms/InstallAzureCli zum Installieren der CL
    ```
 
 2. Löschen Sie die Zeile `<install location>/lib/azure-cli/az.completion` aus `<install location>/.bash_profile`.
+
+3. Wenn Ihre Shell einen Befehlscache verwendet, laden Sie ihn erneut.
+
+   ```bash
+   hash -r
+   ```
 
 > [!Note]
 > Das Standardinstallationsverzeichnis ist `/Users/<username>`.

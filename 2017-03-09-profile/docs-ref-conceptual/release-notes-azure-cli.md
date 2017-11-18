@@ -12,13 +12,246 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ce0428f7-0a59-4e72-9237-d907b171af51
-ms.openlocfilehash: e893b99349bbf2a5eec8af254158eb07001f1da7
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 429b099dabd27d9356e88791f955ec52acd2a5f9
+ms.sourcegitcommit: 9b36c15dc0e10024e23b8018604f5ef63c025de1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
+
+## <a name="october-24-2017"></a>24. Oktober 2017
+
+Version 2.0.20
+
+### <a name="core"></a>Core
+
+* Aktualisierung von `2017-03-09-profile` zur Verwendung von Version `2016-01-01` der `MGMT_STORAGE`-API
+
+### <a name="acr"></a>ACR
+
+* Die Ressourcenverwaltung wurde aktualisiert und verweist nun auf die API-Version `2017-10-01`.
+* SKU „Bring Your Own Storage“ wurde in „Klassisch“ geändert.
+* Die Registrierungs-SKUs wurden in „Basic“, „Standard“ und „Premium“ umbenannt.
+
+### <a name="acs"></a>ACS
+
+* [VORSCHAUVERSION] Befehle vom Typ `az aks` hinzugefügt
+* Problem mit `get-credentials` in Kubernetes behoben
+
+### <a name="appservice"></a>AppService
+
+* Problem behoben, aufgrund dessen heruntergeladene `webapp`-Protokolle unter Umständen ungültig waren
+
+### <a name="component"></a>Komponente
+
+* Deutlichere Meldung zur Einstellung für alle Installer und für Bestätigungsaufforderung hinzugefügt
+
+### <a name="monitor"></a>Überwachen
+
+* Befehle vom Typ `action-group` hinzugefügt
+
+### <a name="resource"></a>Ressource
+
+* Inkompatibilität mit der aktuellen Version der msrest-Abhängigkeit in `group export` behoben
+* Problem mit `policy assignment create` behoben, sodass der Befehl mit integrierten Richtliniendefinitionen und Richtliniensatzdefinitionen verwendet werden kann
+
+### <a name="vm"></a>VM
+
+* Argument `--accelerated-networking` zu `vmss create` hinzugefügt
+
+
+## <a name="october-9-2017"></a>9. Oktober 2017
+
+Version 2.0.19
+
+### <a name="core"></a>Core
+
+* Verarbeitung von ADFS-Autoritäts-URLs wurde mit einem nachgestellten Schrägstrich zu Azure Stack hinzugefügt.
+
+### <a name="appservice"></a>AppService
+
+* Mit dem neuen Befehl `webapp update` wurde ein allgemeines Update hinzugefügt.
+
+### <a name="batch"></a>Batch
+
+* Aktualisierung auf Batch SDK 4.0.0
+* Die Option `--image` von „VirtualMachineConfiguration“ wurde aktualisiert, um zusätzlich zu „publish:offer:sku:version“ ARM-Imageverweise zu unterstützen.
+* Unterstützung für das neue CLI-Erweiterungsmodell für Batch-Erweiterungsbefehle hinzugefügt
+* Batch-Unterstützung aus dem Komponentenmodell entfernt
+
+### <a name="batchai"></a>BatchAI
+
+* Erste Version des Batch AI-Moduls
+
+### <a name="keyvault"></a>KeyVault
+
+* Key Vault-Authentifizierungsproblem behoben, das bei Verwendung von ADFS in Azure Stack auftrat. [(#4448)](https://github.com/Azure/azure-cli/issues/4448)
+
+### <a name="network"></a>Netzwerk
+
+* Das Argument `--server` von `application-gateway address-pool create` ist nun optional, sodass leere Adresspools zulässig sind.
+* `traffic-manager` wurde aktualisiert, um aktuelle Features zu unterstützen.
+
+### <a name="resource"></a>Ressource
+
+* Zusätzliche Unterstützung für `--resource-group/-g`-Optionen für Ressourcengruppennamen zu `group` hinzugefügt
+* Befehle für `account lock` hinzugefügt, um die Verwendung mit Sperren auf Abonnementebene zu ermöglichen.
+* Befehle für `group lock` hinzugefügt, um die Verwendung mit Sperren auf Gruppenebene zu ermöglichen.
+* Befehle für `resource lock` hinzugefügt, um die Verwendung mit Sperren auf Ressourcenebene zu ermöglichen.
+
+### <a name="sql"></a>Sql
+
+* Unterstützung für SQL Transparent Data Encryption (TDE) und TDE für Bring Your Own Key-Szenarien hinzugefügt
+* Der Befehl `db list-deleted` und der Parameter `db restore --deleted-time` wurden hinzugefügt, um die Ermittlung und Wiederherstellung gelöschter Datenbanken zu ermöglichen.
+* `db op list` und `db op cancel` wurden hinzugefügt, um das Auflisten und Abbrechen ausgeführter Vorgänge für eine Datenbank zu ermöglichen.
+
+### <a name="storage"></a>Speicher
+
+* Unterstützung für Momentaufnahme von Dateifreigaben hinzugefügt
+
+### <a name="vm"></a>VM
+
+* Korrektur eines Fehlers in `vm show`, bei dem die Verwendung von `-d` in Verbindung mit fehlenden privaten IP-Adressen einen Absturz verursachte
+* [VORSCHAUVERSION] Unterstützung für paralleles Upgrade zu `vmss create` hinzugefügt
+* Unterstützung für das Aktualisieren der Verschlüsselungseinstellungen mit `vm encryption enable` hinzugefügt
+* Parameter `--os-disk-size-gb` zu `vm create` hinzugefügt
+* Parameter `--license-type` für Windows zu `vmss create` hinzugefügt
+
+
+## <a name="september-22-2017"></a>22. September 2017
+
+Version 2.0.18
+
+### <a name="resource"></a>Ressource
+
+* Unterstützung für das Anzeigen integrierter Richtliniendefinitionen hinzugefügt
+* Unterstützungsmodusparameter zum Erstellen von Richtliniendefinitionen hinzugefügt
+* Unterstützung für UI-Definitionen und -Vorlagen zu `managedapp definition create` hinzugefügt
+* [WICHTIGE ÄNDERUNG] Der Ressourcentyp `managedapp` wurde von `appliances` in `applications` und von `applianceDefinitions` in `applicationDefinitions` geändert.
+
+### <a name="network"></a>Netzwerk
+
+* Unterstützung für Verfügbarkeitszone zu Unterbefehlen `network lb` und `network public-ip` hinzugefügt
+* Unterstützung für IPv6-Microsoft-Peering zu `express-route` hinzugefügt
+* Befehle für Anwendungssicherheitsgruppe `asg` hinzugefügt
+* Argument `--application-security-groups` zu `nic [create|ip-config create|ip-config update]` hinzugefügt
+* Argumente `--source-asgs` und `--destination-asgs` zu `nsg rule [create|update]` hinzugefügt
+* Argumente `--ddos-protection` und `--vm-protection` zu `vnet [create|update]` hinzugefügt
+* Befehle vom Typ `network [vnet-gateway|vpn-client|show-url]` hinzugefügt
+
+### <a name="storage"></a>Speicher
+
+* Problem behoben, das nach der Aktualisierung des SDK unter Umständen einen Fehler der `storage account network-rule`-Befehle zur Folge hatte
+
+### <a name="eventgrid"></a>Eventgrid
+
+* Azure Event Grid Python SDK für die Verwendung der neueren API-Version „2017-09-15-preview“ aktualisiert
+
+### <a name="sql"></a>SQL
+
+* `sql server list`-Argument `--resource-group` geändert, sodass es nun optional ist. Wird es nicht angegeben, werden alle SQL Server-Instanzen im Abonnement zurückgegeben.
+* Parameter `--no-wait` zu `db [create|copy|restore|update|replica create|create|update]` und `dw [create|update]` hinzugefügt
+
+### <a name="keyvault"></a>KeyVault
+
+* Unterstützung für die Keyvault-Befehlsausführung hinter einem Proxy hinzugefügt
+
+### <a name="vm"></a>VM
+
+* Unterstützung für Verfügbarkeitszone zu `[vm|vmss|disk] create` hinzugefügt
+* Problem behoben, das bei Verwendung von `--app-gateway ID` mit `vmss create` einen Fehler zur Folge hatte
+* Argument `--asgs` zu `vm create` hinzugefügt
+* Unterstützung für die Ausführung von Befehlen auf virtuellen Computern mit `vm run-command` hinzugefügt
+* [VORSCHAU] Unterstützung für VMSS-Datenträgerverschlüsselung mit `vmss encryption` hinzugefügt
+* Unterstützung für die Durchführung der Wartung auf virtuellen Computern mit `vm perform-maintenance` hinzugefügt
+
+### <a name="acs"></a>ACS
+
+* [VORSCHAU] Argument `--orchestrator-release` zu `acs create` für ACS-Vorschauregionen hinzugefügt
+
+### <a name="appservice"></a>AppService
+
+* Neue Möglichkeit zum Aktualisieren und Anzeigen der Authentifizierungseinstellungen mit `webapp auth [update|show]`
+
+### <a name="backup"></a>Backup 
+
+* Vorschauversion
+
+
+## <a name="september-11-2017"></a>11. September 2017
+
+Version 2.0.17
+
+### <a name="core"></a>Core
+
+* Festlegung einer eigenen Korrelations-ID in Telemetrie durch das Befehlsmodul aktiviert
+* Ein Problem mit der JSON-Sicherungsdatei wurde behoben, das beim Festlegen des Diagnosemodus für Telemetrie auftrat
+
+### <a name="acs"></a>ACS
+
+* Befehl `acs list-locations` hinzugefügt
+* `ssh-key-file` wird mit dem erwarteten Standardwert versehen.
+
+### <a name="appservice"></a>AppService
+
+* Neue Möglichkeit zum Erstellen einer Web-App in einer anderen Ressourcengruppe als der des aktiven Diensttarifs
+
+### <a name="cdn"></a>CDN
+
+* Der Fehler bei `cdn custom-domain create`, dass „CustomDomain“ nicht wiederholbar ist, wurde behoben.
+
+### <a name="extension"></a>Durchwahl
+
+* Erste Version.
+
+### <a name="keyvault"></a>KeyVault
+
+* Problem behoben, aufgrund dessen bei den Berechtigungen für `keyvault set-policy` die Groß-/Kleinschreibung beachtet werden musste
+
+### <a name="network"></a>Netzwerk
+
+* `vnet list-private-access-services` in `vnet list-endpoint-services` umbenannt
+* Das Argument `--private-access-services` wurde für `vnet subnet create/update` in `--service-endpoints` umbenannt.
+* Unterstützung für mehrere IP- und Portbereiche zu `nsg rule create/update` hinzugefügt
+* Unterstützung für SKU zu `lb create` hinzugefügt
+* Unterstützung für SKU zu `public-ip create` hinzugefügt
+
+### <a name="resource"></a>Ressource
+
+* Übergabe von Parameterdefinitionen für Ressourcenrichtlinien in `policy definition create` und `policy definition update` zulassen
+* Übergabe von Parameterwerten für `policy assignment create` zulassen
+* Übergabe von JSON-Code oder einer Datei für alle Parameter zulassen
+* Inkrementierte API-Version
+
+### <a name="sql"></a>SQL
+
+* Befehle vom Typ `sql server vnet-rule` hinzugefügt
+
+### <a name="vm"></a>VM
+
+* Behoben: Zugriff nur zuweisen, wenn `--scope` angegeben wird
+* Behoben: Gleiche Erweiterungsbenennung wie Portal verwenden
+* `subscription` aus der Ausgabe von `[vm|vmss] create` entfernt
+* Behoben: Speicher-SKU vom Typ `[vm|vmss] create` wird nicht auf Datenträger mit einem Image angewendet.
+* Behoben: `vm format-secret --secrets` akzeptierte keine durch neue Zeilen getrennte IDs.
+
+## <a name="august-31-2017"></a>31. August 2017
+
+Version 2.0.16
+
+### <a name="keyvault"></a>KeyVault
+
+* Fehler behoben, der beim Versuch auftrat, die Geheimniscodierung mit `secret download` automatisch aufzulösen
+
+### <a name="sf"></a>Sf
+
+* Alle Befehle wurden durch die Service Fabric-Befehlszeilenschnittstelle (sfctl) ersetzt.
+
+### <a name="storage"></a>Speicher
+
+* Problem behoben, aufgrund dessen Speicherkonten nicht in Regionen erstellt werden konnten, die die NetworkACLs-Funktion nicht unterstützen
+* Festlegen des Inhaltstyps und der Inhaltscodierung während Blob- und Dateiuploads, wenn weder Inhaltstyp noch Inhaltscodierung angegeben sind
 
 ## <a name="august-28-2017"></a>28. August 2017
 

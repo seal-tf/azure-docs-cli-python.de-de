@@ -1,22 +1,22 @@
 ---
 title: Anmelden mit Azure CLI 2.0
 description: Melden Sie sich mit Azure 2.0 CLI unter Linux, MacOS oder Windows an.
-keywords: Azure CLI 2.0, Linux, MacOS, Windows, OS X, Ubuntu, Debian, CentOS, RHEL, SUSE, CoreOS, Docker, Windows, Python, PIP
-author: rloutlaw
-ms.author: routlaw
-manager: douge
-ms.date: 02/27/2017
+keywords: Azure CLI 2.0, Anmeldung, Azure-Befehlszeilenschnittstelle, Azure CLI, Authentifizierung, autorisieren, anmelden
+author: sptramer
+ms.author: stttramer
+manager: routlaw
+ms.date: 11/13/2017
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 65becd3a-9d69-4415-8a30-777d13a0e7aa
-ms.openlocfilehash: 3ba1dd840102c738ccd9eb62a0b9db612cec48d1
-ms.sourcegitcommit: 5cfbea569fef193044da712708bc6957d3fb557c
+ms.openlocfilehash: dd05868f7378673836f47e743ed4088f2efd3dca
+ms.sourcegitcommit: 5db22de971cf3983785cb209d92cbed1bbd69ecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="log-in-with-azure-cli-20"></a>Anmelden mit Azure CLI 2.0
 
@@ -24,7 +24,7 @@ Es gibt mehrere Möglichkeiten, sich mit der Azure-CLI anzumelden und zu authent
 
 Die privaten Anmeldeinformationen werden nicht lokal gespeichert. Stattdessen wird von Azure ein Authentifizierungstoken generiert und gespeichert. Nach der Anmeldung ist das lokale Anmeldetoken gültig, bis es 14 Tage lang nicht verwendet wird. Dann müssen Sie sich erneut authentifizieren.
 
-Befehle, die Sie mit der CLI ausführen, werden für Ihr Standardabonnement ausgeführt.  Wenn Sie über mehr als ein Abonnement verfügen, ist es ratsam, das [Standardabonnement zu bestätigen](manage-azure-subscriptions-azure-cli.md) und entsprechend zu ändern.
+Nach der Anmeldung werden CLI-Befehle für Ihr Standardabonnement ausgeführt. Sollten Sie über mehrere Abonnements verfügen, empfiehlt es sich unter Umständen, das [Standardabonnement zu ändern](manage-azure-subscriptions-azure-cli.md).
 
 ## <a name="interactive-log-in"></a>Interaktive Anmeldung
 
@@ -46,35 +46,18 @@ az login -u <username> -p <password>
 ## <a name="logging-in-with-a-service-principal"></a>Anmelden mit einem Dienstprinzipal
 
 Dienstprinzipale sind vergleichbar mit Benutzerkonten, auf die Sie mithilfe von Azure Active Directory Regeln anwenden können.
-Die Authentifizierung mit einem Dienstprinzipal ist die beste Möglichkeit, die Verwendung Ihrer Azure-Ressourcen mithilfe Ihrer Skripts oder Anwendungen zu schützen, mit denen Ressourcen bearbeitet werden.
-Sie definieren die gewünschten Rollen für Ihre Benutzer mit dem Befehlssatz von `az role`.
-Weitere Informationen und Beispiele für Dienstprinzipalrollen finden Sie unter den [Referenzartikeln zu „az role“](https://docs.microsoft.com/cli/azure/role.md).
+Die Authentifizierung mit einem Dienstprinzipal ist die beste Möglichkeit, die Verwendung Ihrer Azure-Ressourcen mithilfe Ihrer Skripts oder Anwendungen zu schützen, mit denen Ressourcen bearbeitet werden. Falls Sie noch nicht über einen Dienstprinzipal verfügen und einen erstellen möchten, lesen Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](create-an-azure-service-principal-azure-cli.md) weiter.
 
-1. Falls Sie noch nicht über einen Dienstprinzipal verfügen, [können Sie einen erstellen](create-an-azure-service-principal-azure-cli.md).
+Für die Anmeldung mit einem Dienstprinzipal geben Sie den Benutzernamen, das Kennwort oder die PEM-Zertifikatdatei und den Mandanten an, der dem Dienstprinzipal zugeordnet ist:
 
-1. Melden Sie sich mit dem Dienstprinzipal an.
+```azurecli-interactive
+az login --service-principal -u <user> -p <password-or-cert> --tenant <tenant>
+```
 
-   ```azurecli-interactive
-   az login --service-principal -u "http://my-app" -p <password> --tenant <tenant>
-   ```
+Der Mandantenwert ist der dem Dienstprinzipal zugeordnete Azure Active Directory-Mandant. Hierbei kann es sich um eine Domäne vom Typ „onmicrosoft.com“ oder um die Azure-Objekt-ID für den Mandanten handeln.
+Die Mandantenobjekt-ID für Ihre aktuelle Anmeldung können Sie mithilfe des folgenden Befehls abrufen:
 
-   Um Ihren Mandanten zu ermitteln, melden Sie sich interaktiv an und rufen anschließend die Mandanten-ID aus Ihrem Abonnement ab.
+```azurecli
+az account show --query 'tenanatId' -o tsv
+```
 
-   ```azurecli
-   az account show
-   ```
-
-   ```json
-   {
-       "environmentName": "AzureCloud",
-       "id": "********-****-****-****-************",
-       "isDefault": true,
-       "name": "Pay-As-You-Go",
-       "state": "Enabled",
-       "tenantId": "********-****-****-****-************",
-       "user": {
-       "name": "********",
-       "type": "user"
-       }
-   }
-   ```

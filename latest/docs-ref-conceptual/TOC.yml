@@ -1,58 +1,67 @@
+metadata: {}
+items:
 - name: Azure CLI 2.0
   href: overview.md
   items:
-    - name: Installieren
-      href: install-azure-cli.md
-    - name: Erste Schritte
-      href: get-started-with-azure-cli.md
-    - name: Cloud Shell
-      href: /azure/cloud-shell/overview
-    - name: Anmelden
-      href: authenticate-azure-cli.md
+  - name: Installieren
+    href: install-azure-cli.md
+  - name: Erste Schritte
+    href: get-started-with-azure-cli.md
+  - name: Cloud Shell
+    href: /azure/cloud-shell/overview
+  - name: Anmelden
+    href: authenticate-azure-cli.md
+    items:
+    - name: Erstellen eines Dienstprinzipals
+      href: create-an-azure-service-principal-azure-cli.md
+    - name: "Verwenden verwalteter Dienstidentitäten"
       items:
-        - name: Erstellen eines Dienstprinzipals
-          href: create-an-azure-service-principal-azure-cli.md
-        - name: Verwenden verwalteter Dienstidentitäten
-          items:
-            - name: Konfigurieren des MSI für eine Azure-VM
-              href: /azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-            - name: Anmelden bei einem virtuellen Azure-Computer mit MSI
-              href: /azure/active-directory/msi-how-to-get-access-token-using-msi?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Interaktiver Modus
-      href: interactive-azure-cli.md
-    - name: Bereitstellungsvorlagen
-      items:
-        - name: Verwenden von Bereitstellungsvorlagen
-          href: /azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Exportieren von Bereitstellungsvorlagen
-          href: /azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-        - name: Bereitstellen über private Vorlagen
-          href: /azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Ausgabeformate
-      href: format-output-azure-cli.md
-    - name: Abfrage
-      href: query-azure-cli.md
-    - name: Abonnements
-      href: manage-azure-subscriptions-azure-cli.md
-    - name: Erweiterungen
-      href: azure-cli-extensions.md
-    - name: Versionshinweise
-      href: release-notes-azure-cli.md
+      - name: "Konfigurieren des MSI für eine Azure-VM"
+        href: /azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+      - name: Anmelden bei einem virtuellen Azure-Computer mit MSI
+        href: /azure/active-directory/msi-how-to-get-access-token-using-msi?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Interaktiver Modus
+    href: interactive-azure-cli.md
+  - name: Bereitstellungsvorlagen
+    items:
+    - name: Verwenden von Bereitstellungsvorlagen
+      href: /azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    - name: Exportieren von Bereitstellungsvorlagen
+      href: /azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    - name: "Bereitstellen über private Vorlagen"
+      href: /azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Verwalten von Abonnements
+    href: manage-azure-subscriptions-azure-cli.md
+  - name: Verwenden mehrerer Clouds
+    href: manage-clouds-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Ausgabeformate
+    href: format-output-azure-cli.md
+  - name: Abfrage
+    href: query-azure-cli.md
+  - name: Erweiterungen
+    href: azure-cli-extensions.md
+  - name: Versionshinweise
+    href: release-notes-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  ms.openlocfilehash: 9c7bc6aede9bedff3f4d8711a263ad37b645d403
+  ms.sourcegitcommit: 905939cc44764b4d1cc79a9b36c0793f7055a686
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/20/2017
 - name: Beispielskripts
   items:
-    - name: Virtuelle Linux-Computer
-      href: /azure/virtual-machines/linux/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Virtuelle Windows-Computer
-      href: /azure/virtual-machines/windows/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Web-Apps
-      href: /azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Functions
-      href: /azure/azure-functions/functions-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: SQL-Datenbank
-      href: /azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: PostgreSQL
-      href: /azure/postgresql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: MySQL
-      href: /azure/mysql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Cosmos DB
-      href: /azure/cosmos-db/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Virtuelle Linux-Computer
+    href: /azure/virtual-machines/linux/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Virtuelle Windows-Computer
+    href: /azure/virtual-machines/windows/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Web-Apps
+    href: /azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Functions
+    href: /azure/azure-functions/functions-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: SQL-Datenbank
+    href: /azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: PostgreSQL
+    href: /azure/postgresql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: MySQL
+    href: /azure/mysql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Cosmos DB
+    href: /azure/cosmos-db/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json

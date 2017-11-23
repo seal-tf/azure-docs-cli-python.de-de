@@ -12,21 +12,21 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 5979acc5-21a5-41e2-a4b6-3183bfe6aa22
-ms.openlocfilehash: e0eee9eb9e0a9f136ff076d064ce802f76bc8e3d
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 8ab4a5e38f06199c5f044b8526c581828ba61927
+ms.sourcegitcommit: 905939cc44764b4d1cc79a9b36c0793f7055a686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="using-jmespath-queries-with-azure-cli-20"></a><span data-ttu-id="6cc30-104">Verwenden von JMESPath-Abfragen mit Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="6cc30-104">Using JMESPath queries with Azure CLI 2.0</span></span>
+# <a name="using-jmespath-queries-with-azure-cli-20"></a><span data-ttu-id="0e053-104">Verwenden von JMESPath-Abfragen mit Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="0e053-104">Using JMESPath queries with Azure CLI 2.0</span></span>
 
-<span data-ttu-id="6cc30-105">Für Azure CLI 2.0 wird der Parameter `--query` verwendet, um eine [JMESPath-Abfrage](http://jmespath.org) zu den Ergebnissen Ihres `az`-Befehls durchzuführen.</span><span class="sxs-lookup"><span data-stu-id="6cc30-105">The Azure CLI 2.0 uses the `--query` parameter to execute a [JMESPath query](http://jmespath.org) on the results of your `az` command.</span></span> <span data-ttu-id="6cc30-106">JMESPath ist eine leistungsstarke Sprache für JSON-Ausgaben.</span><span class="sxs-lookup"><span data-stu-id="6cc30-106">JMESPath is a powerful query language for JSON outputs.</span></span>  <span data-ttu-id="6cc30-107">Wenn Sie mit JMESPath-Abfragen nicht vertraut sein sollten, ist das Tutorial unter [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html) hilfreich.</span><span class="sxs-lookup"><span data-stu-id="6cc30-107">If you are unfamiliar with JMESPath queries you can find a tutorial at [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html).</span></span>
+<span data-ttu-id="0e053-105">Für Azure CLI 2.0 wird der Parameter `--query` verwendet, um eine [JMESPath-Abfrage](http://jmespath.org) zu den Ergebnissen Ihres `az`-Befehls durchzuführen.</span><span class="sxs-lookup"><span data-stu-id="0e053-105">The Azure CLI 2.0 uses the `--query` parameter to execute a [JMESPath query](http://jmespath.org) on the results of your `az` command.</span></span> <span data-ttu-id="0e053-106">JMESPath ist eine leistungsstarke Sprache für JSON-Ausgaben.</span><span class="sxs-lookup"><span data-stu-id="0e053-106">JMESPath is a powerful query language for JSON outputs.</span></span>  <span data-ttu-id="0e053-107">Wenn Sie mit JMESPath-Abfragen nicht vertraut sein sollten, ist das Tutorial unter [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html) hilfreich.</span><span class="sxs-lookup"><span data-stu-id="0e053-107">If you are unfamiliar with JMESPath queries you can find a tutorial at [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html).</span></span>
 
-<span data-ttu-id="6cc30-108">Der Parameter `Query` wird von jedem Ressourcentyp (Container Services, Web-Apps, VM usw.) in Azure CLI 2.0 unterstützt und kann für verschiedene Zwecke verwendet werden.</span><span class="sxs-lookup"><span data-stu-id="6cc30-108">`Query` parameter is supported by every resource type (Container Services, Web Apps, VM, etc.) within Azure CLI 2.0 and can be used for various different purposes.</span></span>  <span data-ttu-id="6cc30-109">Hier sind einige Beispiele aufgeführt.</span><span class="sxs-lookup"><span data-stu-id="6cc30-109">We have listed several examples below.</span></span>
+<span data-ttu-id="0e053-108">Der Parameter `Query` wird von jedem Ressourcentyp (Container Services, Web-Apps, VM usw.) in Azure CLI 2.0 unterstützt und kann für verschiedene Zwecke verwendet werden.</span><span class="sxs-lookup"><span data-stu-id="0e053-108">`Query` parameter is supported by every resource type (Container Services, Web Apps, VM, etc.) within Azure CLI 2.0 and can be used for various different purposes.</span></span>  <span data-ttu-id="0e053-109">Hier sind einige Beispiele aufgeführt.</span><span class="sxs-lookup"><span data-stu-id="0e053-109">We have listed several examples below.</span></span>
 
-## <a name="selecting-simple-properties"></a><span data-ttu-id="6cc30-110">Auswählen einfacher Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="6cc30-110">Selecting simple properties</span></span>
+## <a name="selecting-simple-properties"></a><span data-ttu-id="0e053-110">Auswählen einfacher Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="0e053-110">Selecting simple properties</span></span>
 
-<span data-ttu-id="6cc30-111">Der einfache Befehl `list` mit dem Ausgabeformat `table` gibt einen fertigen Satz mit den gängigsten einfachen Eigenschaften für jeden Ressourcentyp in einem leicht lesbaren Tabellenformat zurück.</span><span class="sxs-lookup"><span data-stu-id="6cc30-111">The simple `list` command with `table` output format returns a curated set of most common, simple properties for each resource type in an easy-to-read tabular format.</span></span>
+<span data-ttu-id="0e053-111">Der einfache Befehl `list` mit dem Ausgabeformat `table` gibt einen fertigen Satz mit den gängigsten einfachen Eigenschaften für jeden Ressourcentyp in einem leicht lesbaren Tabellenformat zurück.</span><span class="sxs-lookup"><span data-stu-id="0e053-111">The simple `list` command with `table` output format returns a curated set of most common, simple properties for each resource type in an easy-to-read tabular format.</span></span>
 
 ```azurecli-interactive
 az vm list --out table
@@ -42,11 +42,11 @@ KBDemo001VM  RGDEMO001        westus
 KBDemo020    RGDEMO001        westus
 ```
 
-<span data-ttu-id="6cc30-112">Sie können den Parameter `--query` verwenden, um nur den Ressourcengruppennamen und VM-Namen für alle virtuellen Computer Ihres Abonnements anzuzeigen.</span><span class="sxs-lookup"><span data-stu-id="6cc30-112">You can use the `--query` parameter to show just the Resource Group name and VM name for all virtual machines in your subscription.</span></span>
+<span data-ttu-id="0e053-112">Sie können den Parameter `--query` verwenden, um nur den Ressourcengruppennamen und VM-Namen für alle virtuellen Computer Ihres Abonnements anzuzeigen.</span><span class="sxs-lookup"><span data-stu-id="0e053-112">You can use the `--query` parameter to show just the Resource Group name and VM name for all virtual machines in your subscription.</span></span>
 
 ```azurecli-interactive
 az vm list \
-  --query [*].[name,resourceGroup] --out table
+  --query [*].[name, resourceGroup] --out table
 ```
 
 ```
@@ -63,7 +63,7 @@ KBDemo001VM RGDEMO001
 KBDemo020   RGDEMO001
 ```
 
-<span data-ttu-id="6cc30-113">Im vorherigen Beispiel lauten die Spaltenüberschriften „Column1“ und „Column2“.</span><span class="sxs-lookup"><span data-stu-id="6cc30-113">In the previous example, you notice that the column headings are "Column1" and "Column2".</span></span>  <span data-ttu-id="6cc30-114">Außerdem können Sie den Eigenschaften auch benutzerfreundliche Bezeichnungen und Namen hinzufügen.</span><span class="sxs-lookup"><span data-stu-id="6cc30-114">You can add friendly labels or names to the properties you select, as well.</span></span>  <span data-ttu-id="6cc30-115">Im folgenden Beispiel haben wir den ausgewählten Eigenschaften „name“ und „resourceGroup“ die Bezeichnungen „VMName“ und „RGName“ hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="6cc30-115">In the following example, we added the labels "VMName" and "RGName" to the selected properties "name" and "resourceGroup".</span></span>
+<span data-ttu-id="0e053-113">Im vorherigen Beispiel lauten die Spaltenüberschriften „Column1“ und „Column2“.</span><span class="sxs-lookup"><span data-stu-id="0e053-113">In the previous example, you notice that the column headings are "Column1" and "Column2".</span></span>  <span data-ttu-id="0e053-114">Außerdem können Sie den Eigenschaften auch benutzerfreundliche Bezeichnungen und Namen hinzufügen.</span><span class="sxs-lookup"><span data-stu-id="0e053-114">You can add friendly labels or names to the properties you select, as well.</span></span>  <span data-ttu-id="0e053-115">Im folgenden Beispiel haben wir den ausgewählten Eigenschaften „name“ und „resourceGroup“ die Bezeichnungen „VMName“ und „RGName“ hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="0e053-115">In the following example, we added the labels "VMName" and "RGName" to the selected properties "name" and "resourceGroup".</span></span>
 
 
 ```azurecli-interactive
@@ -85,13 +85,13 @@ RGDEMO001  KBDemo001VM
 RGDEMO001  KBDemo020
 ```
 
-## <a name="selecting-complex-nested-properties"></a><span data-ttu-id="6cc30-116">Auswählen komplexer geschachtelter Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="6cc30-116">Selecting complex nested properties</span></span>
+## <a name="selecting-complex-nested-properties"></a><span data-ttu-id="0e053-116">Auswählen komplexer geschachtelter Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="0e053-116">Selecting complex nested properties</span></span>
 
-<span data-ttu-id="6cc30-117">Wenn sich die Eigenschaft, die Sie auswählen möchten, tief in der Struktur der JSON-Ausgabe befindet, müssen Sie den vollständigen Pfad zu dieser geschachtelten Eigenschaft angeben.</span><span class="sxs-lookup"><span data-stu-id="6cc30-117">If the property you want to select is nested deep in the JSON output you need to supply the full path to that nested property.</span></span> <span data-ttu-id="6cc30-118">Das folgende Beispiel zeigt, wie Sie den VM-Namen und den Betriebssystemtyp über den Befehl „vm list“ auswählen.</span><span class="sxs-lookup"><span data-stu-id="6cc30-118">The following example shows how to select the VMName and the OS type from the vm list command.</span></span>
+<span data-ttu-id="0e053-117">Wenn sich die Eigenschaft, die Sie auswählen möchten, tief in der Struktur der JSON-Ausgabe befindet, müssen Sie den vollständigen Pfad zu dieser geschachtelten Eigenschaft angeben.</span><span class="sxs-lookup"><span data-stu-id="0e053-117">If the property you want to select is nested deep in the JSON output you need to supply the full path to that nested property.</span></span> <span data-ttu-id="0e053-118">Das folgende Beispiel zeigt, wie Sie den VM-Namen und den Betriebssystemtyp über den Befehl „vm list“ auswählen.</span><span class="sxs-lookup"><span data-stu-id="0e053-118">The following example shows how to select the VMName and the OS type from the vm list command.</span></span>
 
 ```azurecli-interactive
 az vm list \
-  --query "[].{VMName:name,OSType:storageProfile.osDisk.osType}" --out table
+  --query "[].{VMName:name, OSType:storageProfile.osDisk.osType}" --out table
 ```
 
 ```
@@ -108,14 +108,14 @@ KBDemo001VM  Linux
 KBDemo020    Linux
 ```
 
-## <a name="filter-with-the-contains-function"></a><span data-ttu-id="6cc30-119">Filtern mit der Funktion „contains“</span><span class="sxs-lookup"><span data-stu-id="6cc30-119">Filter with the contains function</span></span>
+## <a name="filter-with-the-contains-function"></a><span data-ttu-id="0e053-119">Filtern mit der Funktion „contains“</span><span class="sxs-lookup"><span data-stu-id="0e053-119">Filter with the contains function</span></span>
 
-<span data-ttu-id="6cc30-120">Sie können die JMESPath-Funktion `contains` verwenden, um die für die Abfrage zurückgegebenen Ergebnisse zu verfeinern.</span><span class="sxs-lookup"><span data-stu-id="6cc30-120">You can use the JMESPath `contains` function to refine your results returned in the query.</span></span>
-<span data-ttu-id="6cc30-121">Im folgenden Beispiel wählt der Befehl nur virtuelle Computer aus, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="6cc30-121">In the following example, the command selects only VMs that have the text "RGD" in their name.</span></span>  
+<span data-ttu-id="0e053-120">Sie können die JMESPath-Funktion `contains` verwenden, um die für die Abfrage zurückgegebenen Ergebnisse zu verfeinern.</span><span class="sxs-lookup"><span data-stu-id="0e053-120">You can use the JMESPath `contains` function to refine your results returned in the query.</span></span>
+<span data-ttu-id="0e053-121">Im folgenden Beispiel wählt der Befehl nur virtuelle Computer aus, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="0e053-121">In the following example, the command selects only VMs that have the text "RGD" in their name.</span></span>  
 
 ```azurecli-interactive
 az vm list \
-  --query "[?contains(resourceGroup,'RGD')].{ resource: resourceGroup, name: name }" --out table
+  --query "[?contains(resourceGroup, 'RGD')].{ resource: resourceGroup, name: name }" --out table
 ```
 
 ```
@@ -125,7 +125,7 @@ RGDEMO001   KBDemo001VM
 RGDEMO001   KBDemo020
 ```
 
-<span data-ttu-id="6cc30-122">Im nächsten Beispiel werden die virtuellen Computer zurückgegeben, bei denen „vmSize“ den Wert „Standard_DS1“ hat.</span><span class="sxs-lookup"><span data-stu-id="6cc30-122">With the next example, the results will return the VMs that have the vmSize 'Standard_DS1'.</span></span>
+<span data-ttu-id="0e053-122">Im nächsten Beispiel werden die virtuellen Computer zurückgegeben, bei denen „vmSize“ den Wert „Standard_DS1“ hat.</span><span class="sxs-lookup"><span data-stu-id="0e053-122">With the next example, the results will return the VMs that have the vmSize 'Standard_DS1'.</span></span>
 
 ```azurecli-interactive
 az vm list \
@@ -144,9 +144,9 @@ DEMORG1          demovm214  48f419af-d27a-4df0-87f3-9481007c2e5a  westus      Su
 DEMORG1          demovm222  e0f59516-1d69-4d54-b8a2-f6c4a5d031de  westus      Succeeded
 ```
 
-## <a name="filter-with-grep"></a><span data-ttu-id="6cc30-123">Filtern mit grep</span><span class="sxs-lookup"><span data-stu-id="6cc30-123">Filter with grep</span></span>
+## <a name="filter-with-grep"></a><span data-ttu-id="0e053-123">Filtern mit grep</span><span class="sxs-lookup"><span data-stu-id="0e053-123">Filter with grep</span></span>
 
-<span data-ttu-id="6cc30-124">Für das Ausgabeformat `tsv` wird Text mit Tabulatortrennung und ohne Überschriften erzeugt.</span><span class="sxs-lookup"><span data-stu-id="6cc30-124">The `tsv` output format is a tab-separated text with no headers.</span></span> <span data-ttu-id="6cc30-125">Es kann per Pipe-Zeichen an Befehle wie `grep` und `cut` angefügt werden, um bestimmte Werte der Ausgabe von `list` weiter zu analysieren.</span><span class="sxs-lookup"><span data-stu-id="6cc30-125">It can be piped to commands like `grep` and `cut` to further parse specific values out of the `list` output.</span></span> <span data-ttu-id="6cc30-126">Im folgenden Beispiel werden mit dem Befehl `grep` nur virtuelle Computer ausgewählt, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="6cc30-126">In the following example, the `grep` command selects only VMs that have text "RGD" in their name.</span></span>  <span data-ttu-id="6cc30-127">Mit dem Befehl `cut` wird nur der Wert des achten Felds (durch Tabulatoren getrennt) für die Anzeige in der Ausgabe ausgewählt.</span><span class="sxs-lookup"><span data-stu-id="6cc30-127">The `cut` command selects only the 8th field (separated by tabs) value to show in the output.</span></span>
+<span data-ttu-id="0e053-124">Für das Ausgabeformat `tsv` wird Text mit Tabulatortrennung und ohne Überschriften erzeugt.</span><span class="sxs-lookup"><span data-stu-id="0e053-124">The `tsv` output format is a tab-separated text with no headers.</span></span> <span data-ttu-id="0e053-125">Es kann per Pipe-Zeichen an Befehle wie `grep` und `cut` angefügt werden, um bestimmte Werte der Ausgabe von `list` weiter zu analysieren.</span><span class="sxs-lookup"><span data-stu-id="0e053-125">It can be piped to commands like `grep` and `cut` to further parse specific values out of the `list` output.</span></span> <span data-ttu-id="0e053-126">Im folgenden Beispiel werden mit dem Befehl `grep` nur virtuelle Computer ausgewählt, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="0e053-126">In the following example, the `grep` command selects only VMs that have text "RGD" in their name.</span></span>  <span data-ttu-id="0e053-127">Mit dem Befehl `cut` wird nur der Wert des achten Felds (durch Tabulatoren getrennt) für die Anzeige in der Ausgabe ausgewählt.</span><span class="sxs-lookup"><span data-stu-id="0e053-127">The `cut` command selects only the 8th field (separated by tabs) value to show in the output.</span></span>
 
 ```azurecli-interactive
 az vm list --out tsv | grep RGD | cut -f8
@@ -157,9 +157,9 @@ KBDemo001VM
 KBDemo020
 ```
 
-## <a name="explore-with-jpterm"></a><span data-ttu-id="6cc30-128">Durchführen einer Untersuchung mit jpterm</span><span class="sxs-lookup"><span data-stu-id="6cc30-128">Explore with jpterm</span></span>
+## <a name="explore-with-jpterm"></a><span data-ttu-id="0e053-128">Durchführen einer Untersuchung mit jpterm</span><span class="sxs-lookup"><span data-stu-id="0e053-128">Explore with jpterm</span></span>
 
-<span data-ttu-id="6cc30-129">Sie können die Befehlsausgabe auch per Pipe-Zeichen an [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) anfügen und mit Ihrer JMESPath-Abfrage experimentieren.</span><span class="sxs-lookup"><span data-stu-id="6cc30-129">You can also pipe the command output to [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) and experiment with your JMESPath query there.</span></span>
+<span data-ttu-id="0e053-129">Sie können die Befehlsausgabe auch per Pipe-Zeichen an [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) anfügen und mit Ihrer JMESPath-Abfrage experimentieren.</span><span class="sxs-lookup"><span data-stu-id="0e053-129">You can also pipe the command output to [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) and experiment with your JMESPath query there.</span></span>
 
 ```bash
 pip install jmespath-terminal

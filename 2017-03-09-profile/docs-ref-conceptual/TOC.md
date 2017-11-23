@@ -4,11 +4,14 @@
 ## [Cloud Shell](/azure/cloud-shell/overview)
 ## [Anmelden](authenticate-azure-cli.md)
 ### [Erstellen eines Dienstprinzipals](create-an-azure-service-principal-azure-cli.md)
+### Verwenden verwalteter Dienstidentitäten
+#### [Konfigurieren von MSI für einen virtuellen Azure-Computer](/azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
+#### [Anmelden bei einem virtuellen Azure-Computer mit MSI](/azure/active-directory/msi-how-to-get-access-token-using-msi?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 ## [Interaktiver Modus](interactive-azure-cli.md)
-## Bereitstellen
-### [Mit Vorlagen](/azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
-### [Exportieren von Vorlagen](/azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
-### [Mit privaten Vorlagen](/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
+## Bereitstellungsvorlagen
+### [Verwenden von Bereitstellungsvorlagen](/azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
+### [Exportieren von Bereitstellungsvorlagen](/azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
+### [Bereitstellen privater Vorlagen](/azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json)
 ## [Ausgabeformate](format-output-azure-cli.md)
 ## [Abfragen](query-azure-cli.md)
 ## [Abonnements](manage-azure-subscriptions-azure-cli.md)

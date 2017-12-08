@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 22c92aae5b836599d2f29b9f03fbf88c0ca6c2b8
-ms.sourcegitcommit: 905939cc44764b4d1cc79a9b36c0793f7055a686
+ms.openlocfilehash: 36429bb23f392ff6210a9c99885df83f53768386
+ms.sourcegitcommit: 5fc7d8ccf2304c5a12fb99a80f0b00a0ad2c34e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -26,7 +26,7 @@ Sie kann unter macOS, Linux und Windows verwendet werden.
 Informationen zur neuesten Version finden Sie in den [Versionshinweisen](release-notes-azure-cli.md).
 
 > [!NOTE]
-> Wenn Sie die vorhergehende Version der Azure CLI benötigen, finden Sie hier Informationen zur [Installation der Azure CLI 1.0](/azure/cli-install-nodejs).
+> Wenn Sie das Azure Service Management (ASM)-Modell verwenden, [installieren Sie Azure CLI 1.0](/azure/cli-install-nodejs).
 
 ## <a name="a-namemacosinstall-on-macos"></a><a name="macOS"/>Installieren unter macOS
 

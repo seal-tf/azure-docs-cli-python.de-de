@@ -12,15 +12,15 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 65becd3a-9d69-4415-8a30-777d13a0e7aa
-ms.openlocfilehash: dd05868f7378673836f47e743ed4088f2efd3dca
-ms.sourcegitcommit: 5db22de971cf3983785cb209d92cbed1bbd69ecf
+ms.openlocfilehash: 0a8ec3541783ae19961f2acf1192c0ee061a465f
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="log-in-with-azure-cli-20"></a>Anmelden mit Azure CLI 2.0
 
-Es gibt mehrere Möglichkeiten, sich mit der Azure-CLI anzumelden und zu authentifizieren. Der einfachste erste Ansatz ist die interaktive Anmeldung per Browser oder über die Befehlszeile. Wir empfehlen die Verwendung von Dienstprinzipalen. Dies ermöglicht die Erstellung nicht interaktiver Konten für die Ressourcenbearbeitung. Indem Sie einem Dienstprinzipal nur die erforderlichen Mindestberechtigungen erteilen, können Sie Ihre Automatisierungsskripts noch sicherer machen. 
+Es gibt mehrere Möglichkeiten, sich mit der Azure-CLI anzumelden und zu authentifizieren. Der einfachste erste Ansatz ist die interaktive Anmeldung per Browser oder über die Befehlszeile. Wir empfehlen die Verwendung von Dienstprinzipalen. Dies ermöglicht die Erstellung nicht interaktiver Konten für die Ressourcenbearbeitung. Indem Sie einem Dienstprinzipal nur die erforderlichen Mindestberechtigungen erteilen, können Sie Ihre Automatisierungsskripts noch sicherer machen.
 
 Die privaten Anmeldeinformationen werden nicht lokal gespeichert. Stattdessen wird von Azure ein Authentifizierungstoken generiert und gespeichert. Nach der Anmeldung ist das lokale Anmeldetoken gültig, bis es 14 Tage lang nicht verwendet wird. Dann müssen Sie sich erneut authentifizieren.
 
@@ -58,6 +58,6 @@ Der Mandantenwert ist der dem Dienstprinzipal zugeordnete Azure Active Directory
 Die Mandantenobjekt-ID für Ihre aktuelle Anmeldung können Sie mithilfe des folgenden Befehls abrufen:
 
 ```azurecli
-az account show --query 'tenanatId' -o tsv
+az account show --query 'tenantId' -o tsv
 ```
 

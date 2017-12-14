@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: fab89cb8-dac1-4e21-9d34-5eadd5213c05
-ms.openlocfilehash: a6ad5611f3e507b65e160122c87e22ec44546588
-ms.sourcegitcommit: 0149f195a0d9f0ea9b7ff5c6e00ad4242223a1a8
+ms.openlocfilehash: 9c2b693c356be78893d0893221d99a23beb5f38b
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="create-an-azure-service-principal-with-azure-cli-20"></a>Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0
 
@@ -29,13 +29,13 @@ In diesem Thema wird Schritt für Schritt erläutert, wie Sie einen Sicherheitsp
 
 ## <a name="what-is-a-service-principal"></a>Was ist ein Dienstprinzipal?
 
-Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die durch von Benutzern erstellte Apps, Dienste und Automatisierungstools verwendet wird, um auf bestimmte Azure-Ressourcen zuzugreifen. Das Konzept lässt sich als Benutzeridentität (Anmeldename und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen für den Ressourcenzugriff beschreiben. Im Gegensatz zu einer allgemeinen Benutzeridentität muss diese Identität nur ganz bestimmte Aktionen ausführen können. Wenn Sie ihr nur die Berechtigungen gewähren, die sie zum Ausführen ihrer Verwaltungsaufgaben benötigt, verbessert das die Sicherheit. 
+Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die durch von Benutzern erstellte Apps, Dienste und Automatisierungstools verwendet wird, um auf bestimmte Azure-Ressourcen zuzugreifen. Das Konzept lässt sich als Benutzeridentität (Anmeldename und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen für den Ressourcenzugriff beschreiben. Im Gegensatz zu einer allgemeinen Benutzeridentität muss diese Identität nur ganz bestimmte Aktionen ausführen können. Wenn Sie ihr nur die Berechtigungen gewähren, die sie zum Ausführen ihrer Verwaltungsaufgaben benötigt, verbessert das die Sicherheit.
 
 Azure CLI 2.0 unterstützt die Erstellung von kennwortbasierten Anmeldeinformationen für die Authentifizierung und von Zertifikatanmeldeinformationen. In diesem Thema werden beide Arten von Anmeldeinformationen behandelt.
 
 ## <a name="verify-your-own-permission-level"></a>Überprüfen der eigenen Berechtigungsstufe
 
-Zunächst einmal müssen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement über ausreichende Berechtigungen verfügen. Sie müssen insbesondere eine App in der Active Directory-Instanz erstellen und dem Dienstprinzipal eine Rolle zuweisen können. 
+Zunächst einmal müssen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement über ausreichende Berechtigungen verfügen. Sie müssen insbesondere eine App in der Active Directory-Instanz erstellen und dem Dienstprinzipal eine Rolle zuweisen können.
 
 Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung im Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
 
@@ -81,8 +81,8 @@ Mit der Option `--display-name` wird die zurückgegebene Liste mit den Apps gefi
 Verwenden Sie [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) und den Parameter `--password`, um den Dienstprinzipal mit einem Kennwort zu erstellen. Wenn Sie keine Rolle bzw. keinen Bereich angeben, wird für das aktuelle Abonnement standardmäßig die Rolle **Mitwirkender** festgelegt. Wenn Sie für die Erstellung des Dienstprinzipals weder den Parameter `--password` noch den Parameter `--cert` verwenden, wird die Kennwortauthentifizierung verwendet, und ein Kennwort wird für Sie erstellt.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name {appId} --password "{strong password}" 
-``` 
+az ad sp create-for-rbac --name {appId} --password "{strong password}"
+```
 
 ```json
 {
@@ -94,7 +94,7 @@ az ad sp create-for-rbac --name {appId} --password "{strong password}"
 }
 ```
 
- > [!WARNING] 
+ > [!WARNING]
  > Vermeiden Sie es, ein unsicheres Kennwort zu erstellen.  Befolgen Sie die Anleitung unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy).
 
 ### <a name="create-a-service-principal-with-a-self-signed-certificate"></a>Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat
@@ -145,7 +145,7 @@ Sie können sich nun als neuer Dienstprinzipal für Ihre App anmelden. Verwenden
 
 ```azurecli-interactive
 az login --service-principal -u a487e0c1-82af-47d9-9a0b-af184eb87646d --password {password-or-path-to-cert} --tenant {tenant}
-``` 
+```
 
 Nach einer erfolgreichen Anmeldung wird diese Ausgabe angezeigt:
 
@@ -165,9 +165,9 @@ Nach einer erfolgreichen Anmeldung wird diese Ausgabe angezeigt:
 ]
 ```
 
-Verwenden Sie die Werte `id`, `password` und `tenant` als Anmeldeinformationen zum Ausführen Ihrer App. 
+Verwenden Sie die Werte `id`, `password` und `tenant` als Anmeldeinformationen zum Ausführen Ihrer App.
 
-## <a name="managing-roles"></a>Verwalten von Rollen 
+## <a name="managing-roles"></a>Verwalten von Rollen
 
 > [!NOTE]
 > Bei der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure handelt es sich um ein Modell zum Definieren und Verwalten von Rollen für Benutzer- und Dienstprinzipale.
@@ -210,10 +210,10 @@ az role assignment list --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d
 }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Wenn Ihr Konto nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle verfügt, wird eine Fehlermeldung angezeigt.
 > In der Meldung ist angegeben, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/{guid}“ hat.
-   
+
 ## <a name="change-the-credentials-of-a-security-principal"></a>Ändern der Anmeldeinformationen eines Sicherheitsprinzipals
 
 Aus Sicherheitsgründen empfiehlt es sich, regelmäßig die Berechtigungen zu überprüfen und die Kennwörter zu aktualisieren. Darüber hinaus sollten Sie auch die Sicherheitsanmeldeinformationen verwalten und ändern, wenn sich Ihre App verändert.

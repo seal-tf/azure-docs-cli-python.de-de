@@ -12,15 +12,15 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 74bdb727-481d-45f7-a44e-15d18dc55483
-ms.openlocfilehash: d1440cc1e99ccddb18d23306cc0fcdb4b8babf14
-ms.sourcegitcommit: f107cf927ea1ef51de181d87fc4bc078e9288e47
+ms.openlocfilehash: 3e99c2533031dc063a50996f26712d4df92f65c9
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="output-formats-for-azure-cli-20-commands"></a>Ausgabeformate für Azure CLI 2.0-Befehle
 
-Für Azure CLI 2.0 wird JSON als Standardoption für die Ausgabe verwendet, aber Sie haben verschiedene Möglichkeiten, die Ausgabe von Befehlen zu formatieren.  Verwenden Sie den Parameter `--output` (oder `--out` oder `-o`), um die Ausgabe des Befehls basierend auf einem der Ausgabetypen zu formatieren, die in der folgenden Tabelle angegeben sind. 
+Für Azure CLI 2.0 wird JSON als Standardoption für die Ausgabe verwendet, aber Sie haben verschiedene Möglichkeiten, die Ausgabe von Befehlen zu formatieren.  Verwenden Sie den Parameter `--output` (oder `--out` oder `-o`), um die Ausgabe des Befehls basierend auf einem der Ausgabetypen zu formatieren, die in der folgenden Tabelle angegeben sind.
 
 --output | Beschreibung
 ---------|-------------------------------
@@ -65,10 +65,10 @@ Die Ergebnisse werden wie folgt angezeigt (aus Platzgründen nur eine Teilausgab
     },
           ...
           ...
-          ...   
+          ...
 ]
 ```
- 
+
 ## <a name="using-the-table-option"></a>Verwenden der Option „table“
 
 Mit der Option „table“ wird eine leicht lesbare Ausgabe bereitgestellt. Beachten Sie aber, dass geschachtelte Objekte beim einfachen Befehl `--output table` nicht in die Ausgabe einbezogen werden (im Gegensatz zum obigen json-Beispiel).  Bei Verwendung des gleichen Beispiels mit dem Ausgabeformat „table“ wird eine Liste mit den ausgewählten häufigsten Eigenschaftswerten bereitgestellt.
@@ -132,7 +132,7 @@ KBDemo020
 
 ## <a name="setting-the-default-output-format"></a>Festlegen des Standardformats für die Ausgabe
 
-Sie können den Befehl `az configure` verwenden, um Ihre Umgebung einzurichten oder die bevorzugten Einstellungen festzulegen, z.B. Standardeinstellungen für Ausgabeformate. Die einfachste Standardeinstellung für das Ausgabeformat zur normalen Nutzung ist das Format „table“. Wählen Sie die Option **3**, wenn Sie zum Angeben des Ausgabeformats aufgefordert werden. 
+Sie können den Befehl `az configure` verwenden, um Ihre Umgebung einzurichten oder die bevorzugten Einstellungen festzulegen, z.B. Standardeinstellungen für Ausgabeformate. Die einfachste Standardeinstellung für das Ausgabeformat zur normalen Nutzung ist das Format „table“. Wählen Sie die Option **3**, wenn Sie zum Angeben des Ausgabeformats aufgefordert werden.
 
 ```
 What default output format would you like?
@@ -140,5 +140,5 @@ What default output format would you like?
  [2] jsonc - Colored JSON formatted output that most closely matches API responses
  [3] table - Human-readable output format
  [4] tsv - Tab and Newline delimited, great for GREP, AWK, etc.
-Please enter a choice [3]: 
+Please enter a choice [3]:
 ```

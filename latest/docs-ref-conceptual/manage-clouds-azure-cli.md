@@ -10,11 +10,11 @@ ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
-ms.openlocfilehash: cb470d179daf7cb4ecf535903adb12071602034e
-ms.sourcegitcommit: 5db22de971cf3983785cb209d92cbed1bbd69ecf
+ms.openlocfilehash: 0eb07d2919f6e640e1d594db9e18f9ada4d9f59f
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="managing-multiple-clouds-with-azure-cli-20"></a>Verwalten mehrerer Clouds mit der Azure CLI 2.0
 
@@ -86,7 +86,7 @@ az cloud set --name AzureChinaCloud
 
 ## <a name="register-a-cloud"></a>Registrieren einer Cloud
 
-Registrieren Sie eine neue Cloud, wenn Sie über eigene Endpunkte für Azure Stack verfügen. Eine Cloud wird mit dem Befehl [cloud register](/cli/azure/cloud#register) erstellt. Dieser Befehl erfordert einen Namen und einen Satz von Funktionen mit den dazugehörigen Endpunkten. Informationen zum Registrieren einer Cloud für die Verwendung mit Azure Stack finden Sie unter [Installieren und Konfigurieren der CLI für die Verwendung mit Azure Stack](/azure/azure-stack/user/azure-stack-connect-cli#connect-to-azure-stack).  
+Registrieren Sie eine neue Cloud, wenn Sie über eigene Endpunkte für Azure Stack verfügen. Eine Cloud wird mit dem Befehl [cloud register](/cli/azure/cloud#register) erstellt. Dieser Befehl erfordert einen Namen und einen Satz von Funktionen mit den dazugehörigen Endpunkten. Informationen zum Registrieren einer Cloud für die Verwendung mit Azure Stack finden Sie unter [Installieren und Konfigurieren der CLI für die Verwendung mit Azure Stack](/azure/azure-stack/user/azure-stack-connect-cli#connect-to-azure-stack).
 
 Für China, US Government oder deutsche Regionen müssen Sie Ihre eigene Cloud nicht registrieren. Diese werden von Microsoft verwaltet und sind standardmäßig verfügbar.  Weitere Informationen zu allen verfügbaren Endpunkteinstellungen finden Sie in der [Dokumentation für `az cloud register`](/cli/azure/cloud?view=azure-cli-latest#az_cloud_register).
 

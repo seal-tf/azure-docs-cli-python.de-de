@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f792d3fc84eedade52ddfb3f351e48689e474d53
-ms.sourcegitcommit: 905939cc44764b4d1cc79a9b36c0793f7055a686
+ms.openlocfilehash: cf1405cae70762146f63bc6629edc0dd1d949fff
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="install-azure-cli-20-on-linux-manually"></a>Manuelle Installation der Azure CLI 2.0 unter Linux
 
@@ -28,7 +28,7 @@ Zum Installieren der CLI muss auf dem System folgende Software verfügbar sein:
 
 * [Python 2.7 oder Python 3.x](https://www.python.org/downloads/)
 * [libffi](https://sourceware.org/libffi/)
-* [OpenSSL](https://www.openssl.org/source/)
+* [OpenSSL 1.0.2](https://www.openssl.org/source/)
 
 ## <a name="install-or-update-manually"></a>Manuelles Installieren oder Aktualisieren
 
@@ -58,7 +58,7 @@ Wenn Sie nach der Installation den Befehl nicht ausführen können, müssen Sie 
 hash -r
 ```
 
-und überprüfen, ob das Problem behoben ist. 
+und überprüfen, ob das Problem behoben ist.
 
 Dieses Problem kann auch auftreten, wenn Sie die Shell nach der Installation nicht neu gestartet haben. Stellen Sie sicher, dass sich der Befehl `az` in `$PATH` befindet.
 

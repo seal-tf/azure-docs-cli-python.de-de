@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: ea5c0ee1-c530-4a1e-a83f-e1be71f6d416
-ms.openlocfilehash: 36429bb23f392ff6210a9c99885df83f53768386
-ms.sourcegitcommit: 5fc7d8ccf2304c5a12fb99a80f0b00a0ad2c34e9
+ms.openlocfilehash: 5a667ad8720100b45ff714601225535ef442545c
+ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
@@ -70,12 +70,12 @@ Unter macOS können Sie die Installation mit [Homebrew](https://brew.sh/) oder m
    ```bash
    exec -l $SHELL
    ```
-   
+
 3. Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
 ## <a name="install-on-windows"></a>Installieren unter Windows
 
-### <a name="install-with-msi-for-the-windows-command-line"></a>Installieren mit der MSI-Datei für die Windows-Befehlszeile 
+### <a name="install-with-msi-for-the-windows-command-line"></a>Installieren mit der MSI-Datei für die Windows-Befehlszeile
 
 Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verwenden, laden Sie den [Azure CLI-Installer (MSI)](https://aka.ms/InstallAzureCliWindows) herunter, und führen Sie ihn aus.
 
@@ -102,15 +102,14 @@ Um die CLI unter Windows zu installieren und in der Windows-Befehlszeile zu verw
 
 5.  Führen Sie die CLI über die Eingabeaufforderung mit dem `az`-Befehl aus.
 
-## <a name="install-with-apt-package-manager"></a>Installieren mit dem apt-Paket-Manager 
+## <a name="install-with-apt-package-manager"></a>Installieren mit dem apt-Paket-Manager
 
 Für Distributionen, die den `apt`-Paket-Manager verwenden, z.B. Ubuntu oder Debian, können Sie Azure CLI 2.0 mit `apt-get` installieren.
 
-> [!NOTE]
-> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+[!INCLUDE [linux-install-requirements.md](includes/linux-install-requirements.md)]
 
 1. Ändern Sie die Quellenliste:
- 
+
    - 32-Bit-System
 
      ```bash
@@ -139,8 +138,7 @@ Für Distributionen, die den `apt`-Paket-Manager verwenden, z.B. Ubuntu oder Deb
 
 Für Distributionen mit dem `yum`-Paket-Manager, z.B. Red Hat Enterprise Linux (RHEL), Fedora oder CentOS, können Sie Azure CLI 2.0 mit `yum` installieren.
 
-> [!NOTE]
-> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+[!INCLUDE [linux-install-requirements.md](includes/linux-install-requirements.md)]
 
 1. Importieren Sie den Microsoft-Repositoryschlüssel:
 
@@ -167,8 +165,7 @@ Für Distributionen mit dem `yum`-Paket-Manager, z.B. Red Hat Enterprise Linux (
 
 Für Distributionen, die den `zypper`-Paket-Manager verwenden, z.B. OpenSUSE oder SLE, können Sie Azure CLI 2.0 mit `zypper` installieren.
 
-> [!NOTE]
-> Sie benötigen Python 2.7.x oder Python 3.x, um die CLI nutzen zu können. [Installieren Sie Python](https://www.python.org/downloads/), wenn Ihre Distribution keines dieser Pakete enthält.
+[!INCLUDE [linux-install-requirements.md](includes/linux-install-requirements.md)]
 
 1. Importieren Sie den Microsoft-Repositoryschlüssel:
 
@@ -230,7 +227,7 @@ Es wird empfohlen, die CLI mit einen Paket-Manager zu installieren (sofern mögl
    SUSE OpenSUSE 13.2    | sudo zypper refresh && sudo zypper --non-interactive install curl gcc python python-xml libffi-devel python-devel openssl-devel
    ```
 
-Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python 2.7 oder höher](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/) und [OpenSSL](https://www.openssl.org/source/) installieren.
+Falls Ihre Distribution oben nicht aufgeführt ist, müssen Sie [Python 2.7 oder höher](https://www.python.org/downloads/), [libffi](https://sourceware.org/libffi/) und [OpenSSL 1.0.2](https://www.openssl.org/source/) installieren.
 
 2. Installieren Sie die CLI mit `curl`.
 

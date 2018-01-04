@@ -34,10 +34,12 @@
       href: manage-clouds-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Ausgabeformate
       href: format-output-azure-cli.md
-    - name: Abfrage
+    - name: Abfragen
       href: query-azure-cli.md
     - name: Erweiterungen
       href: azure-cli-extensions.md
+    - name: Konfigurationseinstellungen
+      href: azure-cli-Configuration.md
     - name: Versionshinweise
       href: release-notes-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
 - name: Beispielskripts
@@ -48,7 +50,7 @@
       href: /azure/virtual-machines/windows/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Web-Apps
       href: /azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Functions
+    - name: Funktionen
       href: /azure/azure-functions/functions-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: SQL-Datenbank
       href: /azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json

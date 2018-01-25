@@ -12,11 +12,11 @@ ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 76ecf2c9cd0e6e694a31ac160112d1348863f118
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: 7a12da712cd2aad5bb5fb56e27267a8e05df34a6
+ms.sourcegitcommit: c95a0cde5819cfe8a4f6b058a52f09a8f87c9696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="install-azure-cli-20-with-docker"></a>Installieren der Azure CLI 2.0 mit Docker
 
@@ -27,10 +27,10 @@ Sie können Docker zum Installieren eines eigenständigen Linux-Containers mit d
 Installieren Sie die CLI mit `docker run`.
 
    ```bash
-   docker run -it azuresdk/azure-cli-python:<version>
+   docker run -it microsoft/azure-cli:<version>
    ```
 
-Verfügbare Versionen finden Sie in unseren [Docker-Tags](https://hub.docker.com/r/azuresdk/azure-cli-python/tags/).
+Verfügbare Versionen finden Sie in unseren [Docker-Tags](https://hub.docker.com/r/microsoft/azure-cli/tags/).
 
 Die CLI wird in dem Image als Befehl `az` in `/usr/local/bin` installiert.
 
@@ -38,7 +38,7 @@ Die CLI wird in dem Image als Befehl `az` in `/usr/local/bin` installiert.
 > Wenn Sie die SSH-Schlüssel aus Ihrer Benutzerumgebung übernehmen möchten, können Sie `-v ${HOME}:/root` verwenden, um $HOME als `/root` bereitzustellen.
 
 > ```bash
-> docker run -it -v ${HOME}:/root azuresdk/azure-cli-python:<version>
+> docker run -it -v ${HOME}:/root microsoft/azure-cli:<version>
 > ```
 
 ### <a name="update-with-docker"></a>Aktualisieren mit Docker
@@ -48,18 +48,18 @@ Für die Aktualisierung mit Docker ist das Abrufen des neuen Images per Pull und
 1. Aktualisieren Sie Ihr lokales Image mit `docker pull`.
 
    ```bash
-   docker pull azuresdk/azure-cli-python
+   docker pull microsoft/azure-cli
    ```
 
 2. Rufen Sie die Container ab, die derzeit das CLI-Image verwenden.
 
    ```bash
-   docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
+   docker container ls -a --filter 'ancestor=microsoft/azure-cli'
    ```
 
    ```output
    CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
-   34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
+   34a868beb2ab        microsoft/azure-cli:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
    ```
 
   > [!NOTE]
@@ -70,7 +70,7 @@ Für die Aktualisierung mit Docker ist das Abrufen des neuen Images per Pull und
    ```bash
    docker stop inspiring_benz
    docker rm inspiring_benz
-   docker run azuresdk/azure-cli-python
+   docker run microsoft/azure-cli
    ```
 
 ### <a name="uninstall-with-docker"></a>Deinstallieren mit Docker
@@ -82,12 +82,12 @@ Um das CLI-Docker-Image ordnungsgemäß zu deinstallieren, müssen Sie alle Cont
 1. Rufen Sie die Container ab, die das azure-cli-Image ausführen.
 
    ```bash
-   docker container ls -a --filter 'ancestor=azuresdk/azure-cli-python'
+   docker container ls -a --filter 'ancestor=microsoft/azure-cli'
    ```
 
    ```output
    CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS                        PORTS               NAMES
-   34a868beb2ab        azuresdk/azure-cli-python:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
+   34a868beb2ab        microsoft/azure-cli:latest      "/bin/sh -c bash"   8 minutes ago       Exited (0) 8 minutes ago                       inspiring_benz
    ```
   > [!NOTE]
   > Wenn Sie eine bestimmte Version des Images installiert haben, müssen Sie `:<version>` ans Ende des Imagenamens anfügen.
@@ -101,6 +101,6 @@ Um das CLI-Docker-Image ordnungsgemäß zu deinstallieren, müssen Sie alle Cont
 3. Entfernen Sie das lokal installierte CLI-Image.
 
    ```bash
-   docker rmi azuresdk/azure-cli-python
+   docker rmi microsoft/azure-cli
    ```
 

@@ -13,10 +13,10 @@ ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 
 ms.openlocfilehash: fb260d7385728acd0c699488ecb5b108afefd08c
-ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
+ms.sourcegitcommit: dd5b2c7b0b56608ef9ea8730c7dc76e6c532d5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/26/2018
 ---
 # <a name="interactive-azure-cli-20"></a>Interaktive Azure CLI 2.0
 
@@ -82,7 +82,7 @@ az vm image>> %%
 az>>
 ```
 
-## <a name="query"></a>Abfrage
+## <a name="query"></a>Abfragen
 
 Sie können eine JMESPath-Abfrage für die Ergebnisse des zuletzt ausgeführten Befehls ausführen.
 Beispielsweise können Sie nach der Erstellung eines virtuellen Computers sicherstellen, dass er vollständig bereitgestellt wurde.

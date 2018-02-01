@@ -11,11 +11,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 71d9f57846cb83591ca5e3d338735b3c525987af
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: d60ede5b971ee2489482fb5a72bde9bf5389d37c
+ms.sourcegitcommit: 8606f36963e8daa6448d637393d1e4ef2c9859a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cli-20-configuration"></a>Konfiguration der Azure CLI 2.0
 
@@ -30,7 +30,7 @@ Von der CLI verwendete Konfigurationswerte werden in der folgenden Reihenfolge a
 ## <a name="cli-configuration-with-az-configure"></a>CLI-Konfiguration mit „az configure“
 
 Standardwerte für die CLI werden mit dem Befehl [az configure](/cli/azure/?view=azure-cli-latest#az_configure) festgelegt.
-Dieser Befehl akzeptiert ein einzelnes Argument: `--defaults` (eine durch Leerzeichen getrennte Liste mit `key=value`-Paaren). Die angegebenen Werte werden von der CLI anstelle von erforderlichen Argumenten verwendet. 
+Dieser Befehl akzeptiert ein einzelnes Argument: `--defaults` (eine durch Leerzeichen getrennte Liste mit `key=value`-Paaren). Die angegebenen Werte werden von der CLI anstelle von erforderlichen Argumenten verwendet.
 
 Folgende Schlüssel können verwendet werden:
 
@@ -52,7 +52,7 @@ az configure --defaults "location=westus2 group=MyResourceGroup"
 
 ## <a name="cli-configuration-file"></a>CLI-Konfigurationsdatei
 
-Die CLI-Konfigurationsdatei enthält weitere Einstellungen für die Verwaltung des CLI-Verhaltens. Sie befindet sich unter `$AZURE_CONFIG_DIR/config`. `AZURE_CONFIG_DIR` hat standardmäßig den Wert `$HOME/.azure/config` (Linux und macOS) bzw. `%USERPROFILE%\.azure\config` (Windows). 
+Die CLI-Konfigurationsdatei enthält weitere Einstellungen für die Verwaltung des CLI-Verhaltens. Sie befindet sich unter `$AZURE_CONFIG_DIR/config`. `AZURE_CONFIG_DIR` hat standardmäßig den Wert `$HOME/.azure/config` (Linux und macOS) bzw. `%USERPROFILE%\.azure\config` (Windows).
 
 Konfigurationsdateien sind im INI-Dateiformat geschrieben. Die einzelnen Abschnitte in den Dateien beginnen jeweils mit einem `[section-name]`-Header, gefolgt von einer Liste mit Einträgen vom Typ `key=value`. Bei Abschnittsnamen wird die Groß-/Kleinschreibung beachtet, bei Schlüsselnamen nicht.
 Zeilen, die mit `#` oder `;` beginnen, sind Kommentare. Inlinekommentare sind nicht zulässig. Bei booleschen Werten wird die Groß-/Kleinschreibung nicht beachtet, und sie werden durch folgende Werte dargestellt:

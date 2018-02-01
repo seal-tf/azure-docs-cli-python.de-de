@@ -13,10 +13,10 @@ ms.devlang: azurecli
 ms.service: multiple
 ms.assetid: 85c418a8-6177-4833-bb8d-ff4ce2233c1a
 ms.openlocfilehash: 689b8f4d77af5a6f398c0dd85e922baa398f767a
-ms.sourcegitcommit: 2e4d0bdd94c626e061434883032367b5619de4fe
+ms.sourcegitcommit: dd5b2c7b0b56608ef9ea8730c7dc76e6c532d5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/26/2018
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -38,7 +38,7 @@ Die einfachste Möglichkeit, erste Schritte auszuführen, besteht im [Starten vo
 
 2. Wählen Sie das zu verwendende Abonnement aus, und erstellen Sie ein Speicherkonto.
 
-   ![Erstellen Sie ein Speicherkonto.](media/get-started-with-azure-cli/storage-prompt.png)
+   ![Speicherkonto erstellen](media/get-started-with-azure-cli/storage-prompt.png)
 
 Sie können die CLI auch [installieren](install-azure-cli.md) und lokal über die Befehlszeile ausführen. Führen Sie nach der Installation der CLI `az login` aus, um sich mit Ihrem Standardabonnement anzumelden.
 

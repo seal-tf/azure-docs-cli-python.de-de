@@ -5,29 +5,25 @@ keywords: Azure CLI,Azure CLI installieren,Azure macOS, Azure installieren macOS
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 10/27/2017
+ms.date: 01/29/18
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e615d2b3ab3b1307e982cb1d4d456633440afdf6
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: 36fd2604677db0b7f820ee11884bf790fb1d75cb
+ms.sourcegitcommit: 8606f36963e8daa6448d637393d1e4ef2c9859a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-azure-cli-20-on-macos"></a>Installieren der Azure CLI 2.0 unter macOS
 
-Bei einer macOS-Plattform können Sie die Azure CLI entweder über den [Homebrew-Paket-Manager](http://brew.sh) oder manuell installieren. Die bevorzugte Methode ist Homebrew. Damit werden das Installieren, das Abrufen von Updates und das Deinstallieren vereinfacht.
+Bei Verwendung der macOS-Plattform können Sie die Azure CLI über den [Homebrew-Paket-Manager](http://brew.sh) installieren. Mit Homebrew können Sie Ihre CLI-Installation ganz einfach auf dem neuesten Stand halten. Das CLI-Paket wurde ab der macOS-Version 10.9 getestet.
 
-## <a name="use-homebrew-to-install"></a>Installieren mit Homebrew
+## <a name="install"></a>Installieren
 
-Homebrew ist die einfachste Möglichkeit zum Verwalten der CLI-Installation. Homebrew bietet praktische Optionen zum Installieren, Aktualisieren und Deinstallieren. Es ähnelt anderen Paket-Managern wie `apt` oder `yum`.
-Falls Homebrew auf Ihrem System nicht verfügbar ist, [installieren Sie Homebrew](https://docs.brew.sh/Installation.html), bevor Sie fortfahren.
-
-### <a name="install-with-homebrew"></a>Installieren mit Homebrew
+Homebrew ist die einfachste Möglichkeit zum Verwalten der CLI-Installation. Homebrew bietet praktische Optionen zum Installieren, Aktualisieren und Deinstallieren. Falls Homebrew auf Ihrem System nicht verfügbar ist, [installieren Sie Homebrew](https://docs.brew.sh/Installation.html), bevor Sie fortfahren.
 
 Sie können die CLI installieren, indem Sie die Homebrew-Repositoryinformationen aktualisieren und dann den Befehl `install` ausführen:
 
@@ -37,42 +33,36 @@ brew update && brew install azure-cli
 
 Sie können dann die Azure CLI mit dem Befehl `az` ausführen.
 
-### <a name="update-with-homebrew"></a>Aktualisieren mit Homebrew
+## <a name="troubleshooting"></a>Problembehandlung
 
-Die CLI wird regelmäßig mit Fehlerbehebungen, Verbesserungen, neuen Features und Vorschaufunktionen aktualisiert. Ein neues Release ist ungefähr alle zwei Wochen verfügbar. Sie müssen die lokalen Repositoryinformationen und anschließend das CLI-Paket aktualisieren.
+In diesem Abschnitt finden Sie einige allgemeine Fehler, die zu Problemen bei der Homebrew-basierten CLI-Installation führen können. Sollte Ihr Problem hier nicht aufgeführt sein, [melden Sie es über GitHub](https://github.com/Azure/azure-cli/issues).
 
-```bash
-brew update && brew upgrade azure-cli
-```
+### <a name="unable-to-find-python-or-installed-packages"></a>Python und installierte Pakete können nicht gefunden werden.
 
-### <a name="troubleshooting"></a>Problembehandlung
-
-Ist beim Installieren oder Aktualisieren der CLI mit Homebrew ein Fehler aufgetreten? Hier sind einige allgemeine Fehler sowie Ansätze zum Diagnostizieren und Beheben der Probleme aufgeführt.
-
-#### <a name="unable-to-find-python-or-installed-packages"></a>Python und installierte Pakete können nicht gefunden werden.
-
-Wenn bei der Installation Python und installierte Pakete nicht gefunden werden können, weichen die Versionen unter Umständen geringfügig voneinander ab, oder es liegt ein anderes Problem vor, das während der Homebrew-Installation aufgetreten ist. Da die CLI nicht virtualenv verwendet, verlässt sie sich darauf, dass die richtigen, von Homebrew installierten Versionen von Python gefunden werden. Sie können diese Probleme vielleicht beheben, indem Sie die Python-Installation erneut verknüpfen:
+Sollten Python oder installierte Pakete bei der Installation nicht gefunden werden, weichen die Versionen unter Umständen geringfügig voneinander ab, oder es liegt ein anderes Problem vor, das während der Homebrew-Installation aufgetreten ist. Da die CLI keine virtuelle Python-Umgebung verwendet, muss sie die korrekte Python-Version finden können. Zur Behebung dieser Probleme können Sie ggf. die Python-Installation neu verknüpfen.
 
 ```bash
 brew link --overwrite python3
 ```
 
-#### <a name="the-cli-version-is-out-of-date"></a>Die CLI-Version ist veraltet.
+### <a name="cli-version-1x-is-installed"></a>CLI-Version 1.x wird installiert.
 
-Wenn die installierte CLI-Version Ihrer Meinung nach veraltet sein könnte, müssen Sie den Befehl `brew update` gefolgt von `brew upgrade azure-cli` ausführen. Wenn die CLI dadurch nicht aktualisiert wird, berücksichtigen Sie, dass das Rollout von Homebrew-Paketen unter Umständen langsamer erfolgen kann als das von allgemeinen Releases. Wenn Sie die aktuellste Version der CLI benötigen, sollten Sie sie [manuell installieren](#manage-the-cli-manually).
+Die Installation einer veralteten Version kann auf einen veralteten Homebrew-Cache zurückzuführen sein. Gehen Sie gemäß der [Aktualisierungsanleitung](#Update) vor.
 
-### <a name="uninstall-with-homebrew"></a>Deinstallieren mit Homebrew
+## <a name="update"></a>Aktualisieren
 
-Es tut uns leid, wenn Sie die Azure CLI deinstallieren möchten. Teilen Sie uns vor der Deinstallation mithilfe des Befehls `az feedback` mit, warum Sie sich für die Deinstallation entschieden haben und wie wir die CLI verbessern können. Wir möchten sicherstellen, dass die Azure CLI möglichst fehlerfrei und benutzerfreundlich ist. Sie können auch ein [GitHub-Problem melden](https://github.com/Azure/azure-cli/issues).
+Die CLI wird regelmäßig mit Fehlerbehebungen, Verbesserungen, neuen Features und Vorschaufunktionen aktualisiert. Ein neues Release ist ungefähr alle zwei Wochen verfügbar. Aktualisieren Sie Ihre lokalen Repositoryinformationen, und upgraden Sie anschließend das Paket `azure-cli`.
 
-Wenn Sie Homebrew für die Installation verwendet haben, sollten Sie Homebrew auch für die Deinstallation verwenden.
+```bash
+brew update && brew upgrade azure-cli
+```
+
+## <a name="uninstall"></a>Deinstallieren
+
+[!INCLUDE [uninstall-boilerplate.md](includes/uninstall-boilerplate.md)]
+
+Verwenden Sie Homebrew, um das Paket `azure-cli` zu deinstallieren.
 
 ```bash
 brew uninstall azure-cli
 ```
-
-## <a name="install-the-cli-manually"></a>Manuelles Installieren der CLI
-
-Wenn Sie für die Verwaltung der CLI-Installation Homebrew nicht verwenden können oder möchten, können Sie eine manuelle Installation durchführen.
-
-Befolgen Sie die [Anweisungen für die manuelle Linux-Installation](install-azure-cli-linux.md) für die manuelle Installation unter macOS. macOS-Version 10.9 und höhere Versionen müssen alle erforderlichen Abhängigkeiten enthalten.

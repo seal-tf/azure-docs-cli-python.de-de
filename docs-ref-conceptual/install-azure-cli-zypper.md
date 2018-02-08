@@ -1,26 +1,25 @@
 ---
-title: Installieren der Azure CLI 2.0 mit zypper
+title: Installieren der Azure CLI 2.0 unter Linux mit zypper
 description: Installieren der Azure CLI 2.0 mit zypper
 keywords: Azure CLI, Azure CLI installieren, Azure CLI zypper, Azure CLI OpenSUSE, Azure CLI SLE
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 11/01/2017
+ms.date: 01/29/18
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6b9a97e73f45c8271f1e8f19d5a8cf5f9f748d07
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: c0b566f96e47d34d20f7bf85db0fae32913ed596
+ms.sourcegitcommit: 8606f36963e8daa6448d637393d1e4ef2c9859a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-azure-cli-20-with-zypper"></a>Installieren der Azure CLI 2.0 mit zypper
 
-Wenn Sie eine Distribution ausführen, in der `zypper` enthalten ist (etwa OpenSUSE oder SLE), steht ein Paket für die Azure CLI zur Verfügung, das Sie auf Ihrem System installieren können.
+Wenn Sie eine Distribution mit `zypper` verwenden (etwa openSUSE oder SLES), steht ein Paket für die Azure CLI zur Verfügung. Dieses Paket wurde mit openSUSE 42.2 und SLES 12 SP 2 getestet.
 
 [!INCLUDE [linux-install-requirements.md](includes/linux-install-requirements.md)]
 
@@ -65,7 +64,7 @@ sudo zypper update azure-cli
 
 ## <a name="uninstall"></a>Deinstallieren
 
-Es tut uns leid, wenn Sie die Azure CLI deinstallieren möchten. Teilen Sie uns vor der Deinstallation mithilfe des Befehls `az feedback` mit, warum Sie sich für die Deinstallation entschieden haben und wie wir die CLI verbessern können. Wir möchten sicherstellen, dass die Azure CLI möglichst fehlerfrei und benutzerfreundlich ist. Sie können auch ein [GitHub-Problem melden](https://github.com/Azure/azure-cli/issues).
+[!INCLUDE [uninstall-boilerplate.md](includes/uninstall-boilerplate.md)]
 
 1. Entfernen Sie das Paket aus Ihrem System.
 

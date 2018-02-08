@@ -5,33 +5,39 @@ keywords: Azure CLI,Azure CLI installieren,Azure installieren Windows, Azure CLI
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 11/01/2017
+ms.date: 01/29/18
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 247ae43813ca9ca7b7b98ebd8e933e02989c6649
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: fc84b80e44a994495ef97cf9d7ec4e4a79a5c5b3
+ms.sourcegitcommit: b41c5ed4a26c771a1a32b4560131f7a65b80fd33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="install-azure-cli-20-on-windows"></a>Installieren der Azure CLI 2.0 unter Windows
 
-Unter Windows können Sie über ein MSI-Installationsprogramm eine native Binärdatei installieren, die über die Windows-Eingabeaufforderung oder PowerShell verwendet werden kann. Wenn Sie das Windows-Subsystem für Linux (WSL) ausführen, sind Pakete für die ausgeführte Distribution verfügbar. Die Liste der unterstützten Paket-Manager bzw. Informationen zur manuellen Installation unter WSL finden Sie auf der [Hauptseite für die Installation](install-azure-cli.md).
+Unter Windows wird die Binärdatei der Azure CLI über eine MSI-Datei installiert. Dadurch können Sie über die Windows-Eingabeaufforderung (CMD) oder über PowerShell auf die CLI zugreifen.
+Bei Verwendung des Windows-Subsystems für Linux (WSL) sind Pakete für Ihre Distribution verfügbar. Die Liste der unterstützten Paket-Manager bzw. Informationen zur manuellen Installation unter WSL finden Sie auf der [Hauptseite für die Installation](install-azure-cli.md).
 
-## <a name="install-or-update-with-msi"></a>Installieren oder Aktualisieren mit MSI
+## <a name="install-or-update"></a>Installieren oder Aktualisieren
 
-Das verteilbare MSI-Installationsprogramm wird zum Installieren, Aktualisieren und Deinstallieren des `az`-Befehls unter Windows verwendet. Sie können das [MSI-Installationsprogramm herunterladen](https://aka.ms/InstallAzureCliWindows) und anschließend zum Installieren oder Aktualisieren ausführen.
+Das verteilbare MSI-Installationsprogramm wird zum Installieren, Aktualisieren und Deinstallieren des `az`-Befehls unter Windows verwendet.
+
+> [!div class="nextstepaction"]
+> [MSI-Installationsprogramm herunterladen](https://azurecliprod.blob.core.windows.net/msi/azure-cli-latest.msi)
 
 Wenn das Installationsprogramm fragt, ob Änderungen am Computer vorgenommen werden dürfen, klicken Sie auf „Ja“.
 
-Sie können nun mit dem Befehl `az` über die Windows-Eingabeaufforderung oder PowerShell die Azure CLI ausführen.
+Sie können nun mit dem Befehl `az` über die Windows-Eingabeaufforderung oder PowerShell die Azure CLI ausführen. In PowerShell stehen einige Features zur Vervollständigung mit der TAB-TASTE zur Verfügung, die an der Eingabeaufforderung nicht verfügbar sind.
 
-## <a name="uninstall-with-msi"></a>Deinstallieren mit der MSI-Datei
+## <a name="uninstall"></a>Deinstallieren
 
-Es tut uns leid, wenn Sie die Azure CLI deinstallieren möchten. Teilen Sie uns vor der Deinstallation mithilfe des Befehls `az feedback` mit, warum Sie sich für die Deinstallation entschieden haben und wie wir die CLI verbessern können. Wir möchten sicherstellen, dass die Azure CLI möglichst fehlerfrei und benutzerfreundlich ist. Sie können auch ein [GitHub-Problem melden](https://github.com/Azure/azure-cli/issues).
+[!INCLUDE [uninstall-boilerplate.md](includes/uninstall-boilerplate.md)]
 
-Die Deinstallation kann durch erneutes Ausführen des MSI-Installationsprogramms oder durch Auswählen der Option „Deinstallieren“ ausgeführt werden. Sie können das [MSI-Installationsprogramm herunterladen](https://aka.ms/InstallAzureCliWindows), wenn es nicht mehr auf Ihrem Computer verfügbar ist.
+Die Deinstallation kann durch erneutes Ausführen des MSI-Installationsprogramms oder durch Auswählen der Option „Deinstallieren“ ausgeführt werden. 
+
+> [!div class="nextstepaction"]
+> [MSI-Installationsprogramm herunterladen](https://azurecliprod.blob.core.windows.net/msi/azure-cli-latest.msi)

@@ -1,21 +1,20 @@
 ---
 title: "Manuelle Installation der Azure CLI 2.0 für Linux"
 description: Manuelle Installation der Azure CLI 2.0 unter Linux
-keywords: Azure CLI,Azure CLI installieren,Azure Linux, Azure installieren Linux
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 01/29/18
+ms.date: 01/29/2018
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: d8c88d111c50a3cbb6b643a14dcd2a9773699657
-ms.sourcegitcommit: 8606f36963e8daa6448d637393d1e4ef2c9859a0
+ms.openlocfilehash: 4ab1f70308810e045b9a1d923fd809ad9848f6c6
+ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="install-azure-cli-20-on-linux-manually"></a>Manuelle Installation der Azure CLI 2.0 unter Linux
 
@@ -32,7 +31,7 @@ Zum Installieren der CLI muss auf dem System folgende Software verfügbar sein:
 * [libffi](https://sourceware.org/libffi/)
 * [OpenSSL 1.0.2](https://www.openssl.org/source/)
 
-## <a name="install-or-update"></a>Installieren oder Aktualisieren 
+## <a name="install-or-update"></a>Installieren oder Aktualisieren
 
 Sie müssen eine vollständige Installation ausführen – unabhängig davon, ob die CLI installiert oder aktualisiert wird. Wenn alle erforderlichen Komponenten vorhanden sind, können Sie die CLI durch Ausführung von `curl` installieren.
 
@@ -55,7 +54,7 @@ curl https://azurecliprod.blob.core.windows.net/install | bash
 
 ### <a name="az-command-not-found"></a>Der Befehl `az` wurde nicht gefunden.
 
-Wenn Sie den Befehl nicht ausführen können, nachdem Sie die Installation durchgeführt und `bash` oder `zsh` verwendet haben, leeren Sie den Befehlshash-Cache Ihrer Shell. Führen Sie den folgenden Befehl aus:
+Wenn Sie den Befehl nicht ausführen können, nachdem Sie die Installation durchgeführt und `bash` oder `zsh` verwendet haben, leeren Sie den Befehlshash-Cache Ihrer Shell. Ausführen
 
 ```bash
 hash -r
@@ -76,19 +75,19 @@ Dieses Problem kann auch auftreten, wenn Sie die Shell nach der Installation nic
 Sie können die CLI deinstallieren, indem Sie die Dateien direkt aus dem Verzeichnis löschen, das Sie bei der Installation ausgewählt haben. Das Standardinstallationsverzeichnis ist `$HOME`.
 
 1. Entfernen Sie die installierten CLI-Dateien.
-  
+
   ```bash
   rm -r <install location>/lib/azure-cli
   rm <install location>/bin/az
   ```
 2. Ändern Sie die Datei `$HOME/.bash_profile`, indem Sie die folgende Zeile entfernen:
-  
+
   ```
   <install location>/lib/azure-cli/az.completion
   ```
 
 3. Laden Sie bei Verwendung von `bash` oder `zsh` den Befehlscache Ihrer Shell neu.
-  
+
   ```bash
   hash -r
   ```

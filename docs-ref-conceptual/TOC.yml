@@ -27,7 +27,7 @@
       items:
         - name: Erstellen eines Dienstprinzipals
           href: create-an-azure-service-principal-azure-cli.md
-        - name: Verwenden verwalteter Dienstidentitäten
+        - name: Verwaltete Dienstidentitäten
           items:
             - name: Konfigurieren des MSI für eine Azure-VM
               href: /azure/active-directory/msi-qs-configure-cli-windows-vm?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
@@ -57,6 +57,10 @@
       href: azure-cli-Configuration.md
     - name: Versionshinweise
       href: release-notes-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+- name: Tutorials
+  items:
+    - name: Erstellen von virtuellen Computern
+      href: azure-cli-vm-tutorial.yml
 - name: Beispielskripts
   items:
     - name: Virtuelle Linux-Computer

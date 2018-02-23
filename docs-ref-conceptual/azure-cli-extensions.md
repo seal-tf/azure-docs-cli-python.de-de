@@ -5,31 +5,31 @@ keywords: Azure CLI, Erweiterungen
 author: sptramer
 ms.author: sttramer
 manager: routlaw
-ms.date: 10/30/2017
+ms.date: 02/13/2018
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: a76e58c4430a184d133cca0ef0623f325aeb2f27
-ms.sourcegitcommit: 3eef136ae752eb90c67af604d4ddd298d70b1c9d
+ms.openlocfilehash: 548c06c64cc98598a2bd24bcc5959e59bffb4930
+ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="using-extensions-with-the-azure-cli-20"></a>Verwenden von Erweiterungen mit Azure CLI 2.0
 
-Erweiterungen sind einzelne Module, die nicht mit der Azure CLI bereitgestellt werden und die Ihnen das Hinzufügen von Funktionen mit neuen Befehlen ermöglichen. Dies können experimentelle oder Vorabangebote, spezielle Tools, die Microsoft zur Erfüllung Ihrer Anforderungen bereitstellt, oder auch von Ihnen selbst geschriebene Erweiterungen sein. Erweiterungen ermöglichen das flexible Anpassen der CLI an Ihre eigenen Anforderungen, ohne dass Sie viele zusätzliche Pakete mitliefern müssen, die nicht als Teil des Kernfeaturesatzes angesehen werden.
+Erweiterungen sind einzelne Module, die nicht mit der Azure CLI bereitgestellt werden und Funktionen über neue Befehle hinzufügen. Dies können experimentelle Angebote oder Vorabangebote, spezielle Tools von Microsoft oder von Ihnen selbst geschriebene benutzerdefinierte Features sein. Erweiterungen ermöglichen das flexible Anpassen der CLI an Ihre eigenen Anforderungen, ohne dass Sie viele zusätzliche Pakete mitliefern müssen, die nicht als Teil des Kernfeaturesatzes angesehen werden.
 
 In diesem Artikel wird beschrieben, wie Sie Erweiterungen für die CLI installieren, aktualisieren und entfernen. Außerdem werden häufige Fragen zum Verhalten von Erweiterungen beantwortet.
 
 ## <a name="finding-extensions"></a>Suchen nach Erweiterungen
 
-Um zu ermitteln, welche Erweiterungen verfügbar sind, können Sie `az extension list-available` verwenden. Mit diesem Befehl werden die verfügbaren offiziellen Erweiterungen aufgelistet, die von Microsoft bereitgestellt und unterstützt werden.
+Um zu ermitteln, welche Erweiterungen verfügbar sind, können Sie [az extension list-available](/cli/azure/extension?view=azure-cli-latest#az_extension_list_available) verwenden. Mit diesem Befehl werden die verfügbaren offiziellen Erweiterungen aufgelistet, die von Microsoft bereitgestellt und unterstützt werden.
 
 ## <a name="installing-extensions"></a>Installieren von Erweiterungen
 
-Nachdem Sie eine zu installierende Erweiterung gefunden haben, können Sie `az extension add` verwenden, um sie abzurufen. Wenn die Erweiterung eine offizielle Microsoft-Erweiterung ist, die bei Ausführung von `az extension list-available` aufgeführt wird, können Sie die Erweiterung anhand des Namens installieren.
+Nachdem Sie eine zu installierende Erweiterung gefunden haben, können Sie [az extension add](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_add) verwenden, um sie abzurufen. Wenn die Erweiterung in `az extension list-available` aufgeführt wird, können Sie die Erweiterung anhand des Namens installieren.
 
 ```azurecli
 az extension add --name <extension-name>
@@ -45,7 +45,7 @@ Nach der Installation einer Erweiterung befindet sich diese unter dem Wert der S
 
 ## <a name="updating-extensions"></a>Aktualisieren von Erweiterungen
 
-Erweiterungen können nur anhand des Namens aktualisiert werden:
+Erweiterungen können nur anhand des Namens aktualisiert werden (mit [az extension update](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_update)).
 
 ```azurecli
 az extension update --name <extension-name>
@@ -55,7 +55,7 @@ Wenn ein Erweiterungsname aus einem bestimmten Grund für die CLI nicht aufgelö
 
 ## <a name="uninstalling-extensions"></a>Deinstallieren von Erweiterungen
 
-Wenn Sie eine Erweiterung nicht mehr benötigen, können Sie sie mit `az extension remove` entfernen.
+Wenn Sie eine Erweiterung nicht mehr benötigen, können Sie sie mit [az extension remove](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_remove) entfernen.
 
 ```azurecli
 az extension remove --name <extension-name>

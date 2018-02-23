@@ -1,238 +1,115 @@
 ---
-title: Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0
-description: "Hier erfahren Sie, wie Sie mit Azure CLI 2.0 einen Dienstprinzipal für Ihre App oder Ihren Dienst erstellen."
-keywords: Azure CLI 2.0, Azure Active Directory, Azure Active directory, AD, RBAC
-author: rloutlaw
-ms.author: routlaw
-manager: douge
-ms.date: 10/12/2017
+title: Verwenden von Azure-Dienstprinzipalen mit der Azure CLI 2.0
+description: Hier erfahren Sie, wie Sie mit der Azure CLI 2.0 einen Dienstprinzipal erstellen und verwenden.
+author: sptramer
+ms.author: sttramer
+manager: carmonm
+ms.date: 02/12/2018
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.assetid: fab89cb8-dac1-4e21-9d34-5eadd5213c05
-ms.openlocfilehash: e473b7289f3b72dc23a1f747e15cea1b88aa89e9
-ms.sourcegitcommit: dd5b2c7b0b56608ef9ea8730c7dc76e6c532d5ea
+ms.openlocfilehash: b46c735a14240bddd07659475ada1c33c75a1e67
+ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="create-an-azure-service-principal-with-azure-cli-20"></a>Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0
 
-Wenn Sie Ihre App oder Ihren Dienst mit Azure CLI 2.0 verwalten möchten, sollten Sie sie bzw. ihn nicht unter Ihren eigenen Anmeldeinformationen, sondern unter einem AAD-Dienstprinzipal (Azure Active Directory) ausführen.
-In diesem Thema wird Schritt für Schritt erläutert, wie Sie einen Sicherheitsprinzipal mit Azure CLI 2.0 erstellen.
+Wenn Sie eine separate Anmeldung mit Zugriffseinschränkungen erstellen möchten, können Sie dafür einen Dienstprinzipal verwenden. Dienstprinzipale sind separate Identitäten, die einem Konto zugeordnet werden können. Dienstprinzipale sind hilfreich bei der Verwendung von Anwendungen und Tasks, die automatisiert werden müssen. Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines Dienstprinzipals.
 
-> [!NOTE]
-> Dienstprinzipale können auch über das Azure-Portal erstellt werden.
-> Ausführlichere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+## <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
 
-## <a name="what-is-a-service-principal"></a>Was ist ein Dienstprinzipal?
+Verwenden Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac), um einen Dienstprinzipal zu erstellen. Der Name des Dienstprinzipals ist nicht mit dem vorhandenen Namen einer Anwendung oder eines Benutzers verknüpft. Sie können einen Dienstprinzipal mit dem gewünschten Authentifizierungstyp erstellen.
 
-Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die durch von Benutzern erstellte Apps, Dienste und Automatisierungstools verwendet wird, um auf bestimmte Azure-Ressourcen zuzugreifen. Das Konzept lässt sich als Benutzeridentität (Anmeldename und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen für den Ressourcenzugriff beschreiben. Im Gegensatz zu einer allgemeinen Benutzeridentität muss diese Identität nur ganz bestimmte Aktionen ausführen können. Wenn Sie ihr nur die Berechtigungen gewähren, die sie zum Ausführen ihrer Verwaltungsaufgaben benötigt, verbessert das die Sicherheit.
+* `--password` wird für die kennwortbasierte Authentifizierung verwendet. Halten Sie sich an die Vorgaben unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy), um ein sicheres Kennwort zu erstellen. Falls Sie kein Kennwort angeben, wird eines für Sie erstellt.
 
-Azure CLI 2.0 unterstützt die Erstellung von kennwortbasierten Anmeldeinformationen für die Authentifizierung und von Zertifikatanmeldeinformationen. In diesem Thema werden beide Arten von Anmeldeinformationen behandelt.
+  ```azurecli
+  az ad sp create-for-rbac --name ServicePrincipalName --password PASSWORD
+  ```
 
-## <a name="verify-your-own-permission-level"></a>Überprüfen der eigenen Berechtigungsstufe
+* `--cert` wird für die zertifikatbasierte Authentifizierung für ein vorhandenes Zertifikat verwendet (entweder als öffentliche PEM- oder DER-Zeichenfolge oder als `@{file}` zum Laden einer Datei).
 
-Zunächst einmal müssen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement über ausreichende Berechtigungen verfügen. Sie müssen insbesondere eine App in der Active Directory-Instanz erstellen und dem Dienstprinzipal eine Rolle zuweisen können.
+  ```azurecli
+  az ad sp create-for-rbac --name ServicePrincipalName --cert {CertStringOrFile} 
+  ```
 
-Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung im Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
+  Das Argument `--keyvault` kann hinzugefügt werden, um anzugeben, dass das Zertifikat in Azure Key Vault gespeichert wird. In diesem Fall verweist der Wert `--cert` auf den Namen des Zertifikats in Key Vault.
 
-## <a name="create-a-service-principal-for-your-application"></a>Erstellen eines Dienstprinzipals für Ihre Anwendung
+* `--create-cert` erstellt ein _selbstsigniertes_ Zertifikat für die Authentifizierung. Das Argument `--keyvault` kann hinzugefügt werden, um das Zertifikat in Azure Key Vault zu speichern.
 
-Sie müssen über eine der folgenden Angaben verfügen, um die App identifizieren zu können, für die Sie einen Dienstprinzipal erstellen möchten:
+  ```azurecli
+  az ad sp create-for-rbac --name ServicePrincipalName --create-cert
+  ```
 
-  * Eindeutigen Namen oder URI Ihrer bereitgestellten App („MyDemoWebApp“ in den folgenden Beispielen)
-  * Anwendungs-ID (GUID, die Ihrer bereitgestellten App, Ihrem bereitgestellten Dienst oder Ihrem bereitgestellten Objekt zugeordnet ist)
+Wenn kein Argument angegeben wird, das den Authentifizierungstyp angibt, wird standardmäßig `--password` verwendet.
 
-Mit diesen Werten wird Ihre Anwendung bei der Erstellung eines Dienstprinzipals identifiziert.
-
-### <a name="get-information-about-your-application"></a>Abrufen von Informationen zu Ihrer Anwendung
-
-Rufen Sie Identitätsinformationen zu Ihrer Anwendung mithilfe von `az ad app list` ab.
-
-[!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
-
-```azurecli-interactive
-az ad app list --display-name MyDemoWebApp
-```
+Die Ausgabe des Befehls `create-for-rbac` hat folgendes Format:
 
 ```json
 {
-    "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-    "appPermissions": null,
-    "availableToOtherTenants": false,
-    "displayName": "MyDemoWebApp",
-    "homepage": "http://MyDemoWebApp.azurewebsites.net",
-    "identifierUris": [
-      "http://MyDemoWebApp"
-    ],
-    "objectId": "bd07205b-629f-4a2e-945e-1ee5dadf610b9",
-    "objectType": "Application",
-    "replyUrls": []
-  }
-```
-
-Mit der Option `--display-name` wird die zurückgegebene Liste mit den Apps gefiltert, um nur die Apps anzuzeigen, für die `displayName` mit „MyDemoWebApp“ beginnt.
-
-### <a name="create-a-service-principal-with-a-password"></a>Erstellen eines Dienstprinzipals mit einem Kennwort
-
-Verwenden Sie [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) und den Parameter `--password`, um den Dienstprinzipal mit einem Kennwort zu erstellen. Wenn Sie keine Rolle bzw. keinen Bereich angeben, wird für das aktuelle Abonnement standardmäßig die Rolle **Mitwirkender** festgelegt. Wenn Sie für die Erstellung des Dienstprinzipals weder den Parameter `--password` noch den Parameter `--cert` verwenden, wird die Kennwortauthentifizierung verwendet, und ein Kennwort wird für Sie erstellt.
-
-```azurecli-interactive
-az ad sp create-for-rbac --name {appName} --password "{strong password}"
-```
-
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "displayName": "MyDemoWebApp",
-  "name": "http://MyDemoWebApp",
-  "password": {strong password},
+  "appId": "APP_ID",
+  "displayName": "ServicePrincipalName",
+  "name": "http://ServicePrincipalName",
+  "password": ...,
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
 
- > [!WARNING]
- > Vermeiden Sie es, ein unsicheres Kennwort zu erstellen.  Befolgen Sie die Anleitung unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy).
-
-### <a name="create-a-service-principal-with-a-self-signed-certificate"></a>Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat
-
-Verwenden Sie [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) und den Parameter `--create-cert`, um ein selbstsigniertes Zertifikat zu erstellen.
-
-```azurecli-interactive
-az ad sp create-for-rbac --name {appName} --create-cert
-```
-
-```json
-{
-  "appId": "c495db57-82e0-4e2e-9369-069dff176858",
-  "displayName": "azure-cli-2017-10-12-22-15-38",
-  "fileWithCertAndPrivateKey": "<path>/<file-name>.pem",
-  "name": "http://MyDemoWebApp",
-  "password": null,
-  "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-}
-```
-
-Kopieren Sie den Wert der `fileWithCertAndPrivateKey`-Antwort. Hierbei handelt es sich um die für die Authentifizierung verwendete Zertifikatdatei.
-
-Weitere Optionen für die Verwendung von Zertifikaten finden Sie unter [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac).
-
-### <a name="get-information-about-the-service-principal"></a>Abrufen von Informationen zum Dienstprinzipal
-
-```azurecli-interactive
-az ad sp show --id {appID}
-```
-
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "displayName": "MyDemoWebApp",
-  "objectId": "0ceae62e-1a1a-446f-aa56-2300d176659bde",
-  "objectType": "ServicePrincipal",
-  "servicePrincipalNames": [
-    "http://MyDemoWebApp",
-    "a487e0c1-82af-47d9-9a0b-af184eb87646d"
-  ]
-}
-```
-
-### <a name="sign-in-using-the-service-principal"></a>Anmelden mithilfe des Dienstprinzipals
-
-Sie können sich nun als neuer Dienstprinzipal für Ihre App anmelden. Verwenden Sie dazu *appId* aus `az ad sp show` und entweder das *Kennwort* oder den Pfad zum erstellten Zertifikat.  Geben Sie den Wert für *tenant* aus den Ergebnissen von `az ad sp create-for-rbac` an.
-
-```azurecli-interactive
-az login --service-principal -u {appID} --password {password-or-path-to-cert} --tenant {tenant}
-```
-
-Nach einer erfolgreichen Anmeldung wird diese Ausgabe angezeigt:
-
-```json
-[
-  {
-    "cloudName": "AzureCloud",
-    "id": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-    "isDefault": true,
-    "state": "Enabled",
-    "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "user": {
-      "name": "https://MyDemoWebApp",
-      "type": "servicePrincipal"
-    }
-  }
-]
-```
-
-Verwenden Sie die Werte `id`, `password` und `tenant` als Anmeldeinformationen zum Ausführen Ihrer App.
-
-## <a name="managing-roles"></a>Verwalten von Rollen
+Die Werte `appId`, `tenant` und `password` werden für die Authentifizierung verwendet. `displayName` wird bei der Suche nach einem vorhandenen Dienstprinzipal verwendet.
 
 > [!NOTE]
-> Bei der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure handelt es sich um ein Modell zum Definieren und Verwalten von Rollen für Benutzer- und Dienstprinzipale.
-> Rollen sind bestimmte Berechtigungen zugeordnet, die bestimmen, welche Ressourcen ein Prinzipal lesen, aufrufen, schreiben oder verwalten kann.
-> Weitere Informationen zu RBAC und Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/active-directory/role-based-access-built-in-roles).
+> Wenn Ihr Konto nicht über ausreichende Berechtigungen zum Erstellen eines Dienstprinzipals verfügt, wird eine Fehlermeldung mit dem Hinweis „Nicht genügend Berechtigungen zum Abschließen des Vorgangs“ angezeigt. Bitten Sie den Azure Active Directory-Administrator, einen Dienstprinzipal zu erstellen.
 
-Azure CLI 2.0 enthält die folgenden Befehle zum Verwalten von Rollenzuweisungen:
+## <a name="manage-service-principal-roles"></a>Verwalten von Dienstprinzipalrollen 
+
+Die Azure CLI 2.0 enthält die folgenden Befehle zum Verwalten von Rollenzuweisungen:
 
 * [az role assignment list](/cli/azure/role/assignment#list)
 * [az role assignment create](/cli/azure/role/assignment#create)
 * [az role assignment delete](/cli/azure/role/assignment#delete)
 
-Standardmäßig hat ein Dienstprinzipal die Rolle **Mitwirkender**. Dies ist unter Umständen nicht die beste Wahl für die Interaktionen einer App, da diese Rolle über umfassende Berechtigungen verfügt. Die Rolle **Leser** ist stärker eingeschränkt und ist eine gute Wahl für den schreibgeschützten Zugriff. Über das Azure-Portal können Sie Details zu rollenspezifischen Berechtigungen anzeigen oder benutzerdefinierte Berechtigungen erstellen.
+Standardmäßig hat ein Dienstprinzipal die Rolle **Mitwirkender**. Diese Rolle besitzt uneingeschränkte Berechtigungen für Lese- und Schreibvorgänge in einem Azure-Konto. Sie eignet sich in der Regel nicht für Anwendungen. Die Rolle **Leser** ist stärker eingeschränkt und bietet schreibgeschützten Zugriff.  Weitere Informationen zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und zu Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/active-directory/role-based-access-built-in-roles).
 
-Im folgenden Beispiel wird dem vorherigen Beispiel die Rolle **Leser** hinzugefügt und die Rolle **Mitwirkender** gelöscht:
+Dieses Beispiel fügt die Rolle **Leser** hinzu und löscht die Rolle **Mitwirkender**.
 
-```azurecli-interactive
-az role assignment create --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d --role Reader
-az role assignment delete --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d --role Contributor
+```azurecli
+az role assignment create --assignee APP_ID --role Reader
+az role assignment delete --assignee APP_ID --role Contributor
 ```
 
-Überprüfen Sie die Änderungen, indem Sie die derzeit zugewiesenen Rollen auflisten:
+Durch das Hinzufügen einer Rolle werden zuvor zugewiesene Berechtigungen _nicht_ geändert. Beim Einschränken der Berechtigungen eines Dienstprinzipals sollte immer die Rolle __Mitwirkender__ entfernt werden.
 
-```azurecli-interactive
-az role assignment list --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d
+Die Änderungen können durch Auflisten der zugewiesenen Rollen überprüft werden.
+
+```azurecli
+az role assignment list --assignee APP_ID
 ```
 
-```json
-{
-    "id": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac/providers/Microsoft.Authorization/roleAssignments/c27f78a7-9d3b-404b-ab59-47818f9af9ac",
-    "name": "c27f78a7-9d3b-404b-ab59-47818f9af9ac",
-    "properties": {
-      "principalId": "790525226-46f9-4051-b439-7079e41dfa31",
-      "principalName": "http://MyDemoWebApp",
-      "roleDefinitionId": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-      "roleDefinitionName": "Reader",
-      "scope": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac"
-    },
-    "type": "Microsoft.Authorization/roleAssignments"
-}
+> [!NOTE] 
+> Wenn Ihr Konto nicht über die Berechtigungen zum Zuweisen einer Rolle verfügt, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/{guid}“ hat. Bitten Sie den Azure Active Directory-Administrator um die Verwaltung von Rollen.
+
+## <a name="log-in-using-the-service-principal"></a>Anmelden mithilfe des Dienstprinzipals
+
+Sie können die Anmeldung und Berechtigungen des neuen Dienstprinzipals testen, indem Sie sich darunter bei der Azure CLI anmelden. Melden Sie sich mit den Werten für `appId`, `tenant` und die Anmeldeinformationen an. Die von Ihnen angegebenen Authentifizierungsinformationen ändern sich basierend darauf, ob Sie den Dienstprinzipal mit einem Kennwort oder mit einem Zertifikat erstellen möchten.
+
+Wenn Sie sich mit einem Kennwort anmelden möchten, geben Sie es als Argumentparameter an.
+
+```azurecli
+az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
 ```
 
-> [!NOTE]
-> Wenn Ihr Konto nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle verfügt, wird eine Fehlermeldung angezeigt.
-> In der Meldung ist angegeben, dass Ihr Konto keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/{guid}“ hat.
+Um sich mit einem Zertifikat anmelden zu können, muss es lokal als PEM- oder DER-Datei verfügbar sein.
 
-## <a name="change-the-credentials-of-a-security-principal"></a>Ändern der Anmeldeinformationen eines Sicherheitsprinzipals
-
-Aus Sicherheitsgründen empfiehlt es sich, regelmäßig die Berechtigungen zu überprüfen und die Kennwörter zu aktualisieren. Darüber hinaus sollten Sie auch die Sicherheitsanmeldeinformationen verwalten und ändern, wenn sich Ihre App verändert.
-
-### <a name="reset-a-service-principal-password"></a>Zurücksetzen des Kennworts eines Dienstprinzipals
-
-Verwenden Sie `az ad sp reset-credentials`, um das aktuelle Kennwort für den Dienstprinzipal zurückzusetzen.
-
-```azurecli-interactive
-az ad sp reset-credentials --name 20bce7de-3cd7-49f4-ab64-bb5b443838c3 --password {new-password}
+```azurecli
+az login --service-principal --username APP_ID --tenant TENANT_ID --password PATH_TO_CERT
 ```
+## <a name="reset-credentials"></a>Zurücksetzen von Anmeldeinformation
 
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "name": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "password": {new-password},
-  "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-}
+Falls Sie die Anmeldeinformationen für einen Dienstprinzipal vergessen, können sie mit dem Befehl [az ad sp reset-credentials](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) zurückgesetzt werden. Hier gelten die gleichen Einschränkungen und Optionen wie beim Erstellen eines neuen Dienstprinzipals.
+
+```azurecli
+az ad sp reset-credentials --name APP_ID --password NEW_PASSWORD
 ```
-
-Die CLI generiert ein sicheres Kennwort, wenn Sie die Option `--password` weglassen.

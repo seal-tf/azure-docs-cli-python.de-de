@@ -1,166 +1,128 @@
 ---
 title: Abfragen von Befehlsergebnissen mit Azure CLI 2.0
 description: "Erfahren Sie, wie Sie JMESPath-Abfragen für die Ausgabe von Azure CLI 2.0-Befehlen ausführen."
-author: rloutlaw
-ms.author: routlaw
-manager: douge
-ms.date: 02/27/2017
+author: sptramer
+ms.author: sttramer
+manager: carmonm
+ms.date: 02/22/2018
 ms.topic: article
 ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 98bc35c1e8136231011a2303901f42c68c9a7758
-ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
+ms.openlocfilehash: 2a0cdc34bbaf0864885588ecaddff725c744c90e
+ms.sourcegitcommit: 5a4c7205087d2f6c4800cf25178f0543a6157d99
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="use-jmespath-queries-with-azure-cli-20"></a><span data-ttu-id="b92c6-103">Verwenden von JMESPath-Abfragen mit der Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="b92c6-103">Use JMESPath queries with Azure CLI 2.0</span></span>
+# <a name="use-jmespath-queries-with-azure-cli-20"></a><span data-ttu-id="2a017-103">Verwenden von JMESPath-Abfragen mit der Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="2a017-103">Use JMESPath queries with Azure CLI 2.0</span></span>
 
-<span data-ttu-id="b92c6-104">Für Azure CLI 2.0 wird der Parameter `--query` verwendet, um eine [JMESPath-Abfrage](http://jmespath.org) zu den Ergebnissen Ihres `az`-Befehls durchzuführen.</span><span class="sxs-lookup"><span data-stu-id="b92c6-104">The Azure CLI 2.0 uses the `--query` parameter to execute a [JMESPath query](http://jmespath.org) on the results of your `az` command.</span></span> <span data-ttu-id="b92c6-105">JMESPath ist eine leistungsstarke Sprache für JSON-Ausgaben.</span><span class="sxs-lookup"><span data-stu-id="b92c6-105">JMESPath is a powerful query language for JSON outputs.</span></span>  <span data-ttu-id="b92c6-106">Wenn Sie mit JMESPath-Abfragen nicht vertraut sein sollten, ist das Tutorial unter [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html) hilfreich.</span><span class="sxs-lookup"><span data-stu-id="b92c6-106">If you are unfamiliar with JMESPath queries you can find a tutorial at [JMESPath.org/tutorial](http://JMESPath.org/tutorial.html).</span></span>
+<span data-ttu-id="2a017-104">Die Azure CLI 2.0 verwendet das Argument `--query`, um eine [JMESPath-Abfrage](http://jmespath.org) für die Ergebnisse von Befehlen auszuführen.</span><span class="sxs-lookup"><span data-stu-id="2a017-104">The Azure CLI 2.0 uses the `--query` argument to execute a [JMESPath query](http://jmespath.org) on the results of commands.</span></span> <span data-ttu-id="2a017-105">JMESPath ist eine Abfragesprache für JSON, die es ermöglicht, Daten aus der CLI-Ausgabe auszuwählen und zu präsentieren.</span><span class="sxs-lookup"><span data-stu-id="2a017-105">JMESPath is a query language for JSON, giving you the ability to select and present data from CLI output.</span></span> <span data-ttu-id="2a017-106">Diese Abfragen werden für die JSON-Ausgabe ausgeführt, bevor irgendeine andere Anzeigeformatierung stattfindet.</span><span class="sxs-lookup"><span data-stu-id="2a017-106">These queries are executed on the JSON output, before performing any other display formatting.</span></span>
 
-<span data-ttu-id="b92c6-107">Der Parameter `Query` wird von jedem Ressourcentyp (Container Services, Web-Apps, VM usw.) in Azure CLI 2.0 unterstützt und kann für verschiedene Zwecke verwendet werden.</span><span class="sxs-lookup"><span data-stu-id="b92c6-107">`Query` parameter is supported by every resource type (Container Services, Web Apps, VM, etc.) within Azure CLI 2.0 and can be used for various different purposes.</span></span>  <span data-ttu-id="b92c6-108">Hier sind einige Beispiele aufgeführt.</span><span class="sxs-lookup"><span data-stu-id="b92c6-108">We have listed several examples below.</span></span>
+<span data-ttu-id="2a017-107">Das Argument `--query` wird von allen Befehlen der Azure-Befehlszeilenschnittstelle unterstützt.</span><span class="sxs-lookup"><span data-stu-id="2a017-107">The `--query` argument is supported by all commands in the Azure CLI.</span></span> <span data-ttu-id="2a017-108">Die Beispiele in diesem Artikel decken allgemeine Anwendungsfälle ab und veranschaulichen die Verwendung der Features von JMESPath.</span><span class="sxs-lookup"><span data-stu-id="2a017-108">This article's examples cover common use cases and demonstrate how to use the features of JMESPath.</span></span>
 
-## <a name="select-simple-properties"></a><span data-ttu-id="b92c6-109">Auswählen einfacher Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="b92c6-109">Select simple properties</span></span>
+## <a name="work-with-dictionary-output"></a><span data-ttu-id="2a017-109">Verwenden einer Wörterbuchausgabe</span><span class="sxs-lookup"><span data-stu-id="2a017-109">Work with dictionary output</span></span>
 
-<span data-ttu-id="b92c6-110">Der einfache Befehl `list` mit dem Ausgabeformat `table` gibt einen fertigen Satz mit den gängigsten einfachen Eigenschaften für jeden Ressourcentyp in einem leicht lesbaren Tabellenformat zurück.</span><span class="sxs-lookup"><span data-stu-id="b92c6-110">The simple `list` command with `table` output format returns a curated set of most common, simple properties for each resource type in an easy-to-read tabular format.</span></span>
+<span data-ttu-id="2a017-110">Befehle, die ein JSON-Wörterbuch zurückgeben, können allein anhand ihrer Schlüsselnamen durchsucht werden.</span><span class="sxs-lookup"><span data-stu-id="2a017-110">Commands that return a JSON dictionary can be explored by their key names alone.</span></span> <span data-ttu-id="2a017-111">Bei Schlüsselpfaden wird als Trennzeichen das `.`-Zeichen verwendet.</span><span class="sxs-lookup"><span data-stu-id="2a017-111">Key paths use the `.` character as a separator.</span></span> <span data-ttu-id="2a017-112">Im folgenden Beispiel wird mithilfe von Pull eine Liste mit den öffentlichen SSH-Schlüsseln abgerufen, die beim Herstellen einer Verbindung mit einem virtuellen Linux-Computer zulässig sind:</span><span class="sxs-lookup"><span data-stu-id="2a017-112">The following example pulls a list of the public SSH keys allowed to connect to a Linux VM:</span></span>
 
-```azurecli-interactive
-az vm list --out table
+```azurecli
+az vm show -g QueryDemo -n TestVM --query osProfile.linuxConfiguration.ssh.publicKeys
 ```
 
-```
-Name         ResourceGroup    Location
------------  ---------------  ----------
-DemoVM010    DEMORG1          westus
-demovm212    DEMORG1          westus
-demovm213    DEMORG1          westus
-KBDemo001VM  RGDEMO001        westus
-KBDemo020    RGDEMO001        westus
+<span data-ttu-id="2a017-113">Sie können auch mehrere Werte abrufen und in einem sortierten Array platzieren.</span><span class="sxs-lookup"><span data-stu-id="2a017-113">You can also get multiple values, putting them in an ordered array.</span></span> <span data-ttu-id="2a017-114">Das Array verfügt zwar über keinerlei Schlüsselinformationen, die Reihenfolge der Arrayelemente entspricht jedoch der Reihenfolge der abgefragten Schlüssel.</span><span class="sxs-lookup"><span data-stu-id="2a017-114">The array doesn't have any key information, but the order of the array's elements matches the order of the queried keys.</span></span> <span data-ttu-id="2a017-115">Das folgende Beispiel zeigt das Abrufen des Azure-Imageangebotsnamens und der Größe des Betriebssystemdatenträgers:</span><span class="sxs-lookup"><span data-stu-id="2a017-115">The following example shows how to retrieve the Azure image offering name and the size of the OS disk:</span></span>
+
+```azurecli
+az vm show -g QueryDemo -n TestVM --query 'storageProfile.[imageReference.offer, osDisk.diskSizeGb]'
 ```
 
-<span data-ttu-id="b92c6-111">Sie können den Parameter `--query` verwenden, um nur den Ressourcengruppennamen und VM-Namen für alle virtuellen Computer Ihres Abonnements anzuzeigen.</span><span class="sxs-lookup"><span data-stu-id="b92c6-111">You can use the `--query` parameter to show just the Resource Group name and VM name for all virtual machines in your subscription.</span></span>
-
-```azurecli-interactive
-az vm list \
-  --query "[].[name, resourceGroup]" --out table
+```json
+[
+  "UbuntuServer",
+  30
+]
 ```
 
-```
-Column1     Column2
----------   -----------
-DemoVM010   DEMORG1
-demovm111   DEMORG1
-demovm211   DEMORG1
-demovm212   DEMORG1
-demovm213   DEMORG1
-demovm214   DEMORG1
-demovm222   DEMORG1
-KBDemo001VM RGDEMO001
-KBDemo020   RGDEMO001
+<span data-ttu-id="2a017-116">Wenn die Ausgabe Schlüssel enthalten soll, können Sie eine alternative Wörterbuchsyntax verwenden.</span><span class="sxs-lookup"><span data-stu-id="2a017-116">If you want keys in your output, you can use an alternate dictionary syntax.</span></span> <span data-ttu-id="2a017-117">Bei der Auswahl mehrerer Elemente in einem Wörterbuch wird das Format `{displayKey:keyPath, ...}` verwendet, um nach dem `keyPath`-JMESPath-Ausdruck zu filtern.</span><span class="sxs-lookup"><span data-stu-id="2a017-117">Multiple element selection into a dictionary uses the format `{displayKey:keyPath, ...}` to filter on the `keyPath` JMESPath expression.</span></span> <span data-ttu-id="2a017-118">Dies wird in der Ausgabe als `{displayKey: value}` angezeigt.</span><span class="sxs-lookup"><span data-stu-id="2a017-118">This displays in the output as `{displayKey: value}`.</span></span> <span data-ttu-id="2a017-119">Das nächste Beispiel baut auf der Abfrage des letzten Beispiels auf und weist der Ausgabe Schlüssel zu, um sie deutlicher zu machen:</span><span class="sxs-lookup"><span data-stu-id="2a017-119">The next example takes the last example's query, and makes it clearer by assigning keys to the output:</span></span>
+
+```azurecli
+az vm show -g QueryDemo -n TestVM --query 'storageProfile.{image:imageReference.offer, diskSize:osDisk.diskSizeGb}'
 ```
 
-<span data-ttu-id="b92c6-112">Im vorherigen Beispiel lauten die Spaltenüberschriften „Column1“ und „Column2“.</span><span class="sxs-lookup"><span data-stu-id="b92c6-112">In the previous example, you notice that the column headings are "Column1" and "Column2".</span></span>  <span data-ttu-id="b92c6-113">Außerdem können Sie den Eigenschaften auch benutzerfreundliche Bezeichnungen und Namen hinzufügen.</span><span class="sxs-lookup"><span data-stu-id="b92c6-113">You can add friendly labels or names to the properties you select, as well.</span></span>  <span data-ttu-id="b92c6-114">Im folgenden Beispiel haben wir den ausgewählten Eigenschaften „name“ und „resourceGroup“ die Bezeichnungen „VMName“ und „RGName“ hinzugefügt.</span><span class="sxs-lookup"><span data-stu-id="b92c6-114">In the following example, we added the labels "VMName" and "RGName" to the selected properties "name" and "resourceGroup".</span></span>
-
-
-```azurecli-interactive
-az vm list \
-  --query "[].{RGName:resourceGroup, VMName:name}" --out table
+```json
+{
+  "diskSize": 30,
+  "image": "UbuntuServer"
+}
 ```
 
-```
-RGName     VMName
----------  -----------
-DEMORG1    DemoVM010
-DEMORG1    demovm111
-DEMORG1    demovm211
-DEMORG1    demovm212
-DEMORG1    demovm213
-DEMORG1    demovm214
-DEMORG1    demovm222
-RGDEMO001  KBDemo001VM
-RGDEMO001  KBDemo020
-```
+<span data-ttu-id="2a017-120">Beim Anzeigen von Informationen im Ausgabeformat `table` ist die Wörterbuchanzeige besonders hilfreich.</span><span class="sxs-lookup"><span data-stu-id="2a017-120">When displaying information in the `table` output format, dictionary display is especially useful.</span></span> <span data-ttu-id="2a017-121">Hierbei können eigene Spaltenüberschriften festgelegt werden, um die Lesbarkeit der Ausgabe weiter zu verbessern.</span><span class="sxs-lookup"><span data-stu-id="2a017-121">This allows for setting your own column headers, making output even easier to read.</span></span> <span data-ttu-id="2a017-122">Weitere Informationen zu Ausgabeformaten finden Sie unter [Ausgabeformate für Azure CLI 2.0-Befehle](/cli/azure/format-output-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="2a017-122">For more information on output formats, see [Output formats for Azure CLI 2.0 commands](/cli/azure/format-output-azure-cli).</span></span>
 
-## <a name="select-complex-nested-properties"></a><span data-ttu-id="b92c6-115">Auswählen komplexer geschachtelter Eigenschaften</span><span class="sxs-lookup"><span data-stu-id="b92c6-115">Select complex nested properties</span></span>
+> [!NOTE]
+> <span data-ttu-id="2a017-123">Bestimmte Schlüssel werden herausgefiltert und nicht in der Tabellenansicht gedruckt.</span><span class="sxs-lookup"><span data-stu-id="2a017-123">Certain keys are filtered out and not printed in the table view.</span></span> <span data-ttu-id="2a017-124">Diese Schlüssel sind `id`, `type` und `etag`.</span><span class="sxs-lookup"><span data-stu-id="2a017-124">These keys are `id`, `type`, and `etag`.</span></span> <span data-ttu-id="2a017-125">Wenn Sie diese Informationen benötigen, können Sie den Schlüsselnamen ändern und so die Filterung umgehen.</span><span class="sxs-lookup"><span data-stu-id="2a017-125">If you need to see this information, you can change the key name and avoid filtering.</span></span>
+>
+> ```azurecli
+> az vm show -g QueryDemo -n TestVM --query "{objectID:id}" -o table
+> ```
 
-<span data-ttu-id="b92c6-116">Wenn sich die Eigenschaft, die Sie auswählen möchten, tief in der Struktur der JSON-Ausgabe befindet, müssen Sie den vollständigen Pfad zu dieser geschachtelten Eigenschaft angeben.</span><span class="sxs-lookup"><span data-stu-id="b92c6-116">If the property you want to select is nested deep in the JSON output you need to supply the full path to that nested property.</span></span> <span data-ttu-id="b92c6-117">Das folgende Beispiel zeigt, wie Sie den VM-Namen und den Betriebssystemtyp über den Befehl „vm list“ auswählen.</span><span class="sxs-lookup"><span data-stu-id="b92c6-117">The following example shows how to select the VMName and the OS type from the vm list command.</span></span>
+## <a name="work-with-list-output"></a><span data-ttu-id="2a017-126">Verwenden von Listenausgaben</span><span class="sxs-lookup"><span data-stu-id="2a017-126">Work with list output</span></span>
 
-```azurecli-interactive
-az vm list \
-  --query "[].{VMName:name, OSType:storageProfile.osDisk.osType}" --out table
+<span data-ttu-id="2a017-127">CLI-Befehle, die mehrere Werte zurückgeben können, geben immer ein Array zurück.</span><span class="sxs-lookup"><span data-stu-id="2a017-127">CLI commands that may return more than one value always return an array.</span></span> <span data-ttu-id="2a017-128">Auf die Elemente eines Arrays kann über einen Index zugegriffen werden, es gibt jedoch niemals eine Reihenfolgengarantie von der Befehlszeilenschnittstelle.</span><span class="sxs-lookup"><span data-stu-id="2a017-128">Arrays can have their elements accessed by index, but there's never an order guarantee from the CLI.</span></span> <span data-ttu-id="2a017-129">Beim Abfragen eines Arrays von Werten empfiehlt es sich, die Werte mit dem Operator `[]` zu vereinfachen.</span><span class="sxs-lookup"><span data-stu-id="2a017-129">The best way to query an array of values is to flatten them with the `[]` operator.</span></span> <span data-ttu-id="2a017-130">Der Operator wird nach dem Schlüssel für das Array oder als erstes Element im Ausdruck geschrieben.</span><span class="sxs-lookup"><span data-stu-id="2a017-130">The operator is written after the key for the array, or as the first element in the expression.</span></span> <span data-ttu-id="2a017-131">Durch die Vereinfachung wird die darauf folgende Abfrage für jedes einzelne Element im Array ausgeführt, und die resultierenden Werte werden in einem neuen Array platziert.</span><span class="sxs-lookup"><span data-stu-id="2a017-131">Flattening runs the query following it against each individual element in the array, and places the resulting values into a new array.</span></span> <span data-ttu-id="2a017-132">Im folgenden Beispiel werden jeweils der Name und das Betriebssystem der virtuellen Computer in einer Ressourcengruppe ausgegeben.</span><span class="sxs-lookup"><span data-stu-id="2a017-132">The following example prints out the name and OS running on each VM in a resource group.</span></span> 
+
+```azurecli
+az vm list -g QueryDemo --query '[].{name:name, image:storageProfile.imageReference.offer}'
 ```
 
-```
-VMName       OSType
------------  --------
-DemoVM010    Linux
-demovm111    Linux
-demovm211    Linux
-demovm212    Linux
-demovm213    Linux
-demovm214    Linux
-demovm222    Linux
-KBDemo001VM  Linux
-KBDemo020    Linux
-```
-
-## <a name="filter-with-the-contains-function"></a><span data-ttu-id="b92c6-118">Filtern mit der Funktion „contains“</span><span class="sxs-lookup"><span data-stu-id="b92c6-118">Filter with the contains function</span></span>
-
-<span data-ttu-id="b92c6-119">Sie können die JMESPath-Funktion `contains` verwenden, um die für die Abfrage zurückgegebenen Ergebnisse zu verfeinern.</span><span class="sxs-lookup"><span data-stu-id="b92c6-119">You can use the JMESPath `contains` function to refine your results returned in the query.</span></span>
-<span data-ttu-id="b92c6-120">Im folgenden Beispiel wählt der Befehl nur virtuelle Computer aus, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="b92c6-120">In the following example, the command selects only VMs that have the text "RGD" in their name.</span></span>
-
-```azurecli-interactive
-az vm list \
-  --query "[?contains(resourceGroup, 'RGD')].{ resource: resourceGroup, name: name }" --out table
-```
-
-```
-Resource    VMName
-----------  -----------
-RGDEMO001   KBDemo001VM
-RGDEMO001   KBDemo020
+```json
+[
+  {
+    "image": "CentOS",
+    "name": "CentBox"
+  },
+  {
+    "image": "openSUSE-Leap",
+    "name": "SUSEBox"
+  },
+  {
+    "image": "UbuntuServer",
+    "name": "TestVM"
+  },
+  {
+    "image": "UbuntuServer",
+    "name": "Test2"
+  },
+  {
+    "image": "WindowsServer",
+    "name": "WinServ"
+  }
+]
 ```
 
-<span data-ttu-id="b92c6-121">Im nächsten Beispiel werden die virtuellen Computer zurückgegeben, bei denen „vmSize“ den Wert „Standard_DS1“ hat.</span><span class="sxs-lookup"><span data-stu-id="b92c6-121">With the next example, the results will return the VMs that have the vmSize 'Standard_DS1'.</span></span>
+<span data-ttu-id="2a017-133">Auch Arrays, die einem Schlüsselpfad angehören, können vereinfacht werden.</span><span class="sxs-lookup"><span data-stu-id="2a017-133">Arrays that are part of a key path can be flattened as well.</span></span> <span data-ttu-id="2a017-134">Dieses Beispiel zeigt eine Abfrage, die die Azure-Objekt-IDs für die NICs abruft, mit denen ein virtueller Computer verbunden ist.</span><span class="sxs-lookup"><span data-stu-id="2a017-134">This example demonstrates a query that gets the Azure object IDs for the NICs a VM is connected to.</span></span>
 
-```azurecli-interactive
-az vm list \
-  --query "[?contains(hardwareProfile.vmSize, 'Standard_DS1')]" --out table
+```azurecli
+az vm show -g QueryDemo -n TestVM --query 'networkProfile.networkInterfaces[].id'
 ```
 
-```
-ResourceGroup    VMName     VmId                                  Location    ProvisioningState
----------------  ---------  ------------------------------------  ----------  -------------------
-DEMORG1          DemoVM010  cbd56d9b-9340-44bc-a722-25f15b578444  westus      Succeeded
-DEMORG1          demovm111  c1c024eb-3837-4075-9117-bfbc212fa7da  westus      Succeeded
-DEMORG1          demovm211  95eda642-417f-4036-9475-67246ac0f0d0  westus      Succeeded
-DEMORG1          demovm212  4bdac85d-c2f7-410f-9907-ca7921d930b4  westus      Succeeded
-DEMORG1          demovm213  2131c664-221a-4b7f-9653-f6d542fbfa34  westus      Succeeded
-DEMORG1          demovm214  48f419af-d27a-4df0-87f3-9481007c2e5a  westus      Succeeded
-DEMORG1          demovm222  e0f59516-1d69-4d54-b8a2-f6c4a5d031de  westus      Succeeded
+## <a name="filter-array-output-with-predicates"></a><span data-ttu-id="2a017-135">Filtern der Arrayausgabe mit Prädikaten</span><span class="sxs-lookup"><span data-stu-id="2a017-135">Filter array output with predicates</span></span>
+
+<span data-ttu-id="2a017-136">JMESPath bietet [Filterausdrücke](http://jmespath.org/specification.html#filterexpressions) zum Herausfiltern der angezeigten Daten.</span><span class="sxs-lookup"><span data-stu-id="2a017-136">JMESPath offers [filtering expressions](http://jmespath.org/specification.html#filterexpressions) to filter out the data displayed.</span></span> <span data-ttu-id="2a017-137">Diese Ausdrücke sind besonders hilfreich, wenn sie mit [integrierten JMESPath-Funktionen](http://jmespath.org/specification.html#built-in-functions) kombiniert werden, um teilweise Übereinstimmungen zu ermitteln oder Daten in ein Standardformat zu konvertieren.</span><span class="sxs-lookup"><span data-stu-id="2a017-137">These expressions are powerful, especially when combined with [JMESPath built-in functions](http://jmespath.org/specification.html#built-in-functions) to perform partial matches or manipulate data into a standard format.</span></span> <span data-ttu-id="2a017-138">Filterausdrücke können nur für Arraydaten verwendet werden. In allen anderen Fällen geben Sie den Wert `null` zurück.</span><span class="sxs-lookup"><span data-stu-id="2a017-138">Filtering expressions only work on array data, and when used in any other situation, return the `null` value.</span></span> <span data-ttu-id="2a017-139">Sie können beispielsweise die Ausgabe von Befehlen wie `vm list` filtern, um nach bestimmten Arten von virtuellen Computern zu suchen.</span><span class="sxs-lookup"><span data-stu-id="2a017-139">For example, you can take the output of commands like `vm list` and filter on it to look for specific types of VMs.</span></span> <span data-ttu-id="2a017-140">Das folgende Beispiel baut auf dem vorherigen Beispiel auf und filtert den VM-Typ heraus, um nur virtuelle Windows-Computer zu erfassen und deren Namen auszugeben.</span><span class="sxs-lookup"><span data-stu-id="2a017-140">The following example expands on the previous by filtering out the VM type to capture only Windows VMs and print their name.</span></span>
+
+```azurecli
+az vm list --query '[?osProfile.windowsConfiguration!=null].name'
 ```
 
-## <a name="filter-with-grep"></a><span data-ttu-id="b92c6-122">Filtern mit grep</span><span class="sxs-lookup"><span data-stu-id="b92c6-122">Filter with grep</span></span>
-
-<span data-ttu-id="b92c6-123">Für das Ausgabeformat `tsv` wird Text mit Tabulatortrennung und ohne Überschriften erzeugt.</span><span class="sxs-lookup"><span data-stu-id="b92c6-123">The `tsv` output format is a tab-separated text with no headers.</span></span> <span data-ttu-id="b92c6-124">Es kann per Pipe-Zeichen an Befehle wie `grep` und `cut` angefügt werden, um bestimmte Werte der Ausgabe von `list` weiter zu analysieren.</span><span class="sxs-lookup"><span data-stu-id="b92c6-124">It can be piped to commands like `grep` and `cut` to further parse specific values out of the `list` output.</span></span> <span data-ttu-id="b92c6-125">Im folgenden Beispiel werden mit dem Befehl `grep` nur virtuelle Computer ausgewählt, deren Name „RGD“ enthält.</span><span class="sxs-lookup"><span data-stu-id="b92c6-125">In the following example, the `grep` command selects only VMs that have text "RGD" in their name.</span></span>  <span data-ttu-id="b92c6-126">Mit dem Befehl `cut` wird nur der Wert des achten Felds (durch Tabulatoren getrennt) für die Anzeige in der Ausgabe ausgewählt.</span><span class="sxs-lookup"><span data-stu-id="b92c6-126">The `cut` command selects only the 8th field (separated by tabs) value to show in the output.</span></span>
-
-```azurecli-interactive
-az vm list --out tsv | grep RGD | cut -f8
+```json
+[
+  "WinServ"
+]
 ```
 
-```
-KBDemo001VM
-KBDemo020
-```
+## <a name="experiment-with-queries-interactively"></a><span data-ttu-id="2a017-141">Interaktives Experimentieren mit Abfragen</span><span class="sxs-lookup"><span data-stu-id="2a017-141">Experiment with queries interactively</span></span>
 
-## <a name="explore-with-jpterm"></a><span data-ttu-id="b92c6-127">Durchführen einer Untersuchung mit jpterm</span><span class="sxs-lookup"><span data-stu-id="b92c6-127">Explore with jpterm</span></span>
-
-<span data-ttu-id="b92c6-128">Sie können die Befehlsausgabe auch per Pipe-Zeichen an [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) anfügen und mit Ihrer JMESPath-Abfrage experimentieren.</span><span class="sxs-lookup"><span data-stu-id="b92c6-128">You can also pipe the command output to [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) and experiment with your JMESPath query there.</span></span>
+<span data-ttu-id="2a017-142">Beim Experimentieren mit JMESPath-Ausdrücken empfiehlt sich eine Arbeitsweise, bei der Sie Abfragen schnell bearbeiten und die Ausgabe untersuchen können.</span><span class="sxs-lookup"><span data-stu-id="2a017-142">To experiment with JMESPath expressions, you might want to work in a way where you can quickly edit queries and inspect the output.</span></span> <span data-ttu-id="2a017-143">Das Python-Paket [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) bietet eine interaktive Umgebung, in der Sie Daten mittels Piping als Eingabe verwenden und programminterne Abfragen schreiben können, um die Daten zu extrahieren.</span><span class="sxs-lookup"><span data-stu-id="2a017-143">An interactive environment is offered by the [JMESPath-terminal](https://github.com/jmespath/jmespath.terminal) Python package, which allows for piping data as input and then writing in-program queries to extract the data.</span></span>
 
 ```bash
 pip install jmespath-terminal
 az vm list | jpterm
 ```
-

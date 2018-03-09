@@ -11,11 +11,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: c2758922d74080d3a3110b1e3a507ddf0f8d85d1
-ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
+ms.openlocfilehash: 3f5fe1b01a8ce691846126a6c03e7222e9b20e0d
+ms.sourcegitcommit: 29d7366a0902488f4f4d39c2cb0e89368d5186ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -25,7 +25,7 @@ Willkommen bei der Azure CLI 2.0! Die CLI ist ein Tool, das die schnelle und eff
 
 [Installieren Sie die CLI](install-azure-cli.md), sofern noch nicht geschehen, oder probieren Sie [Azure Cloud Shell](/azure/cloud-shell/overview) aus.
 
-Bevor Sie CLI-Befehle mit einer lokalen Installation verwenden, müssen Sie sich mithilfe von [az login](/cli/azure/index#az_login) anmelden.
+Bevor Sie CLI-Befehle mit einer lokalen Installation verwenden, müssen Sie sich mithilfe von [az login](/cli/azure/reference-index#az_login) anmelden.
 
 ```azurecli
 az login
@@ -53,7 +53,7 @@ Alle Unterbefehle dieser Gruppen und ihre Dokumentation können in der Onlineref
 Befehle in der CLI werden als _Unterbefehle_ von _Gruppen_ bereitgestellt.
 Jede Gruppe stellt einen von Azure bereitgestellten Dienst dar, und die Untergruppen unterteilen Befehle für diese Dienste in logische Gruppierungen.
 
-Suchen Sie Befehle mithilfe von [az find](/cli/azure/index#az_find). Verwenden Sie den folgenden Befehl, um beispielsweise nach Befehlsnamen zu suchen, die `secret` enthalten:
+Suchen Sie Befehle mithilfe von [az find](/cli/azure/reference-index#az_find). Verwenden Sie den folgenden Befehl, um beispielsweise nach Befehlsnamen zu suchen, die `secret` enthalten:
 
 ```azurecli
 az find -q secret
@@ -95,8 +95,8 @@ Sehen Sie sich für die ersten Schritte mit der Azure CLI 2.0 ein ausführliches
 
 Wenn Sie sich eher auf andere Dienste konzentrieren möchten, stehen verschiedene Schnellstartanleitungen für Azure-Dienste zur Verfügung, die die CLI nutzen.
 
-* [Erstellen eines Speicherkontos mit der Azure-Befehlszeilenschnittstelle](/azure/storage/common/storage-quickstart-create-storage-account-cl)
-* [Transfer objects to/from Azure Blob storage using the CLI](/storage/blobs/storage-quickstart-blobs-cli) (Übertragen von Objekten in/aus Azure Blob Storage mit der CLI)
+* [Erstellen eines Speicherkontos mit der Azure-Befehlszeilenschnittstelle](/azure/storage/common/storage-quickstart-create-storage-account-cli)
+* [Transfer objects to/from Azure Blob storage using the CLI](/azure/storage/blobs/storage-quickstart-blobs-cli) (Übertragen von Objekten in/aus Azure Blob Storage mit der CLI)
 * [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](/azure/sql-database/sql-database-get-started-cli)
 * [Erstellen eines Azure Database for MySQL-Servers mithilfe der Azure CLI](/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli)
 * [Erstellen einer Azure-Datenbank für PostgreSQL mithilfe der Azure-CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)

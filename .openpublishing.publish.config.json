@@ -1,6 +1,7 @@
 {
   "build_entry_point": "docs",
   "need_generate_pdf": false,
+  "need_preview_pull_request": true,
   "need_generate_intellisense": false,
   "docsets_to_publish": [
     {
@@ -31,12 +32,13 @@
     }
   ],
   "notification_subscribers": [],
-  "branches_to_filter": [],
-  "git_repository_branch_open_to_public_contributors": "live",
-  "git_repository_url_open_to_public_contributors": "https://github.com/azure/azure-docs-cli-python.de-de",
+  "branches_to_filter": [
+    "live-sxs"
+  ],
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
-  "need_preview_pull_request": true,
+  "git_repository_branch_open_to_public_contributors": "live",
+  "git_repository_url_open_to_public_contributors": "https://github.com/azure/azure-docs-cli-python.de-DE",
   "dependent_repositories": [
     {
       "path_to_root": "_themes",

@@ -10,13 +10,120 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 116fa95e51399b9b97c1b35c38445f30db7efc94
-ms.sourcegitcommit: fefb5bb6a21cab30c44592c0577408a8d1a2ccc7
+ms.openlocfilehash: 0e81f5723af47242f908b854045deb7d74c50c17
+ms.sourcegitcommit: b5a6296c006e3a44f66892729e47d7a967267d3e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
+
+## <a name="march-27-2018"></a>27. März 2018
+
+Version 2.0.30
+
+### <a name="core"></a>Core
+
+* Anzeigen einer Meldung für Erweiterungen, die in der Hilfe als Vorschauversion gekennzeichnet sind
+
+### <a name="acs"></a>ACS
+
+* Behebung eines Fehlers bei der SSL-Zertifikatprüfung für `aks install-cli` in Cloud Shell
+
+### <a name="appservice"></a>AppService
+
+* Unterstützung nur von HTTPS zu `webapp update` hinzugefügt
+* Unterstützung für Slots zu `az webapp identity [assign|show]` und `az functionapp identity [assign|show]` hinzugefügt
+
+### <a name="backup"></a>Sicherung
+
+* Neuer Befehl `az backup protection isenabled-for-vm` hinzugefügt. Mit diesem Befehl kann überprüft werden, ob ein virtueller Computer von einem beliebigen Tresor im Abonnement gesichert wird.
+* Azure-Objekt-IDs für Parameter `--resource-group` und `--vault-name` für die folgenden Befehle aktiviert:
+  * `backup container show`
+  * `backup item set-policy`
+  * `backup item show`
+  * `backup job show`
+  * `backup job stop`
+  * `backup job wait`
+  * `backup policy delete`
+  * `backup policy get-default-for-vm`
+  * `backup policy list-associated-items`
+  * `backup policy set`
+  * `backup policy show`
+  * `backup protection backup-now`
+  * `backup protection disable`
+  * `backup protection enable-for-vm`
+  * `backup recoverypoint show`
+  * `backup restore files mount-rp`
+  * `backup restore files unmount-rp`
+  * `backup restore restore-disks`
+  * `backup vault delete`
+  * `backup vault show`
+* `--name`-Parameter wurden geändert, um das Ausgabeformat von `backup ... show`-Befehlen zu akzeptieren.
+
+### <a name="container"></a>Container
+
+* Befehl `container exec` hinzugefügt. Ausführung von Befehlen in einem Container für eine ausgeführte Containergruppe
+* Zulassen der Tabellenausgabe zum Erstellen und Aktualisieren einer Containergruppe
+
+### <a name="extension"></a>Durchwahl
+
+* Meldung für `extension add` hinzugefügt, wenn sich die Erweiterung in der Vorschauphase befindet
+* `extension list-available` geändert, um vollständige Erweiterungsdaten mit `--show-details` anzuzeigen
+* [WICHTIGE ÄNDERUNG] `extension list-available` geändert, um standardmäßig vereinfachte Erweiterungsdaten anzuzeigen
+
+### <a name="interactive"></a>Interactive
+
+* Vervollständigungen wurden geändert und werden jetzt aktiviert, sobald das Laden der Befehlstabelle abgeschlossen ist.
+* Fehler bei der Verwendung des Parameters `--style` behoben
+* Interaktiver Lexer nach Befehlstabellensicherung instanziiert (sofern nicht vorhanden)
+* Verbesserte Unterstützung der Vervollständigung
+
+### <a name="lab"></a>Labor
+
+* Probleme mit Befehl `create environment` behoben
+
+### <a name="monitor"></a>Überwachen
+
+* Unterstützung für `--top`, `--orderby` und `--namespace` zu `metrics list` hinzugefügt ([#5785](https://github.com/Azure/azure-cli/issues/5785))
+* [#4529](https://github.com/Azure/azure-cli/issues/5785) behoben: `metrics list` akzeptiert eine durch Leerzeichen getrennte Liste von abzurufenden Metriken.
+* Unterstützung für `--namespace` zu `metrics list-definitions` hinzugefügt ([#5785](https://github.com/Azure/azure-cli/issues/5785))
+
+### <a name="network"></a>Netzwerk
+
+* Unterstützung für private DNS-Zonen hinzugefügt
+
+### <a name="profile"></a>Profil
+
+* Warnung für `--identity-port` und `--msi-port` zu `login` hinzugefügt
+
+### <a name="rdbms"></a>RDBMS
+
+* GA-API-Version 2017-12-01 (Geschäftsmodell) hinzugefügt
+
+### <a name="resource"></a>Ressource
+
+* [WICHTIGE ÄNDERUNG]: Changed `provider operation [list|show]` to not require `--api-version`
+
+### <a name="role"></a>Rolle
+
+* Unterstützung für erforderliche Zugriffskonfigurationen und native Clients zu `az ad app create` hinzugefügt
+* `rbac`-Befehle geändert, um maximal 1.000 IDs für Objektauflösung zurückzugeben
+* Befehle zur Verwaltung von Anmeldeinformationen (`ad sp credential [reset|list|delete]`) hinzugefügt
+* [WICHTIGE ÄNDERUNG] „properties“ aus `az role assignment [list|show]`-Ausgabe entfernt
+* Unterstützung für `dataActions`- und `notDataActions`-Berechtigungen zu `role definition` hinzugefügt
+
+### <a name="storage"></a>Speicher
+
+* Problem beim Hochladen von Dateien mit einer Größe von 195 GB bis 200 GB behoben
+* [#4049](https://github.com/Azure/azure-cli/issues/4049) behoben: Probleme bei Uploads von Anfügeblobs behoben, die ein Ignorieren der Bedingungsparameter verursachten
+
+### <a name="vm"></a>VM
+
+* Warnung für anstehende wichtige Änderungen für Sätze mit mehr als 100 Instanzen zu `vmss create` hinzugefügt
+* Unterstützung der Zonenresilienz zu `vm [snapshot|image]` hinzugefügt
+* Datenträgerinstanzansicht geändert, um besseren Verschlüsselungsstatus zu melden
+* [WICHTIGE ÄNDERUNG] `vm extension delete` geändert, um keine Ausgabe mehr zurückzugeben
 
 ## <a name="march-13-2018"></a>13. März 2018
 
@@ -803,7 +910,7 @@ Version 2.0.17
 
 ### <a name="extension"></a>Durchwahl
 
-* Erste Version.
+* Erste Version
 
 ### <a name="keyvault"></a>KeyVault
 
@@ -859,13 +966,13 @@ Version 2.0.15
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-* Rechtlichen Hinweis zu `--version` hinzugefügt.
+* Rechtlichen Hinweis zu `--version` hinzugefügt
 
 ### <a name="acs"></a>ACS
 
-* Vorschauregionen korrigiert.
-* Standardmäßiges DNS-Namenspräfix (`dns_name_prefix`) ordnungsgemäß formatiert.
-* ACS-Befehlsausgabe optimiert.
+* Vorschauregionen korrigiert
+* Standardmäßiges DNS-Namenspräfix (`dns_name_prefix`) ordnungsgemäß formatiert
+* ACS-Befehlsausgabe optimiert
 
 ### <a name="appservice"></a>AppService
 
@@ -882,7 +989,7 @@ Version 2.0.15
 ### <a name="network"></a>Netzwerk
 
 * [WICHTIGE ÄNDERUNG] `vnet list-private-access-services` in `vnet list-endpoint-services` umbenannt
-* [WICHTIGE ÄNDERUNG] Option `--private-access-services` für `vnet subnet [create|update]` in `--service-endpoints` umbenannt
+* [WICHTIGE ÄNDERUNG] Option `--private-access-services` für `--service-endpoints` in `vnet subnet [create|update]` umbenannt
 * Unterstützung für mehrere IP- und Portbereiche zu `nsg rule [create|update]` hinzugefügt
 * Unterstützung für SKU zu `lb create` hinzugefügt
 * Unterstützung für SKU zu `public-ip create` hinzugefügt
@@ -1257,7 +1364,7 @@ vm (2.0.11)
 * Unterstützung der NSG-Konfiguration
 * Fehler behoben, aufgrund dessen der DNS-Server nicht ordnungsgemäß konfiguriert wurde
 * Unterstützung verwalteter Dienstidentitäten
-* Problem behoben, aufgrund dessen `cmss create` mit einem vorhandenen Lastenausgleich `--backend-pool-name` benötigte.
+* Problem behoben, aufgrund dessen `cmss create` mit einem vorhandenen Lastenausgleich `--backend-pool-name` benötigte
 * Festlegung, dass die LUN von mit `vm image create` erstellten Datenträgern mit 0 beginnt
 
 
@@ -1270,7 +1377,7 @@ Version 2.0.6
 * Einbeziehen der Data Lake Analytics- und Data Lake Store-Module
 * Einbeziehen des Cognitive Services-Moduls
 * Einbeziehen des Service Fabric-Moduls
-* Einbeziehen des interaktiven Moduls (Umbenennen von az-shell)
+* Einbeziehen des interaktiven Moduls (Umbenennen von „az-shell“)
 * Hinzufügen von Unterstützung für CDN-Befehle
 * Entfernen des Containermoduls
 * Hinzufügen von „az -v“ als Verknüpfung für „az --version“ ([#2926](https://github.com/Azure/azure-cli/issues/2926))
@@ -1349,7 +1456,7 @@ vm (2.0.6)
 
 ### <a name="cosmosdb"></a>CosmosDB
 
-* Umbenennen des documentdb-Moduls in cosmosdb.
+* Umbenennen des documentdb-Moduls in cosmosdb
 * Zusätzliche Unterstützung für documentdb-APIs auf Datenebene: Datenbank- und Sammlungsverwaltung
 * Zusätzliche Unterstützung für das Aktivieren des automatischen Failovers für Datenbankkonten
 * Zusätzliche Unterstützung für die neue ConsistentPrefix-Konsistenzrichtlinie
@@ -1399,21 +1506,21 @@ vm (2.0.6)
 ### <a name="network"></a>Netzwerk
 
 * Hinzufügen des `network watcher test-connectivity`-Befehls
-* Hinzufügen von Unterstützung für den `--filters`-Parameter für `network watcher packet-capture create`.
+* Hinzufügen von Unterstützung für den `--filters`-Parameter für `network watcher packet-capture create`
 * Hinzufügen von Unterstützung für den Application Gateway-Verbindungsausgleich
 * Hinzufügen von Unterstützung für die Konfiguration von Application Gateway-WAF-Regelsätzen
 * Hinzufügen von Unterstützung für ExpressRoute-Routenfilter und -Regeln
 * Hinzufügen von Unterstützung für geografisches TrafficManager-Routing
 * Hinzufügen von Unterstützung für richtlinienbasierte Datenverkehrsselektoren für VPN-Verbindungen
 * Hinzufügen von Unterstützung für IPSec-Richtlinien für VPN-Verbindungen
-* Korrektur eines Fehlers bei `vpn-connection create` bei Verwendung der Parameter `--no-wait` oder `--validate`.
+* Korrektur eines Fehlers bei `vpn-connection create` bei Verwendung der Parameter `--no-wait` oder `--validate`
 * Hinzufügen von Unterstützung für Aktiv/Aktiv-VNET-Gateways
 * Entfernen von NULL-Werten aus der Ausgabe von `network vpn-connection list/show`-Befehlen
 * BC: Korrektur eines Fehlers in der Ausgabe von `vpn-connection create`
 * Korrektur eines Fehlers, bei dem das Argument „--key-length“ von „vpn-connection create“ nicht ordnungsgemäß analysiert wurde
 * Korrektur eines Fehlers in `dns zone import`, bei dem Datensätze nicht ordnungsgemäß importiert wurden
 * Korrektur eines Fehlers, bei dem `traffic-manager endpoint update` nicht funktionierte
-* Hinzufügen von „network watcher“-Vorschaubefehlen
+* Hinzufügen von Network Watcher-Vorschaubefehlen
 
 ### <a name="profile"></a>Profil
 
@@ -1551,21 +1658,17 @@ vm (2.0.2)
 
 Version 2.0.0
 
-Diese Version von Azure CLI 2.0 ist die erste „allgemein verfügbare“ Version.
-Die allgemeine Verfügbarkeit gilt für diese Befehlsmodule:
+Diese Version der Azure CLI 2.0 ist die erste „allgemein verfügbare“ Version. Die allgemeine Verfügbarkeit gilt für die folgenden Befehlsmodule:
 - Container Service (acs)
 - Compute (einschließlich Resource Manager, VM, VM-Skalierungsgruppen, Managed Disks)
 - Netzwerk
 - Speicher
 
-Diese Befehlsmodule können in der Produktion verwendet werden und verfügen über Unterstützung durch eine Standard-SLA von Microsoft.
-Sie können Anfragen zu Problemen direkt beim Microsoft-Support oder in der [GitHub-Liste mit Problemen](https://github.com/azure/azure-cli/issues/) öffnen.
-Sie haben die Möglichkeit, Fragen in [Stack Overflow mit dem Tag „azure-cli“](http://stackoverflow.com/questions/tagged/azure-cli) zu stellen oder sich unter [azfeedback@microsoft.com](mailto:azfeedback@microsoft.com) an das Produktteam zu wenden. Außerdem können Sie über die Befehlszeile mit dem Befehl `az feedback` Feedback senden.
+Diese Befehlsmodule können in der Produktion verwendet werden und verfügen über Unterstützung durch eine Standard-SLA von Microsoft. Sie können Anfragen zu Problemen direkt beim Microsoft-Support oder in der [GitHub-Liste mit Problemen](https://github.com/azure/azure-cli/issues/) öffnen. Sie haben die Möglichkeit, Fragen in [StackOverflow mit dem Tag „azure-cli“](http://stackoverflow.com/questions/tagged/azure-cli) zu stellen oder sich unter [azfeedback@microsoft.com](mailto:azfeedback@microsoft.com) an das Produktteam zu wenden. Außerdem können Sie über die Befehlszeile mit dem Befehl `az feedback` Feedback senden.
 
-Die Befehle in diesen Modulen sind stabil, und es ist nicht zu erwarten, dass sich die Syntax in den anstehenden Veröffentlichungen dieser Version der Azure-CLI ändern.
+Die Befehle in diesen Modulen sind stabil, und es ist nicht zu erwarten, dass sich die Syntax in den anstehenden Veröffentlichungen dieser Version der Azure CLI ändern.
 
-Verwenden Sie zum Überprüfen der Version der CLI den Befehl `az --version`.
-In der Ausgabe werden die Version der CLI selbst (für diese Veröffentlichung 2.0.0), die einzelnen Befehlsmodule und die von Ihnen genutzten Versionen von Python und GCC aufgeführt.
+Verwenden Sie zum Überprüfen der Version der CLI den Befehl `az --version`. In der Ausgabe werden die Version der CLI selbst (für diese Veröffentlichung 2.0.0), die einzelnen Befehlsmodule und die von Ihnen genutzten Versionen von Python und GCC aufgeführt.
 
 ```
 azure-cli (2.0.0)
@@ -1597,11 +1700,9 @@ Python (Darwin) 2.7.10 (default, Jul 30 2016, 19:40:32)
 ```
 
 > [!Note]
-> Einige Befehlsmodule verfügen über das Postfix „b*n*“ oder „rc*n*“.
-> Diese Befehlsmodule befinden sich noch in der Vorschauphase und werden später die allgemeine Verfügbarkeit erlangen.
+> Einige Befehlsmodule verfügen über das Postfix „b*n*“ oder „rc*n*“. Diese Befehlsmodule befinden sich noch in der Vorschauphase und werden später die allgemeine Verfügbarkeit erlangen.
 
-Außerdem werden jeden Abend Vorschaubuilds der CLI bereitgestellt.
-Informationen hierzu finden Sie in der [Anleitung zum Abrufen der abendlichen Builds](https://github.com/Azure/azure-cli#nightly-builds) und im Abschnitt zum [Setup für Entwickler und Beitragen von Code](https://github.com/Azure/azure-cli#developer-setup).
+Außerdem werden jeden Abend Vorschaubuilds der CLI bereitgestellt. Informationen hierzu finden Sie in der [Anleitung zum Abrufen der abendlichen Builds](https://github.com/Azure/azure-cli#nightly-builds) und im Abschnitt zum [Setup für Entwickler und Beitragen von Code](https://github.com/Azure/azure-cli#developer-setup).
 
 Sie können für die abendlichen Vorschaubuilds wie folgt Probleme melden:
 - Über die [GitHub-Liste mit Problemen](https://github.com/azure/azure-cli/issues/)

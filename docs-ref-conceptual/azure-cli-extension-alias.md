@@ -10,11 +10,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: e8419394bb221d2614e15171bd19dd76fd9cd773
-ms.sourcegitcommit: b5a6296c006e3a44f66892729e47d7a967267d3e
+ms.openlocfilehash: e457d78b1009fe573554df36db18f525516e0b4a
+ms.sourcegitcommit: 335c11e6c34f7907e61a43507745ba84ed4e7469
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-azure-cli-20-alias-extension"></a>Aliaserweiterung der Azure CLI 2.0
 
@@ -99,7 +99,7 @@ az ls-groups
 
 ## <a name="create-an-alias-command-with-arguments"></a>Erstellen eines Aliasbefehls mit Argumenten
 
-Sie können positionelle Argumente auch zu einem Aliasbefehl hinzufügen, indem Sie sie als `{{ arg_name }}` in den Aliasnamen aufnehmen. Das Leerzeichen in den geschweiften Klammern ist erforderlich.
+Sie können positionelle Argumente auch zu einem Aliasbefehl hinzufügen, indem Sie sie als `{{ arg_name }}` in den Aliasnamen aufnehmen. Das Leerzeichen in den Klammern ist erforderlich.
 
 ```
 [alias_name {{ arg1 }} {{ arg2 }} ...]
@@ -115,7 +115,7 @@ command = vm list-ip-addresses --resource-group {{ resourceGroup }} --name {{ vm
 
 Beim Ausführen dieses Befehls übergeben Sie Werte an die positionellen Argumente.
 
-```azruecli
+```azurecli
 az get-vm-ip MyResourceGroup MyVM
 ```
 
@@ -143,7 +143,7 @@ Informationen zur Jinja2-Vorlagenengine finden Sie in der [Jinja2-Dokumentation]
 
 Verwenden Sie zum Deinstallieren der Erweiterung den Befehl [az extension remove](/cli/azure/extension#az-extension-remove).
 
-```bash
+```azurecli
 az extension remove --name alias
 ```
 

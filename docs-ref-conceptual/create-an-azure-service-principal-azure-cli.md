@@ -10,11 +10,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: b46c735a14240bddd07659475ada1c33c75a1e67
-ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
+ms.openlocfilehash: fd615c762f997cb8bd4835d387cd96dd9c475928
+ms.sourcegitcommit: c9da729f4a42a839f13106f7589deaa0ca19cc4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-an-azure-service-principal-with-azure-cli-20"></a>Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0
 
@@ -22,7 +22,7 @@ Wenn Sie eine separate Anmeldung mit Zugriffseinschränkungen erstellen möchten
 
 ## <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
 
-Verwenden Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac), um einen Dienstprinzipal zu erstellen. Der Name des Dienstprinzipals ist nicht mit dem vorhandenen Namen einer Anwendung oder eines Benutzers verknüpft. Sie können einen Dienstprinzipal mit dem gewünschten Authentifizierungstyp erstellen.
+Verwenden Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac), um einen Dienstprinzipal zu erstellen. Der Name des Dienstprinzipals ist nicht mit dem vorhandenen Namen einer Anwendung oder eines Benutzers verknüpft. Sie können einen Dienstprinzipal mit dem gewünschten Authentifizierungstyp erstellen.
 
 * `--password` wird für die kennwortbasierte Authentifizierung verwendet. Halten Sie sich an die Vorgaben unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy), um ein sicheres Kennwort zu erstellen. Falls Sie kein Kennwort angeben, wird eines für Sie erstellt.
 
@@ -67,9 +67,9 @@ Die Werte `appId`, `tenant` und `password` werden für die Authentifizierung ver
 
 Die Azure CLI 2.0 enthält die folgenden Befehle zum Verwalten von Rollenzuweisungen:
 
-* [az role assignment list](/cli/azure/role/assignment#list)
-* [az role assignment create](/cli/azure/role/assignment#create)
-* [az role assignment delete](/cli/azure/role/assignment#delete)
+* [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)
+* [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)
+* [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete)
 
 Standardmäßig hat ein Dienstprinzipal die Rolle **Mitwirkender**. Diese Rolle besitzt uneingeschränkte Berechtigungen für Lese- und Schreibvorgänge in einem Azure-Konto. Sie eignet sich in der Regel nicht für Anwendungen. Die Rolle **Leser** ist stärker eingeschränkt und bietet schreibgeschützten Zugriff.  Weitere Informationen zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und zu Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/active-directory/role-based-access-built-in-roles).
 
@@ -108,7 +108,7 @@ az login --service-principal --username APP_ID --tenant TENANT_ID --password PAT
 ```
 ## <a name="reset-credentials"></a>Zurücksetzen von Anmeldeinformation
 
-Falls Sie die Anmeldeinformationen für einen Dienstprinzipal vergessen, können sie mit dem Befehl [az ad sp reset-credentials](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) zurückgesetzt werden. Hier gelten die gleichen Einschränkungen und Optionen wie beim Erstellen eines neuen Dienstprinzipals.
+Falls Sie die Anmeldeinformationen für einen Dienstprinzipal vergessen, können sie mit dem Befehl [az ad sp reset-credentials](https://docs.microsoft.com/en-us/cli/azure/ad/sp#az-ad-sp-reset-credentials) zurückgesetzt werden. Hier gelten die gleichen Einschränkungen und Optionen wie beim Erstellen eines neuen Dienstprinzipals.
 
 ```azurecli
 az ad sp reset-credentials --name APP_ID --password NEW_PASSWORD

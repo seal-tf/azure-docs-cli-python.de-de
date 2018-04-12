@@ -11,11 +11,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 5695d1df42689b315dd9d8783232ce35205a0a0e
-ms.sourcegitcommit: b5a6296c006e3a44f66892729e47d7a967267d3e
+ms.openlocfilehash: a150edbc174ff77f4320a2cb60e031dc3c6ad1cc
+ms.sourcegitcommit: c9da729f4a42a839f13106f7589deaa0ca19cc4e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-extensions-with-the-azure-cli-20"></a>Verwenden von Erweiterungen mit Azure CLI 2.0
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie Erweiterungen für die CLI installie
 
 ## <a name="find-extensions"></a>Suchen von Erweiterungen
 
-Um zu ermitteln, welche Erweiterungen verfügbar sind, können Sie [az extension list-available](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available) verwenden. Mit diesem Befehl werden die offiziellen Erweiterungen aufgeführt, die von Microsoft bereitgestellt und verwaltet werden.
+Um zu ermitteln, welche Erweiterungen verfügbar sind, können Sie [az extension list-available](/cli/azure/extension#az-extension-list-available) verwenden. Mit diesem Befehl werden die offiziellen Erweiterungen aufgeführt, die von Microsoft bereitgestellt und verwaltet werden.
 
 ```azurecli
 az extension list-available --output table
@@ -35,7 +35,7 @@ Auf der Dokumentationswebsite wird darüber hinaus eine [Liste der Microsoft-Erw
 
 ## <a name="install-extensions"></a>Installieren von Erweiterungen
 
-Nachdem Sie eine zu installierende Erweiterung gefunden haben, können Sie [az extension add](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add) verwenden, um sie abzurufen. Wenn die Erweiterung in `az extension list-available` aufgeführt wird, können Sie die Erweiterung anhand des Namens installieren.
+Nachdem Sie eine zu installierende Erweiterung gefunden haben, können Sie [az extension add](https://docs.microsoft.com/en-us/cli/azure/extension#az-extension-add) verwenden, um sie abzurufen. Wenn die Erweiterung in `az extension list-available` aufgeführt wird, können Sie die Erweiterung anhand des Namens installieren.
 
 ```azurecli
 az extension add --name <extension-name>
@@ -51,7 +51,7 @@ Nach der Installation einer Erweiterung befindet sich diese unter dem Wert der S
 
 ## <a name="update-extensions"></a>Aktualisieren von Erweiterungen
 
-Wenn eine Erweiterung anhand des Namens installiert wurde, kann sie mithilfe von [az extension update](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-update) aktualisiert werden.
+Wenn eine Erweiterung anhand des Namens installiert wurde, kann sie mithilfe von [az extension update](https://docs.microsoft.com/en-us/cli/azure/extension#az-extension-update) aktualisiert werden.
 
 ```azurecli
 az extension update --name <extension-name>
@@ -63,7 +63,7 @@ Falls der Name einer Erweiterung von der CLI nicht aufgelöst werden kann, deins
 
 ## <a name="uninstall-extensions"></a>Deinstallieren von Erweiterungen
 
-Wenn Sie eine Erweiterung nicht mehr benötigen, können Sie sie mit [az extension remove](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-remove) entfernen.
+Wenn Sie eine Erweiterung nicht mehr benötigen, können Sie sie mit [az extension remove](https://docs.microsoft.com/en-us/cli/azure/extension#az-extension-remove) entfernen.
 
 ```azurecli
 az extension remove --name <extension-name>

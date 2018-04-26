@@ -1,5 +1,5 @@
 ---
-title: "Manuelle Installation der Azure CLI 2.0 für Linux"
+title: Manuelle Installation der Azure CLI 2.0 für Linux
 description: Manuelle Installation der Azure CLI 2.0 unter Linux
 author: sptramer
 ms.author: sttramer
@@ -10,11 +10,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 4ab1f70308810e045b9a1d923fd809ad9848f6c6
-ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
+ms.openlocfilehash: a74a4d30709f5d10fc3a3f2b63c9df931ab0516b
+ms.sourcegitcommit: 0e9aafa07311526f43661c8bd3a7eba7cbc2caed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="install-azure-cli-20-on-linux-manually"></a>Manuelle Installation der Azure CLI 2.0 unter Linux
 
@@ -39,7 +39,15 @@ Sie müssen eine vollständige Installation ausführen – unabhängig davon, ob
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Alternativ können Sie das Skript herunterladen und lokal ausführen. Unter Umständen müssen Sie Ihre Shell neu starten, damit einige Änderungen wirksam werden. Führen Sie nach der Installation die CLI mit dem Befehl `az` aus.
+Alternativ können Sie das Skript herunterladen und lokal ausführen. Unter Umständen müssen Sie Ihre Shell neu starten, damit einige Änderungen wirksam werden. 
+
+Sie können dann die Azure CLI mit dem Befehl `az` ausführen. Führen Sie den Befehl `az login` aus, um sich anzumelden.
+
+```azurecli
+az login
+```
+
+Weitere Informationen zu verschiedenen Anmeldemethoden finden Sie unter [Anmelden mit Azure CLI 2.0](authenticate-azure-cli.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

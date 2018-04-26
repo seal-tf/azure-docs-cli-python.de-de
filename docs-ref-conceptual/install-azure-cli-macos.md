@@ -1,5 +1,5 @@
 ---
-title: "Installieren der Azure-Befehlszeilenschnittstelle für macOS"
+title: Installieren der Azure-Befehlszeilenschnittstelle für macOS
 description: Installieren der Azure CLI 2.0 unter macOS
 author: sptramer
 ms.author: sttramer
@@ -10,11 +10,11 @@ ms.prod: azure
 ms.technology: azure
 ms.devlang: azurecli
 ms.service: multiple
-ms.openlocfilehash: 0295846abc2fe6091940824c6efc47b8fd64ce9f
-ms.sourcegitcommit: b93a19222e116d5880bbe64c03507c64e190331e
+ms.openlocfilehash: 295e84d2d30365aac4334e1e962f23c7b8e38d37
+ms.sourcegitcommit: 0e9aafa07311526f43661c8bd3a7eba7cbc2caed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="install-azure-cli-20-on-macos"></a>Installieren der Azure CLI 2.0 unter macOS
 
@@ -31,7 +31,13 @@ Sie können die CLI installieren, indem Sie die Homebrew-Repositoryinformationen
 brew update && brew install azure-cli
 ```
 
-Sie können dann die Azure CLI mit dem Befehl `az` ausführen.
+Sie können dann die Azure CLI mit dem Befehl `az` ausführen. Führen Sie den Befehl `az login` aus, um sich anzumelden.
+
+```azurecli
+az login
+```
+
+Weitere Informationen zu verschiedenen Anmeldemethoden finden Sie unter [Anmelden mit Azure CLI 2.0](authenticate-azure-cli.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

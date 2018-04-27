@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 1c57e920c52f7f324c32fd457165bbafbda19b21
-ms.sourcegitcommit: d9e5743a4321684c412c1740d26e7c1e258af5b2
+ms.openlocfilehash: fa468a0b39b933b5778574a41aa29e0d60d050a8
+ms.sourcegitcommit: d461e73abb09c3c85064c532b53a2efb25833b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/27/2018
 ---
 # <a name="install-the-azure-cli-10"></a>Installieren von Azure CLI 1.0
 
@@ -72,7 +72,7 @@ Wenn Sie einen Mac- oder Windows-Computer verwenden, stehen die folgenden CLI-In
 Wenn Sie Ihren Computer als [Docker](https://docs.docker.com/engine/understanding-docker/)-Host eingerichtet haben, können Sie die neueste Azure CLI 1.0 in einem Docker-Container ausführen. Führen Sie den folgenden Befehl aus (bei Linux-Distributionen müssen Sie möglicherweise **sudo** verwenden):
 
 ```bash
-docker run -it microsoft/azure-cli
+docker run -it microsoft/azure-cli:0.10.17
 ```
 
 ## <a name="run-azure-cli-10-commands"></a>Ausführen von Azure CLI 1.0-Befehlen

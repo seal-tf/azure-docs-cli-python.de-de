@@ -7,14 +7,13 @@ manager: carmonm
 ms.date: 04/10/2018
 ms.topic: article
 ms.prod: azure
-ms.technology: azure
-ms.devlang: azurecli
-ms.service: multiple
-ms.openlocfilehash: 1e6bd4cd8bab853fb417ed9c4dd71d56e5de7cdc
-ms.sourcegitcommit: 204fd027d3668959b98b936969ccb41eada0fd29
+ms.technology: azure-cli
+ms.devlang: azure-cli
+ms.openlocfilehash: fd5d82e34089a9a884c25c9a5620526f9d30577a
+ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
 
@@ -82,11 +81,11 @@ Version 2.0.31
 * Git-Repository-Parameter `--gitrepo-url`, `--gitrepo-dir`, `--gitrepo-revision` und `--gitrepo-mount-path` für die Volumebereitstellung hinzugefügt
 * [#5926](https://github.com/Azure/azure-cli/issues/5926) behoben: Fehler bei `az container exec`, wenn „--container-name“ angegeben wurde
 
-### <a name="extension"></a>Erweiterung
+### <a name="extension"></a>Durchwahl
 
 * Meldung für Distributionsüberprüfung in Debugebene geändert
 
-### <a name="interactive"></a>Interaktiv
+### <a name="interactive"></a>Interactive
 
 * Geändert: Verhinderung des Abschlusses bei nicht erkannten Befehlen
 * Ereignishooks vor und nach der Erstellung der Teilstruktur von Befehlen hinzugefügt
@@ -129,7 +128,7 @@ Version 2.0.31
 
 * Unterstützung für die Konfiguration der Plattform-Fehlerdomänenanzahl für `vmss create` hinzugefügt
 * `vmss create` geändert, damit standardmäßig „Standard LB“ für zonales, großes oder per einzelner Platzierungsgruppe deaktiviertes Scale Set festgelegt wird
-* [BREAKING CHANGE]: Removed `vm assign-identity`, `vm remove-identity and `vm format-secret`
+* [WICHTIGE ÄNDERUNG]: Removed `vm assign-identity`, `vm remove-identity and `vm format-secret`
 * Unterstützung für SKU mit öffentlicher IP für `vm create` hinzugefügt
 * Argumente `--keyvault` und `--resource-group` für `vm secret format` hinzugefügt, um Szenarien zu unterstützen, bei denen der Befehl die Tresor-ID nicht auflösen kann. [#5718](https://github.com/Azure/azure-cli/issues/5718)
 * Bessere Fehler für `[vm|vmss create]`, wenn der Standort einer Ressourcengruppe keine Zonenunterstützung aufweist
@@ -220,7 +219,7 @@ Version 2.0.30
 
 ### <a name="resource"></a>Ressource
 
-* [BREAKING CHANGE]: Changed `provider operation [list|show]` to not require `--api-version`
+* [WICHTIGE ÄNDERUNG]: Changed `provider operation [list|show]` to not require `--api-version`
 
 ### <a name="role"></a>Rolle
 
@@ -237,7 +236,7 @@ Version 2.0.30
 
 ### <a name="vm"></a>VM
 
-* Warnung für anstehende Breaking Changes für Sätze mit mehr als 100 Instanzen zu `vmss create` hinzugefügt
+* Warnung für anstehende wichtige Änderungen für Sätze mit mehr als 100 Instanzen zu `vmss create` hinzugefügt
 * Unterstützung der Zonenresilienz zu `vm [snapshot|image]` hinzugefügt
 * Datenträgerinstanzansicht geändert, um besseren Verschlüsselungsstatus zu melden
 * [BREAKING CHANGE] `vm extension delete` geändert, um keine Ausgabe mehr zurückzugeben

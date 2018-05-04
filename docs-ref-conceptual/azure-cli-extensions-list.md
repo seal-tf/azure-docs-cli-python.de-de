@@ -4,17 +4,16 @@ description: Eine vollständige Liste der offiziell unterstützten Erweiterungen
 author: derekbekoe
 ms.author: debekoe
 manager: routlaw
-ms.date: 04/26/2018
+ms.date: 04/27/2018
 ms.topic: article
 ms.prod: azure
-ms.technology: azure
-ms.devlang: azurecli
-ms.service: multiple
-ms.openlocfilehash: 04dbb4984c1fb2e43fe0aada76f851f3fd7b05b5
-ms.sourcegitcommit: d461e73abb09c3c85064c532b53a2efb25833b01
+ms.technology: azure-cli
+ms.devlang: azure-cli
+ms.openlocfilehash: 9fe42098ae68d930efafa23f81f2d7a15bc64f7a
+ms.sourcegitcommit: d213cb2e8e3690b7a1c3290dcd57b68049735c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="available-extensions-for-the-azure-cli-20"></a>Verfügbare Erweiterungen für die Azure CLI 2.0
 
@@ -33,11 +32,12 @@ az extension list-available --output table
 | [azure-batch-cli-extensions](https://github.com/Azure/azure-batch-cli-extensions) | 2.2.1 | Zusätzliche Befehle für die Verwendung des Azure Batch-Diensts |  |
 | [azure-cli-iot-ext](https://github.com/azure/azure-iot-cli-extension) | 0.4.3 | Stellt die Befehlsebene der Datenebene für Azure IoT Hub, IoT Edge und den IoT Device Provisioning-Dienst bereit |  |
 | [dns](https://github.com/Azure/azure-cli-extensions) | 0.0.2 | Eine Azure CLI-Erweiterung für DNS-Zonen |  |
-| [image-copy-extension](https://github.com/Azure/azure-cli-extensions) | 0.0.5 | Eine Azure CLI-Erweiterung zum Kopieren von Images zwischen Regionen |  |
-| [keyvault-preview](https://github.com/Azure/azure-keyvault-cli-extension) | 0.1.1 | Zeigen Sie eine Vorschau der Azure Key Vault-Befehle an. | Ja |
+| [eventgrid](https://github.com/Azure/azure-cli-extensions) | 0.2.0 | Unterstützung für Features von Azure EventGrid 2018-05-01-preview | Ja |
+| [image-copy-extension](https://github.com/Azure/azure-cli-extensions) | 0.0.6 | Unterstützung für das Kopieren verwalteter VM-Images zwischen Regionen |  |
+| [keyvault-preview](https://github.com/Azure/azure-keyvault-cli-extension) | 0.1.2 | Zeigen Sie eine Vorschau der Azure Key Vault-Befehle an. | Ja |
 | [managementgroups](https://github.com/Azure/azure-cli-extensions) | 0.1.0 | Eine Azure CLI-Erweiterung für Verwaltungsgruppen |  |
 | [managementpartner](https://github.com/Azure/azure-cli-extensions) | 0.1.2 | Unterstützung für Verwaltungspartner (Vorschauversion) |  |
 | [rdbms](https://github.com/Azure/azure-cli-extensions) | 0.0.5 | Eine Azure CLI-Erweiterung zur Bereitstellung der Unterstützung für Azure MySQL und Azure PostgreSQL |  |
 | [SignalR](https://github.com/Azure/azure-cli-extensions) | 0.1.0 | Unterstützung für die SignalR-Verwaltung (Vorschauversion) | Ja |
 | [Abonnement](https://github.com/Azure/azure-cli-extensions) | 0.1.1 | Unterstützung für die Abonnementverwaltung (Vorschauversion) |  |
-| [webapp](https://github.com/Azure/azure-cli-extensions) | 0.2.1 | Eine Azure CLI-Erweiterung zum Verwalten von appservice-Ressourcen | Ja |
+| [webapp](https://github.com/Azure/azure-cli-extensions) | 0.2.2 | Eine Azure CLI-Erweiterung zum Verwalten von appservice-Ressourcen | Ja |

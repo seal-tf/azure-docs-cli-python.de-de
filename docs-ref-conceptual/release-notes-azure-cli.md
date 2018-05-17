@@ -9,13 +9,144 @@ ms.topic: article
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: fd5d82e34089a9a884c25c9a5620526f9d30577a
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 254c7b306440d921cef6b611268839150fdf3196
+ms.sourcegitcommit: 15d6dfaee2075d0abceb2aa2423f0b6ef7b2ac9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cli-20-release-notes"></a>Azure CLI 2.0-Versionshinweise
+
+## <a name="may-7-2018"></a>7. Mai 2018
+
+Version 2.0.32
+
+### <a name="core"></a>Core
+
+* Ein Ausnahmefehler wurde behoben, der beim Abrufen von Geheimnissen aus einem Dienstprinzipalkonto mit Zertifikat auftrat.
+* Eingeschränkte Unterstützung für positionelle Argumente hinzugefügt
+* Problem behoben, aufgrund dessen `--query` nicht mit `--ids` verwendet werden konnte [#5591](https://github.com/Azure/azure-cli/issues/5591)
+* Pipingszenarien von Befehlen bei Verwendung von `--ids` verbessert Unterstützt `-o tsv` mit angegebener Abfrage bzw. `-o json` ohne angegeben Abfrage
+* Befehlsvorschläge bei Fehler hinzugefügt, wenn Befehle Tippfehler enthielten
+* Fehler bei der Eingabe von `az ''` behandelt
+* Unterstützung für benutzerdefinierte Ressourcentypen für Befehlsmodule und -erweiterungen hinzugefügt
+
+### <a name="acr"></a>ACR
+
+* ACR Build-Befehle hinzugefügt
+* Fehlermeldungen vom Typ „Ressource nicht gefunden.“ verbessert
+* Höhere Leistung bei der Ressourcenerstellung und optimierte Fehlerbehandlung
+* ACR-Anmeldung bei nicht standardmäßigen Konsolen und WSL optimiert
+* Fehlermeldungen zu Repositorybefehlen optimiert
+* Tabellenspalten und -reihenfolge aktualisiert
+
+### <a name="acs"></a>ACS
+
+* Warnung hinzugefügt, dass `az aks` eine Vorschauversion des Diensts ist
+* Berechtigungsproblem in `aks install-connector` behoben, wenn `--aci-resource-group` nicht angegeben wird
+
+### <a name="ams"></a>AMS
+
+* Erste Version: Verwalten von Azure Media Services-Ressourcen
+
+### <a name="appservice"></a>AppService
+
+* Ein Problem in `webapp delete` wurde behoben, das bei Angabe von `--slot` auftrat.
+* `--runtime-version` aus `webapp auth update` entfernt
+* Unterstützung für „min\_tls\_version“ und „https2.0“ hinzugefügt
+* Unterstützung für mehrere Container hinzugefügt
+
+### <a name="batch-ai"></a>Batch AI
+
+* `batchai create cluster` wurde geändert, um die in der Konfigurationsdatei des Clusters konfigurierte VM-Priorität zu berücksichtigen.
+
+### <a name="cognitive-services"></a>Cognitive Services
+
+* Tippfehler im Beispiel für `cognitiveservices account create` korrigiert ([#5603](https://github.com/Azure/azure-cli/issues/5603))
+
+### <a name="consumption"></a>Nutzung
+
+* Neue Befehle für Budget-API hinzugefügt
+
+### <a name="container"></a>Container
+
+* `--registry-server` muss nicht mehr für `container create` angegeben werden, wenn ein Registrierungsserver im Imagenamen enthalten ist.
+
+### <a name="cosmos-db"></a>Cosmos DB
+
+* VNET-Unterstützung für Azure CLI eingeführt: Cosmos DB
+
+### <a name="dms"></a>DMS
+
+* Erste Version: Die Migration von SQL zu Azure SQL wird nun unterstützt.
+
+### <a name="extension"></a>Durchwahl
+
+* Fehler behoben, aufgrund dessen Erweiterungsmetadaten nicht mehr angezeigt wurden
+
+### <a name="interactive"></a>Interactive
+
+* Interaktive Vervollständigung funktioniert nun auch mit positionellen Argumenten.
+* Benutzerfreundlichere Ausgabe bei der Eingabe von '\'
+* Abschlüsse für Parameter ohne Hilfe korrigiert
+* Beschreibungen für Befehlsgruppen korrigiert
+
+### <a name="lab"></a>Labor
+
+* Regressionen aus Knack-Umwandlung korrigiert
+
+### <a name="network"></a>Netzwerk
+
+* [BREAKING CHANGE] Parameter `--ids` entfernt für: 
+  * `express-route auth list`
+  * `express-route peering list`
+  * `nic ip-config list`
+  * `nsg rule list`
+  * `route-filter rule list`
+  * `route-table route list`
+  * `traffic-manager endpoint list`
+
+### <a name="profile"></a>Profil
+
+* Quellerkennung für `disk create` korrigiert
+* [BREAKING CHANGE] `--msi-port` und `--identity-port` entfernt, da sie nicht mehr verwendet werden
+* Tippfehler in kurzer Zusammenfassung für `account get-access-token` korrigiert
+
+### <a name="redis"></a>Redis
+
+* `redis patch-schedule patch-schedule show` wurde durch `redis patch-schedule show` ersetzt.
+* `redis list-all` als veraltet markiert Diese Funktion wurde in `redis list` integriert.
+* `redis import-method` wurde durch `redis import` ersetzt.
+* Unterstützung für `--ids` zu verschiedenen Befehlen hinzugefügt
+
+### <a name="role"></a>Rolle
+
+* [BREAKING CHANGE] Veralteter Befehl `ad sp reset-credentials` entfernt
+
+### <a name="storage"></a>Speicher
+
+* Zulassen, dass das Ziel-SAS-Token für die Blobkopie auf die Quelle angewendet wird, wenn Quell-SAS und Kontoschlüssel nicht angegeben werden
+* Verfügbar gemacht: Socket-Timeout für Blobuploads und -downloads
+* Blobnamen, die mit Pfadtrennzeichen beginnen, als relative Pfade behandeln
+* Zulassen, dass `storage blob copy --source-sas` mit dem Abfragezeichen „?“ beginnt
+* `storage entity query --marker` korrigiert, um Liste von Schlüsselwerten zu akzeptieren
+
+### <a name="vm"></a>VM
+
+* Ungültige Erkennungslogik für nicht verwalteten Blob-URI korrigiert
+* Unterstützung für Datenträgerverschlüsselung ohne vom Benutzer bereitgestellte Dienstprinzipale hinzugefügt
+* [BREAKING CHANGE] Verwenden Sie nicht „ManagedIdentityExtension“ des virtuellen Computers für MSI-Unterstützung.
+* Unterstützung für Entfernungsrichtlinie zu `vmss` hinzugefügt
+* [BREAKING CHANGE] `--ids` entfernt aus:
+  * `vm extension list`
+  * `vm secret list`
+  * `vm unmanaged-disk list`
+  * `vmss nic list`
+* Unterstützung für Schreibbeschleunigung hinzugefügt 
+* `vmss perform-maintenance` hinzugefügt
+* `vm diagnostics set` korrigiert, um zuverlässig den Betriebssystemtyp des virtuellen Computers zu erkennen
+* `vm resize` geändert, um zu überprüfen, ob die angeforderte Größe von der derzeit festgelegten Größe abweicht, und nur bei einer Änderung eine Aktualisierung auszuführen
+
 
 ## <a name="april-10-2018"></a>10. April 2018
 
@@ -151,7 +282,7 @@ Version 2.0.30
 * Unterstützung nur von HTTPS zu `webapp update` hinzugefügt
 * Unterstützung für Slots zu `az webapp identity [assign|show]` und `az functionapp identity [assign|show]` hinzugefügt
 
-### <a name="backup"></a>Sicherung
+### <a name="backup"></a>Backup
 
 * Neuer Befehl `az backup protection isenabled-for-vm` hinzugefügt. Mit diesem Befehl kann überprüft werden, ob ein virtueller Computer von einem beliebigen Tresor im Abonnement gesichert wird.
 * Azure-Objekt-IDs für Parameter `--resource-group` und `--vault-name` für die folgenden Befehle aktiviert:
@@ -312,7 +443,7 @@ Version 2.0.29
 
 * [VORSCHAU] Geändert, sodass die API „2017-12-01-preview“ verwendet wird
 
-### <a name="service-bus"></a>SERVICE BUS
+### <a name="service-bus"></a>Service Bus
 
 * Erste Version
 
@@ -579,7 +710,7 @@ Version 2.0.25
 * Unterstützung benutzerdefinierter URLs zu `browse` hinzugefügt
 * Slotunterstützung für `log tail` korrigiert
 
-### <a name="backup"></a>Sicherung
+### <a name="backup"></a>Backup
 
 * Option `--container-name` von `backup item list` geändert (ist jetzt optional)
 * Speicherkontooptionen zu `backup restore restore-disks` hinzugefügt
@@ -789,7 +920,7 @@ Version 2.0.21
 
 * `[job|account] list` geändert, um präzisere Informationen zu erhalten
 
-### <a name="data-lake-store"></a>Data Lake-Speicher
+### <a name="data-lake-store"></a>Data Lake Store
 
 * `account list` geändert, um präzisere Informationen zu erhalten
 
@@ -997,7 +1128,7 @@ Version 2.0.18
 
 * Neue Möglichkeit zum Aktualisieren und Anzeigen der Authentifizierungseinstellungen mit `webapp auth [update|show]`
 
-### <a name="backup"></a>Sicherung
+### <a name="backup"></a>Backup
 
 * Vorschauversion
 
@@ -1182,7 +1313,7 @@ Version 2.0.13
 * `create`: Problem behoben, aufgrund dessen das Gleichheitszeichen innerhalb einer Umgebungsvariablen nicht zulässig war
 
 
-### <a name="data-lake-store"></a>Data Lake-Speicher
+### <a name="data-lake-store"></a>Data Lake Store
 
 * Fortschrittsüberwachung ermöglicht
 
@@ -1334,7 +1465,7 @@ vm (2.0.11)
 * `dla job pipeline show` hinzugefügt
 * `dla job recurrence list` hinzugefügt
 
-### <a name="data-lake-store"></a>Data Lake-Speicher
+### <a name="data-lake-store"></a>Data Lake Store
 
 * Unterstützung für vom Benutzer verwaltete Schlüsseltresor-Schlüsselrotation in `dls account update` hinzugefügt
 * Zugrunde liegende SDK-Version des Data Lake Store-Dateisystems aktualisiert, um ein Leistungsproblem zu behandeln
@@ -1588,7 +1719,7 @@ vm (2.0.6)
   * Sicht
   * Tabellenstatistiken. Können auch mit einem Schema, jedoch ohne Angabe eines Tabellennamens aufgelistet werden.
 
-### <a name="data-lake-store"></a>Data Lake-Speicher
+### <a name="data-lake-store"></a>Data Lake Store
 
 * Aktualisieren der Version des zugrunde liegenden Dateisystem-SDK, wodurch eine bessere Unterstützung für die Verarbeitung von Drosselungsszenarien auf Serverseite gewährt wird
 * Verbessern der Leistung des Paketladevorgangs und der Befehlsausführung ([#2819](https://github.com/Azure/azure-cli/issues/2819))

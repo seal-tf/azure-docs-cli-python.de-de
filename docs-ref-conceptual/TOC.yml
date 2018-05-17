@@ -66,6 +66,8 @@
   items:
     - name: Erstellen von virtuellen Computern
       href: azure-cli-vm-tutorial.yml
+    - name: 'Schulung: Erstellen von virtuellen Computern'
+      href: 'https://docs.microsoft.com/learn/azure-cli-2-0/index'
 - name: Beispielskripts
   items:
     - name: Virtuelle Linux-Computer
@@ -74,7 +76,7 @@
       href: /azure/virtual-machines/windows/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: Web-Apps
       href: /azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
-    - name: Funktionen
+    - name: Functions
       href: /azure/azure-functions/functions-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
     - name: SQL-Datenbank
       href: /azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json

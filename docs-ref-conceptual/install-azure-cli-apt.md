@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: 86d601fdc375ec59c4f7cbf0881bc67a08e24b19
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 7eb04b408f403264f3951bf663d43686601c4ab8
+ms.sourcegitcommit: 1d18f667af28b59f5524a3499a4b7dc12af5163d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/09/2018
 ---
 # <a name="install-azure-cli-20-with-apt"></a>Installieren der Azure CLI 2.0 mit apt
 
@@ -63,6 +63,20 @@ Weitere Informationen zu verschiedenen Anmeldemethoden finden Sie unter [Anmelde
 ## <a name="troubleshooting"></a>Problembehandlung
 
 In diesem Abschnitt finden Sie einige allgemeine Probleme, die bei der Installation mit `apt` auftreten können. Sollte Ihr Problem hier nicht aufgeführt sein, [melden Sie es über GitHub](https://github.com/Azure/azure-cli/issues).
+
+### <a name="lsbrelease-fails-with-command-not-found"></a>Bei „lsb_release“ tritt der Fehler „Der Befehl wurde nicht gefunden.“ auf.
+
+Beim Ausführen des Befehls `lsb_release` wird unter Umständen eine Ausgabe wie die folgende angezeigt:
+
+```output
+-bash: lsb_release: command not found
+```
+
+Fehlerursache: „lsb_release“ ist nicht installiert. Das Problem lässt sich durch Installieren des Pakets `lsb-release` beheben.
+
+```bash
+sudo apt-get install lsb-release
+```
 
 ### <a name="apt-key-fails-with-no-dirmngr"></a>Fehler „No dirmngr“ beim Ausführen von „apt-key“
 

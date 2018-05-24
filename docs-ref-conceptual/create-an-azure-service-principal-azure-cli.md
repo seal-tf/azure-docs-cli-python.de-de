@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Sie mit der Azure CLI 2.0 einen Dienstprinzi
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 02/12/2018
+ms.date: 05/16/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
 ms.service: role-based-access-control
-ms.openlocfilehash: c7c993e54d3b9bcfa098d89ea89ec15eecba359f
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 86fa8b448089bd9f6ede46c92b7e95abb7c88dad
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-an-azure-service-principal-with-azure-cli-20"></a>Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0
 
@@ -26,31 +26,31 @@ Verwenden Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-cr
 
 * `--password` wird für die kennwortbasierte Authentifizierung verwendet. Halten Sie sich an die Vorgaben unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy), um ein sicheres Kennwort zu erstellen. Falls Sie kein Kennwort angeben, wird eines für Sie erstellt.
 
-  ```azurecli
+  ```azurecli-interactive
   az ad sp create-for-rbac --name ServicePrincipalName --password PASSWORD
   ```
 
 * `--cert` wird für die zertifikatbasierte Authentifizierung für ein vorhandenes Zertifikat verwendet (entweder als öffentliche PEM- oder DER-Zeichenfolge oder als `@{file}` zum Laden einer Datei).
 
-  ```azurecli
+  ```azurecli-interactive
   az ad sp create-for-rbac --name ServicePrincipalName --cert {CertStringOrFile} 
   ```
 
   Das Argument `--keyvault` kann hinzugefügt werden, um anzugeben, dass das Zertifikat in Azure Key Vault gespeichert wird. In diesem Fall verweist der Wert `--cert` auf den Namen des Zertifikats in Key Vault.
 
-  ```azurecli
+  ```azurecli-interactive
   az ad sp create-for-rbac --name ServicePrincipalName --cert CertName --keyvault VaultName
   ```
 
 * `--create-cert` erstellt ein _selbstsigniertes_ Zertifikat für die Authentifizierung. Wenn das Argument `--cert` nicht angegeben wird, wird ein zufälliger Zertifikatname generiert.
 
-  ```azurecli
+  ```azurecli-interactive
   az ad sp create-for-rbac --name ServicePrincipalName --create-cert
   ```
 
   Das Argument `--keyvault` kann hinzugefügt werden, um das Zertifikat in Azure Key Vault zu speichern. Bei Verwendung von `--keyvault` ist auch das Argument `--cert` erforderlich.
 
-  ```azurecli
+  ```azurecli-interactive
   az ad sp create-for-rbac --name ServicePrincipalName --create-cert --cert CertName --keyvault VaultName
   ```
 
@@ -85,7 +85,7 @@ Standardmäßig hat ein Dienstprinzipal die Rolle **Mitwirkender**. Diese Rolle 
 
 Dieses Beispiel fügt die Rolle **Leser** hinzu und löscht die Rolle **Mitwirkender**.
 
-```azurecli
+```azurecli-interactive
 az role assignment create --assignee APP_ID --role Reader
 az role assignment delete --assignee APP_ID --role Contributor
 ```
@@ -94,7 +94,7 @@ Durch das Hinzufügen einer Rolle werden zuvor zugewiesene Berechtigungen _nicht
 
 Die Änderungen können durch Auflisten der zugewiesenen Rollen überprüft werden.
 
-```azurecli
+```azurecli-interactive
 az role assignment list --assignee APP_ID
 ```
 
@@ -107,19 +107,20 @@ Sie können die Anmeldung und Berechtigungen des neuen Dienstprinzipals testen, 
 
 Wenn Sie sich mit einem Kennwort anmelden möchten, geben Sie es als Argumentparameter an.
 
-```azurecli
+```azurecli-interactive
 az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
 ```
 
 Um sich mit einem Zertifikat anmelden zu können, muss es lokal als PEM- oder DER-Datei verfügbar sein.
 
-```azurecli
+```azurecli-interactive
 az login --service-principal --username APP_ID --tenant TENANT_ID --password PATH_TO_CERT
 ```
+
 ## <a name="reset-credentials"></a>Zurücksetzen von Anmeldeinformation
 
 Falls Sie die Anmeldeinformationen für einen Dienstprinzipal vergessen, können sie mit dem Befehl [az ad sp reset-credentials](https://docs.microsoft.com/en-us/cli/azure/ad/sp#az-ad-sp-reset-credentials) zurückgesetzt werden. Hier gelten die gleichen Einschränkungen und Optionen wie beim Erstellen eines neuen Dienstprinzipals.
 
-```azurecli
+```azurecli-interactive
 az ad sp reset-credentials --name APP_ID --password NEW_PASSWORD
 ```

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie JMESPath-Abfragen für die Ausgabe von Azure 
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: eb9311686bf950a450db4bc450da363bbe409f49
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: ed8f8ac160dd8225170ffcfff9619d94b92e456a
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="use-jmespath-queries-with-azure-cli-20"></a>Verwenden von JMESPath-Abfragen mit der Azure CLI 2.0
 
@@ -25,13 +25,13 @@ Das Argument `--query` wird von allen Befehlen der Azure-Befehlszeilenschnittste
 
 Befehle, die ein JSON-Wörterbuch zurückgeben, können allein anhand ihrer Schlüsselnamen durchsucht werden. Bei Schlüsselpfaden wird als Trennzeichen das `.`-Zeichen verwendet. Im folgenden Beispiel wird mithilfe von Pull eine Liste mit den öffentlichen SSH-Schlüsseln abgerufen, die beim Herstellen einer Verbindung mit einem virtuellen Linux-Computer zulässig sind:
 
-```azurecli
+```azurecli-interactive
 az vm show -g QueryDemo -n TestVM --query osProfile.linuxConfiguration.ssh.publicKeys
 ```
 
 Sie können auch mehrere Werte abrufen und in einem sortierten Array platzieren. Das Array verfügt zwar über keinerlei Schlüsselinformationen, die Reihenfolge der Arrayelemente entspricht jedoch der Reihenfolge der abgefragten Schlüssel. Das folgende Beispiel zeigt das Abrufen des Azure-Imageangebotsnamens und der Größe des Betriebssystemdatenträgers:
 
-```azurecli
+```azurecli-interactive
 az vm show -g QueryDemo -n TestVM --query 'storageProfile.[imageReference.offer, osDisk.diskSizeGb]'
 ```
 
@@ -44,7 +44,7 @@ az vm show -g QueryDemo -n TestVM --query 'storageProfile.[imageReference.offer,
 
 Wenn die Ausgabe Schlüssel enthalten soll, können Sie eine alternative Wörterbuchsyntax verwenden. Bei der Auswahl mehrerer Elemente in einem Wörterbuch wird das Format `{displayKey:keyPath, ...}` verwendet, um nach dem `keyPath`-JMESPath-Ausdruck zu filtern. Dies wird in der Ausgabe als `{displayKey: value}` angezeigt. Das nächste Beispiel baut auf der Abfrage des letzten Beispiels auf und weist der Ausgabe Schlüssel zu, um sie deutlicher zu machen:
 
-```azurecli
+```azurecli-interactive
 az vm show -g QueryDemo -n TestVM --query 'storageProfile.{image:imageReference.offer, diskSize:osDisk.diskSizeGb}'
 ```
 
@@ -68,7 +68,7 @@ Beim Anzeigen von Informationen im Ausgabeformat `table` ist die Wörterbuchanze
 
 CLI-Befehle, die mehrere Werte zurückgeben können, geben immer ein Array zurück. Auf die Elemente eines Arrays kann über einen Index zugegriffen werden, es gibt jedoch niemals eine Reihenfolgengarantie von der Befehlszeilenschnittstelle. Beim Abfragen eines Arrays von Werten empfiehlt es sich, die Werte mit dem Operator `[]` zu vereinfachen. Der Operator wird nach dem Schlüssel für das Array oder als erstes Element im Ausdruck geschrieben. Durch die Vereinfachung wird die darauf folgende Abfrage für jedes einzelne Element im Array ausgeführt, und die resultierenden Werte werden in einem neuen Array platziert. Im folgenden Beispiel werden jeweils der Name und das Betriebssystem der virtuellen Computer in einer Ressourcengruppe ausgegeben. 
 
-```azurecli
+```azurecli-interactive
 az vm list -g QueryDemo --query '[].{name:name, image:storageProfile.imageReference.offer}'
 ```
 
@@ -99,7 +99,7 @@ az vm list -g QueryDemo --query '[].{name:name, image:storageProfile.imageRefere
 
 Auch Arrays, die einem Schlüsselpfad angehören, können vereinfacht werden. Dieses Beispiel zeigt eine Abfrage, die die Azure-Objekt-IDs für die NICs abruft, mit denen ein virtueller Computer verbunden ist.
 
-```azurecli
+```azurecli-interactive
 az vm show -g QueryDemo -n TestVM --query 'networkProfile.networkInterfaces[].id'
 ```
 
@@ -107,7 +107,7 @@ az vm show -g QueryDemo -n TestVM --query 'networkProfile.networkInterfaces[].id
 
 JMESPath bietet [Filterausdrücke](http://jmespath.org/specification.html#filterexpressions) zum Herausfiltern der angezeigten Daten. Diese Ausdrücke sind besonders hilfreich, wenn sie mit [integrierten JMESPath-Funktionen](http://jmespath.org/specification.html#built-in-functions) kombiniert werden, um teilweise Übereinstimmungen zu ermitteln oder Daten in ein Standardformat zu konvertieren. Filterausdrücke können nur für Arraydaten verwendet werden. In allen anderen Fällen geben Sie den Wert `null` zurück. Sie können beispielsweise die Ausgabe von Befehlen wie `vm list` filtern, um nach bestimmten Arten von virtuellen Computern zu suchen. Das folgende Beispiel baut auf dem vorherigen Beispiel auf und filtert den VM-Typ heraus, um nur virtuelle Windows-Computer zu erfassen und deren Namen auszugeben.
 
-```azurecli
+```azurecli-interactive
 az vm list --query '[?osProfile.windowsConfiguration!=null].name'
 ```
 

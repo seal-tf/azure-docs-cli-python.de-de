@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie die Ausgabe von Azure CLI 2.0-Befehlen in Tab
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 02/15/2018
+ms.date: 05/16/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: 1eb0fa1421fc2a5f52ccebec7d535824c2434ed2
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 016465080e95af3ab0650146e955dd8cffc569e8
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="output-formats-for-azure-cli-20-commands"></a>Ausgabeformate für Azure CLI 2.0-Befehle
 
@@ -30,7 +30,7 @@ Für Azure CLI 2.0 wird JSON als Standardoption für die Ausgabe verwendet, aber
 
 Im folgenden Beispiel wird die Liste mit den virtuellen Computern Ihrer Abonnements im JSON-Standardformat angezeigt.
 
-```azurecli
+```azurecli-interactive
 az vm list --output json
 ```
 
@@ -68,7 +68,7 @@ In der folgenden Ausgabe wurden einige Felder aus Platzgründen weggelassen, und
 
 Das Ausgabeformat `table` bietet die einfache Ausgabe formatiert als Zeilen und Spalten von sortierten Daten, die einfach zu lesen und überprüfen sind. Geschachtelte Objekte sind in der Tabellenausgabe nicht enthalten, können jedoch im Rahmen einer Abfrage gefiltert werden. Auch bei den Tabellendaten werden einige Felder weggelassen, d.h. dieses Format ist am besten geeignet, wenn Sie eine schnelle und von Menschen durchsuchbare Übersicht über Daten möchten.
 
-```azurecli
+```azurecli-interactive
 az vm list --out table
 ```
 
@@ -81,13 +81,14 @@ demovm213    DEMORG1          westus
 KBDemo001VM  RGDEMO001        westus
 KBDemo020    RGDEMO001        westus
 ```
+
 Sie können den Parameter `--query` verwenden, um die Eigenschaften und Spalten anzupassen, die Sie in der Listenausgabe anzeigen möchten. Im folgenden Beispiel wird veranschaulicht, wie Sie im Befehl `list` nur den VM-Namen und den Ressourcengruppennamen auswählen.
 
 ```azurecli
 az vm list --query "[].{resource:resourceGroup, name:name}" -o table
 ```
 
-```
+```output
 Resource    Name
 ----------  -----------
 DEMORG1     DemoVM010
@@ -112,7 +113,7 @@ Das `tsv`-Ausgabeformat gibt durch Tabstopp oder Zeilenumbruch getrennte Werte o
 
 Wenn das obige Beispiel mit der Option `tsv` verwendet wird, wird das Ergebnis mit Tabulatortrennung ausgegeben.
 
-```azurecli
+```azurecli-interactive
 az vm list --out tsv
 ```
 
@@ -141,7 +142,7 @@ Für die Verarbeitung von durch Tabstopp getrennten Feldern weisen die Werte die
 
 Verwenden Sie den interaktiven Befehl `az configure`, um Ihre Umgebung einzurichten und Standardeinstellungen für Ausgabeformate festzulegen. Das Standardausgabeformat ist `json`. 
 
-```azurecli
+```azurecli-interactive
 az configure
 ```
 

@@ -4,16 +4,16 @@ description: Die Azure CLI 2.0 ermöglicht die Erstellung, Anmeldung und Verwalt
 author: sptramer
 manager: carmonm
 ms.author: sttramer
-ms.date: 10/20/2017
+ms.date: 05/16/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: 98915fb43f2ad3eb45164f7e47c1a41345f3f9c5
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 7ccee3a336f4c596f29783a70ba0cd4398e20b95
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="managing-multiple-clouds-with-azure-cli-20"></a>Verwalten mehrerer Clouds mit der Azure CLI 2.0
 
@@ -25,7 +25,7 @@ Die verfügbaren Clouds können mit dem Befehl [az cloud list](/cli/azure/cloud#
 
 Gehen Sie wie folgt vor, um die aktive Cloud und eine Liste mit allen verfügbaren Clouds abzurufen:
 
-```azurecli
+```azurecli-interactive
 az cloud list --output table
 ```
 
@@ -40,7 +40,7 @@ True        AzureCloud         latest
 
 Für die derzeit aktive Cloud ist in der Spalte `IsActive` der Wert `True` angegeben. Es kann immer nur eine Cloud aktiv sein. Ausführlichere Informationen zu einer Cloud (einschließlich der Endpunkte, die sie für Azure-Dienste verwendet) erhalten Sie mit dem Befehl `cloud show`:
 
-```azurecli
+```azurecli-interactive
 az cloud show --name AzureChinaCloud --output json
 ```
 
@@ -75,7 +75,7 @@ az cloud show --name AzureChinaCloud --output json
 
 Führen Sie zum Wechseln der aktiven Cloud den Befehl [az cloud set](/cli/azure/cloud#az-cloud-set) aus. Dieser Befehl erfordert ein Argument: den Namen der Cloud.
 
-```azurecli
+```azurecli-interactive
 az cloud set --name AzureChinaCloud
 ```
 
@@ -100,6 +100,6 @@ Verwenden Sie dazu den Befehl [az cloud update](/cli/azure/cloud#az-cloud-update
 
 Wenn Sie eine registrierte Cloud nicht mehr benötigen, können Sie die Registrierung mit dem Befehl [az cloud unregister](/cli/azure/cloud#az-cloud-unregister) aufheben:
 
-```azurecli
+```azurecli-interactive
 az cloud unregister --name MyCloud
 ```

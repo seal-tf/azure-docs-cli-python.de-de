@@ -5,16 +5,16 @@ keywords: Azure CLI, CLI Hilfe, Azure Hilfe, Abfrage, Automatisierung,
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 02/05/2018
+ms.date: 05/16/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-cli
 ms.devlang: azure-cli
-ms.openlocfilehash: afed3b187f9e5437ecd42217a374b82fb12699b8
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: 0c7746e70125dcc1678ed19f93322efea8a2b01b
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="get-started-with-azure-cli-20"></a>Erste Schritte mit Azure CLI 2.0
 
@@ -54,13 +54,13 @@ Jede Gruppe stellt einen von Azure bereitgestellten Dienst dar, und die Untergru
 
 Suchen Sie Befehle mithilfe von [az find](/cli/azure/reference-index#az-find). Verwenden Sie den folgenden Befehl, um beispielsweise nach Befehlsnamen zu suchen, die `secret` enthalten:
 
-```azurecli
+```azurecli-interactive
 az find -q secret
 ```
 
 Wenn Sie wissen, mit welcher Gruppe von Befehlen Sie arbeiten möchten, ist das Argument `--help` unter Umständen besser geeignet. Damit werden nicht nur detaillierte Informationen für einen Befehl, sondern – bei Verwendung mit einer Befehlsgruppe – alle verfügbaren Unterbefehle angezeigt. Beispielsweise können Sie bei Verwendung von Netzwerksicherheitsgruppen (NSGs) die verfügbaren Untergruppen und Befehle der NSGs ermitteln.
 
-```azurecli
+```azurecli-interactive
 az network nsg --help
 ```
 
@@ -79,11 +79,15 @@ Es gibt einige Argumente, die für jeden Befehl verfügbar sind.
 
 ## <a name="interactive-mode"></a>Interaktiver Modus
 
-Die CLI bietet einen interaktiven Modus, der automatisch Hilfeinformationen anzeigt und die Auswahl von Unterbefehlen vereinfacht. Sie wechseln mit dem Befehl [az interactive](/cli/azure/reference-index#az-interactive) in den interaktiven Modus. Weitere Informationen zum interaktiven Modus sowie dazu, wie Sie sich mithilfe dieses Modus mit der CLI vertraut machen, finden Sie unter [Interaktive Azure CLI 2.0](interactive-azure-cli.md).
+Die CLI bietet einen interaktiven Modus, der automatisch Hilfeinformationen anzeigt und die Auswahl von Unterbefehlen vereinfacht. Sie wechseln mit dem Befehl [az interactive](/cli/azure/reference-index#az-interactive) in den interaktiven Modus.
+
+```azurecli-interactive
+az interactive
+```
+
+Weitere Informationen zum interaktiven Modus finden Sie unter [Interaktive Azure CLI 2.0](interactive-azure-cli.md).
 
 Darüber hinaus gibt es ein [Visual Studio Code-Plug-In](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli), das eine interaktive Benutzeroberfläche bereitstellt. Diese bietet unter anderem Funktionen wie AutoVervollständigen und die Anzeige von Informationen beim Daraufzeigen.
-
-
 
 ## <a name="learn-cli-basics-with-quickstarts-and-tutorials"></a>Lernen der CLI-Grundlagen mit Schnellstarts und Tutorials
 
@@ -106,6 +110,6 @@ Wenn Sie sich eher auf andere Dienste konzentrieren möchten, stehen verschieden
 
 Ihr Feedback zur CLI hilft uns dabei, Verbesserungen vorzunehmen und Fehler zu beheben. Sie können [ein Problem auf Github melden](https://github.com/azure/azure-cli/issues) oder mit den integrierten Features der CLI und dem Befehl [az feedback](/cli/azure/reference-index#az-feedback) allgemeines Feedback hinterlassen.
 
-```azurecli
+```azurecli-interactive
 az feedback
 ```

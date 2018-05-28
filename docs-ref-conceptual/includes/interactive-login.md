@@ -2,13 +2,13 @@
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 01/05/2018
+ms.date: 05/16/2018
 ms.topic: include
-ms.openlocfilehash: 6933b6982c2c47da01b93c0e13425ee28527c668
-ms.sourcegitcommit: ae72b6c8916aeb372a92188090529037e63930ba
+ms.openlocfilehash: cace08e129e67c91d3fe45cd1712fcf27ab75204
+ms.sourcegitcommit: 8b4629a42ceecf30c1efbc6fdddf512f4dddfab0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 1. Führen Sie den Anmeldebefehl aus.
 
@@ -18,9 +18,6 @@ ms.lasthandoff: 04/28/2018
 
    Sie erhalten einen Code, den Sie im nächsten Schritt benötigen.
 
-1. Verwenden Sie zum Öffnen der Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin) einen Webbrowser, und geben Sie dann zur Authentifizierung den Code ein.
+2. Verwenden Sie zum Öffnen der Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin) einen Webbrowser, und geben Sie dann zur Authentifizierung den Code ein.
 
-    Sie werden aufgefordert, sich mit Ihren Anmeldeinformationen anzumelden.
-
-1. Melden Sie sich an.
-
+3. Melden Sie sich im Browser mit Ihren Anmeldeinformationen an.

@@ -45,10 +45,15 @@ Wenn Sie eine Distribution mit `apt` verwenden (etwa Ubuntu oder Debian), steht 
   > curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   > ``` 
 
-3. Installieren Sie die Befehlszeilenschnittstelle:
+3. Installieren Sie das Basispaket:
 
    ```bash
    sudo apt-get install apt-transport-https
+   ```
+
+4. Installieren Sie die Befehlszeilenschnittstelle:
+
+   ```bash
    sudo apt-get update && sudo apt-get install azure-cli
    ```
 
